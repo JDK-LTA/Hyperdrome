@@ -21,19 +21,28 @@ public class RbFPSController : MonoBehaviour
 
         public bool Running { get => _Running; }
 
-        public void UpdateDesiredTargetSpeed(Vector2 input)
+        public void Init()
         {
-            if (input == Vector2.zero) return;
+            InputManager.Instance.OnHoldRun += UpdateRunning;
+        }
+        private void UpdateRunning(bool isRun)
+        {
+            _Running = isRun;
+        }
+
+        public void UpdateDesiredTargetSpeed(Vector3 input)
+        {
+            if (input == Vector3.zero) return;
             if (input.x > 0 || input.x < 0)
             {
                 CurrentTargetSpeed = StrafeSpeed;
             }
-            if (input.y < 0)
+            if (input.z < 0)
             {
                 //backwards
                 CurrentTargetSpeed = BackwardSpeed;
             }
-            if (input.y > 0)
+            if (input.z > 0)
             {
                 //forwards
                 //handled last as if strafing and moving forward at the same time forwards speed should take precedence
@@ -59,16 +68,92 @@ public class RbFPSController : MonoBehaviour
 
     public Camera cam;
     public MovementSettings movementSettings = new MovementSettings();
-    public 
+    public AdvancedSettings advancedSettings = new AdvancedSettings();
+
+    private Rigidbody _rigidbody;
+    private CapsuleCollider _collider;
+    private float _yRotation;
+    private Vector3 _groundContactNormal;
+    private bool _jump, _previouslyGrounded, _jumping, _isGrounded;
+
+    private Vector3 _input = Vector3.zero;
+    private Vector3 _mouse = Vector3.zero;
+
+    public Vector3 Velocity { get => _rigidbody.velocity; }
+    public bool Jumping { get => _jumping; }
+    public bool IsGrounded { get => _isGrounded; }
+    public bool Running { get => movementSettings.Running; }
+    
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
-        
+        _rigidbody = GetComponent<Rigidbody>();
+        _collider = GetComponent<CapsuleCollider>();
+        movementSettings.Init();
+
+        InputManager.Instance.OnMoveForward += UpdateInputZ;
+        InputManager.Instance.OnMoveRight += UpdateInputX;
     }
 
     // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        RotateView();
     }
+
+    private void FixedUpdate()
+    {
+        Move();
+    }
+
+    #region Camera and View
+    private void UpdateMouseX(float mouseX)
+    {
+        _mouse.x = mouseX;
+    }
+    private void UpdateMouseY(float mouseY)
+    {
+        _mouse.y = mouseY;
+    }
+    private void RotateView()
+    {
+        if (Mathf.Abs(Time.timeScale) < float.Epsilon) return;
+
+        float oldYRot = transform.eulerAngles.y;
+
+        if(_isGrounded || advancedSettings.airControl)
+        {
+            Quaternion velRotation = Quaternion.AngleAxis(transform.eulerAngles.y - oldYRot, Vector3.up);
+            _rigidbody.velocity = velRotation * _rigidbody.velocity;
+        }
+    }
+    #endregion
+    #region XZ Movement
+    private void UpdateInputX(float inp)
+    {
+        _input.x = inp;
+        movementSettings.UpdateDesiredTargetSpeed(_input);
+    }
+    private void UpdateInputZ(float inp)
+    {
+        _input.z = inp;
+        movementSettings.UpdateDesiredTargetSpeed(_input);
+    }
+    private void Move()
+    {
+        _rigidbody.MovePosition(_rigidbody.position + _input * movementSettings.CurrentTargetSpeed * Time.fixedDeltaTime);
+    }
+    #endregion
+    #region Jump
+    private void GroundCheck()
+    {
+        _previouslyGrounded = _isGrounded;
+        RaycastHit hit;
+        if (Physics.SphereCast(transform.position,_collider.radius*(1f - advancedSettings.shellOffset), Vector3.down, out hit,
+            ((_collider.height / 2f) - _collider.radius) + advancedSettings.groundCheckDistance, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+        {
+            _isGrounded = true;
+        }
+    }
+    #endregion
 }
