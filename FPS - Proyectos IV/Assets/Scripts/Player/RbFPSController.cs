@@ -93,17 +93,22 @@ public class RbFPSController : MonoBehaviour
 
         InputManager.Instance.OnMoveForward += UpdateInputZ;
         InputManager.Instance.OnMoveRight += UpdateInputX;
+        InputManager.Instance.OnTriggerJump += UpdateJumpInput;
     }
 
     // Update is called once per frame
     private void Update()
     {
         RotateView();
+        //Debug.Log(_jump);
+        //Debug.Log(_isGrounded);
     }
 
     private void FixedUpdate()
     {
+        GroundCheck();
         Move();
+        //JumpingChecker();
     }
 
     #region Camera and View
@@ -145,6 +150,60 @@ public class RbFPSController : MonoBehaviour
     }
     #endregion
     #region Jump
+    private void UpdateJumpInput()
+    {
+        //_jump = true;
+        if (_isGrounded)
+        {
+            _rigidbody.AddForce(Vector3.up * Mathf.Sqrt(movementSettings.JumpForce * -2f * Physics.gravity.y), ForceMode.VelocityChange);
+        }
+    }
+    private void JumpingChecker()
+    {
+        if (_isGrounded)
+        {
+            _rigidbody.drag = 5f;
+
+            if (_jump)
+            {
+                Debug.Log("jump");
+
+                _rigidbody.drag = 0f;
+                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z);
+                _rigidbody.AddForce(new Vector3(0f, movementSettings.JumpForce, 0f), ForceMode.Impulse);
+                _jumping = true;
+            }
+
+            if (_jumping && Mathf.Abs(_input.x) < float.Epsilon && Mathf.Abs(_input.y) < float.Epsilon && _rigidbody.velocity.magnitude < 1f)
+            {
+                _rigidbody.Sleep();
+            }
+        }
+        else
+        {
+            _rigidbody.drag = 0f;
+            if (_previouslyGrounded && _jumping)
+            {
+                StickToGroundHelper();
+            }
+        }
+        _jump = false;
+    }
+
+    private void StickToGroundHelper()
+    {
+        RaycastHit hit;
+        if (Physics.SphereCast(transform.position, _collider.radius*(1f-advancedSettings.shellOffset), Vector3.down, out hit,
+            ((_collider.height/2f)-_collider.radius)+
+            advancedSettings.stickToGroundHelperDistance, Physics.AllLayers, QueryTriggerInteraction.Ignore))
+        {
+            if (Mathf.Abs(Vector3.Angle(hit.normal, Vector3.up)) < 85f)
+            {
+                _rigidbody.velocity = Vector3.ProjectOnPlane(_rigidbody.velocity, hit.normal);
+            }
+        }
+    }
+
     private void GroundCheck()
     {
         _previouslyGrounded = _isGrounded;
@@ -153,6 +212,18 @@ public class RbFPSController : MonoBehaviour
             ((_collider.height / 2f) - _collider.radius) + advancedSettings.groundCheckDistance, Physics.AllLayers, QueryTriggerInteraction.Ignore))
         {
             _isGrounded = true;
+            _groundContactNormal = hit.normal;
+            Debug.Log("grounded");
+        }
+        else
+        {
+            Debug.Log("not grounded");
+            _isGrounded = false;
+            _groundContactNormal = Vector3.up;
+        }
+        if (!_previouslyGrounded && _isGrounded && _jumping)
+        {
+            _jumping = false;
         }
     }
     #endregion
