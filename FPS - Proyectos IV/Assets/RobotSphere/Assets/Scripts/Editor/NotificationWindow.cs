@@ -68,7 +68,7 @@ public class Startup
 	
 	static Startup()
 	{
-		EditorApplication.update += Notification;
+		//EditorApplication.update += Notification;
 	}
 
 	static void Notification()
