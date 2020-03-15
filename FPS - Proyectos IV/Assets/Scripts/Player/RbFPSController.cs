@@ -7,6 +7,114 @@ using UnityEngine;
 public class RbFPSController : MonoBehaviour
 {
     [System.Serializable]
+    public class MouseLook
+    {
+        public float XSensitivity = 2f;
+        public float YSensitivity = 2f;
+        public bool clampVerticalRotation = true;
+        public float minimumX = -90F;
+        public float maximumX = 90F;
+        public bool smooth;
+        public float smoothTime = 5f;
+        public bool lockCursor = true;
+
+        private Quaternion _characterTargetRot;
+        private Quaternion _cameraTargetRot;
+        private bool _cursorIsLocked = true;
+
+        public void Init(Transform character, Transform camera)
+        {
+            _characterTargetRot = character.localRotation;
+            _cameraTargetRot = camera.localRotation;
+        }
+
+
+        public void LookRotation(Transform character, Transform camera)
+        {
+            float yRot = Input.GetAxis("Mouse X") * XSensitivity;
+            float xRot = Input.GetAxis("Mouse Y") * YSensitivity;
+
+            _characterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
+            _cameraTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
+
+            if (clampVerticalRotation)
+                _cameraTargetRot = ClampRotationAroundXAxis(_cameraTargetRot);
+
+            if (smooth)
+            {
+                character.localRotation = Quaternion.Slerp(character.localRotation, _characterTargetRot,
+                    smoothTime * Time.deltaTime);
+                camera.localRotation = Quaternion.Slerp(camera.localRotation, _cameraTargetRot,
+                    smoothTime * Time.deltaTime);
+            }
+            else
+            {
+                character.localRotation = _characterTargetRot;
+                camera.localRotation = _cameraTargetRot;
+            }
+
+            UpdateCursorLock();
+        }
+
+        public void SetCursorLock(bool value)
+        {
+            lockCursor = value;
+            if (!lockCursor)
+            {//we force unlock the cursor if the user disable the cursor locking helper
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+        }
+
+        public void UpdateCursorLock()
+        {
+            //if the user set "lockCursor" we check & properly lock the cursos
+            if (lockCursor)
+                InternalLockUpdate();
+        }
+
+        private void InternalLockUpdate()
+        {
+            if (Input.GetKeyUp(KeyCode.Escape))
+            {
+                _cursorIsLocked = false;
+            }
+            else if (Input.GetMouseButtonUp(0))
+            {
+                _cursorIsLocked = true;
+            }
+
+            if (_cursorIsLocked)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                Cursor.visible = false;
+            }
+            else if (!_cursorIsLocked)
+            {
+                Cursor.lockState = CursorLockMode.None;
+                Cursor.visible = true;
+            }
+        }
+
+        Quaternion ClampRotationAroundXAxis(Quaternion q)
+        {
+            q.x /= q.w;
+            q.y /= q.w;
+            q.z /= q.w;
+            q.w = 1.0f;
+
+            float angleX = 2.0f * Mathf.Rad2Deg * Mathf.Atan(q.x);
+
+            angleX = Mathf.Clamp(angleX, minimumX, maximumX);
+
+            q.x = Mathf.Tan(0.5f * Mathf.Deg2Rad * angleX);
+
+            return q;
+        }
+
+    }
+
+    [System.Serializable]
     public class MovementSettings
     {
         public float ForwardSpeed = 8f;
@@ -16,6 +124,8 @@ public class RbFPSController : MonoBehaviour
 
         public float JumpForce = 30f;
         [HideInInspector] public float CurrentTargetSpeed = 8f;
+
+        private Vector3 lastInput = Vector3.zero;
 
         private bool _Running;
 
@@ -52,6 +162,7 @@ public class RbFPSController : MonoBehaviour
             {
                 CurrentTargetSpeed *= RunMultiplier;
             }
+            lastInput = input;
         }
     }
 
@@ -69,6 +180,7 @@ public class RbFPSController : MonoBehaviour
     public Camera cam;
     public MovementSettings movementSettings = new MovementSettings();
     public AdvancedSettings advancedSettings = new AdvancedSettings();
+    public MouseLook mouseLook = new MouseLook();
 
     private Rigidbody _rigidbody;
     private CapsuleCollider _collider;
@@ -90,10 +202,13 @@ public class RbFPSController : MonoBehaviour
         _rigidbody = GetComponent<Rigidbody>();
         _collider = GetComponent<CapsuleCollider>();
         movementSettings.Init();
+        mouseLook.Init(transform, cam.transform);
 
         InputManager.Instance.OnMoveForward += UpdateInputZ;
         InputManager.Instance.OnMoveRight += UpdateInputX;
         InputManager.Instance.OnTriggerJump += UpdateJumpInput;
+        InputManager.Instance.OnMouseX += UpdateMouseX;
+        InputManager.Instance.OnMouseY += UpdateMouseY;
     }
 
     // Update is called once per frame
@@ -125,8 +240,9 @@ public class RbFPSController : MonoBehaviour
         if (Mathf.Abs(Time.timeScale) < float.Epsilon) return;
 
         float oldYRot = transform.eulerAngles.y;
+        mouseLook.LookRotation(transform, cam.transform);
 
-        if(_isGrounded || advancedSettings.airControl)
+        if (_isGrounded || advancedSettings.airControl)
         {
             Quaternion velRotation = Quaternion.AngleAxis(transform.eulerAngles.y - oldYRot, Vector3.up);
             _rigidbody.velocity = velRotation * _rigidbody.velocity;
@@ -146,7 +262,9 @@ public class RbFPSController : MonoBehaviour
     }
     private void Move()
     {
-        _rigidbody.MovePosition(_rigidbody.position + _input * movementSettings.CurrentTargetSpeed * Time.fixedDeltaTime);
+        Vector3 moveDirection = _input * movementSettings.CurrentTargetSpeed * Time.fixedDeltaTime;
+        moveDirection = transform.TransformDirection(moveDirection);
+        _rigidbody.MovePosition(_rigidbody.position + moveDirection);
     }
     #endregion
     #region Jump
@@ -158,7 +276,7 @@ public class RbFPSController : MonoBehaviour
             _rigidbody.AddForce(Vector3.up * Mathf.Sqrt(movementSettings.JumpForce * -2f * Physics.gravity.y), ForceMode.VelocityChange);
         }
     }
-    private void JumpingChecker()
+    /*private void JumpingChecker()
     {
         if (_isGrounded)
         {
@@ -188,7 +306,7 @@ public class RbFPSController : MonoBehaviour
             }
         }
         _jump = false;
-    }
+    }*/
 
     private void StickToGroundHelper()
     {
@@ -213,11 +331,11 @@ public class RbFPSController : MonoBehaviour
         {
             _isGrounded = true;
             _groundContactNormal = hit.normal;
-            Debug.Log("grounded");
+            //Debug.Log("grounded");
         }
         else
         {
-            Debug.Log("not grounded");
+            //Debug.Log("not grounded");
             _isGrounded = false;
             _groundContactNormal = Vector3.up;
         }

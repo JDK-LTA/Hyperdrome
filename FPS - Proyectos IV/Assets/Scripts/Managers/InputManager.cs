@@ -21,6 +21,9 @@ public class InputManager : Singleton<InputManager>
     public event OnInputTrigger OnTriggerShoot;
     public event OnInputTrigger OnTriggerAbility;
 
+    public delegate void OnInputRepTrigger();
+    public event OnInputRepTrigger OnRepTriggerShoot;
+
     private bool movingForward = false, movingRight = false, 
         holdingShoot = false, holdingAim = false, 
         holdingRun = false, holdingJet = false, triggeredJump = false,
@@ -64,15 +67,20 @@ public class InputManager : Singleton<InputManager>
         #region Hold and Trigger Input
         
         //HOLDS
-        if (Input.GetAxisRaw("Shoot") == 1 && !holdingShoot)
+        if (Input.GetAxisRaw("Shoot") == 1)
         {
-            OnHoldShoot?.Invoke(true);
+            OnRepTriggerShoot?.Invoke();
 
+            if (!holdingShoot)
+            {
+                OnHoldShoot?.Invoke(true);
+                holdingShoot = true;
+            }
             if (!triggeredShoot)
+            {
                 OnTriggerShoot?.Invoke();
-
-            holdingShoot = true;
-            triggeredShoot = true;
+                triggeredShoot = true;
+            }
         }
         else if(Input.GetAxisRaw("Shoot") == 0 && holdingShoot)
         {
