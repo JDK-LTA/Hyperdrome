@@ -142,27 +142,46 @@ public class RbFPSController : MonoBehaviour
 
         public void UpdateDesiredTargetSpeed(Vector3 input)
         {
+            //if (input.x > 0 || input.x < 0)
+            //{
+            //    CurrentTargetSpeed = StrafeSpeed;
+            //}
+            //if (input.z < 0)
+            //{
+            //    //backwards
+            //    CurrentTargetSpeed = BackwardSpeed;
+            //}
+            //if (input.z > 0)
+            //{
+            //    //forwards
+            //    //handled last as if strafing and moving forward at the same time forwards speed should take precedence
+            //    CurrentTargetSpeed = ForwardSpeed;
+            //}
+            //lastInput = input;
+
             if (input == Vector3.zero) return;
-            if (input.x > 0 || input.x < 0)
+            input = new Vector3(Mathf.Abs(input.x), 0, Mathf.Abs(input.z));
+
+            Vector2 finalInput = new Vector2(input.x * (input.x / (input.x + input.z)), input.z * (input.z / (input.x + input.z)));
+            
+            if(input.z > 0)
+            {
+                CurrentTargetSpeed = StrafeSpeed * finalInput.x + ForwardSpeed * finalInput.y;
+            }
+            else if (input.z < 0)
+            {
+                CurrentTargetSpeed = StrafeSpeed * finalInput.x + BackwardSpeed * finalInput.y;
+            }
+            else
             {
                 CurrentTargetSpeed = StrafeSpeed;
             }
-            if (input.z < 0)
-            {
-                //backwards
-                CurrentTargetSpeed = BackwardSpeed;
-            }
-            if (input.z > 0)
-            {
-                //forwards
-                //handled last as if strafing and moving forward at the same time forwards speed should take precedence
-                CurrentTargetSpeed = ForwardSpeed;
-            }
+
             if (_Running)
             {
                 CurrentTargetSpeed *= RunMultiplier;
             }
-            lastInput = input;
+            //Debug.Log(CurrentTargetSpeed);
         }
     }
 
@@ -195,12 +214,15 @@ public class RbFPSController : MonoBehaviour
     public bool Jumping { get => _jumping; }
     public bool IsGrounded { get => _isGrounded; }
     public bool Running { get => movementSettings.Running; }
-    
-    // Start is called before the first frame update
-    private void Start()
+
+    private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
         _collider = GetComponent<CapsuleCollider>();
+    }
+    // Start is called before the first frame update
+    private void Start()
+    {
         movementSettings.Init();
         mouseLook.Init(transform, cam.transform);
 
