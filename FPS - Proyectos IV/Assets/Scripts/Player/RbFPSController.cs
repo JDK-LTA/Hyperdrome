@@ -123,6 +123,7 @@ public class RbFPSController : MonoBehaviour
         public float RunMultiplier = 2f;
 
         public float JumpForce = 30f;
+        public float DashDistance = 5f;
         [HideInInspector] public float CurrentTargetSpeed = 8f;
 
         private Vector3 lastInput = Vector3.zero;
@@ -200,6 +201,7 @@ public class RbFPSController : MonoBehaviour
     public MovementSettings movementSettings = new MovementSettings();
     public AdvancedSettings advancedSettings = new AdvancedSettings();
     public MouseLook mouseLook = new MouseLook();
+    [SerializeField] protected float smoothXZDrag = 10f;
 
     private Rigidbody _rigidbody;
     private CapsuleCollider _collider;
@@ -229,6 +231,7 @@ public class RbFPSController : MonoBehaviour
         InputManager.Instance.OnMoveForward += UpdateInputZ;
         InputManager.Instance.OnMoveRight += UpdateInputX;
         InputManager.Instance.OnTriggerJump += UpdateJumpInput;
+        InputManager.Instance.OnTriggerDash += Dash;
         InputManager.Instance.OnMouseX += UpdateMouseX;
         InputManager.Instance.OnMouseY += UpdateMouseY;
     }
@@ -237,15 +240,23 @@ public class RbFPSController : MonoBehaviour
     private void Update()
     {
         RotateView();
-        //Debug.Log(_jump);
-        //Debug.Log(_isGrounded);
     }
 
     private void FixedUpdate()
     {
         GroundCheck();
         Move();
-        //JumpingChecker();
+
+        XZDrag();
+    }
+
+    private void XZDrag()
+    {
+        Vector3 velocity = _rigidbody.velocity;
+        Vector3 xzVelocity = velocity;
+        xzVelocity = Vector3.Lerp(xzVelocity, Vector3.zero, smoothXZDrag * Time.deltaTime);
+        xzVelocity.y = velocity.y;
+        _rigidbody.velocity = xzVelocity;
     }
 
     #region Camera and View
@@ -365,6 +376,15 @@ public class RbFPSController : MonoBehaviour
         {
             _jumping = false;
         }
+    }
+    #endregion
+    #region Dash
+    private void Dash()
+    {
+        Vector3 dashVelocity = Vector3.Scale(transform.forward, 
+            movementSettings.DashDistance * smoothXZDrag * new Vector3(1, 0, 1));
+
+        _rigidbody.AddForce(dashVelocity, ForceMode.VelocityChange);
     }
     #endregion
 }

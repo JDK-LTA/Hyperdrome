@@ -20,6 +20,7 @@ public class InputManager : Singleton<InputManager>
     public event OnInputTrigger OnTriggerJump;
     public event OnInputTrigger OnTriggerShoot;
     public event OnInputTrigger OnTriggerAbility;
+    public event OnInputTrigger OnTriggerDash;
 
     public delegate void OnInputRepTrigger();
     public event OnInputRepTrigger OnRepTriggerShoot;
@@ -139,6 +140,10 @@ public class InputManager : Singleton<InputManager>
         else if (Input.GetAxisRaw("Ability") == 0 && triggeredAbility)
         {
             triggeredAbility = false;
+        }
+        if (Input.GetButtonDown("Dash"))
+        {
+            OnTriggerDash?.Invoke();
         }
         //
         #endregion
