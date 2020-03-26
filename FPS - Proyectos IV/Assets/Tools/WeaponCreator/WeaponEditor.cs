@@ -9,7 +9,7 @@ public class WeaponEditor : EditorWindow
     WeaponList weaponListRef;
     private int viewIndex = 1;
 
-    [MenuItem("Window/Weapon Creator")]
+    [MenuItem("Tools/Weapon Creator")]
     static void Init()
     {
         EditorWindow.GetWindow(typeof(WeaponEditor));
@@ -118,12 +118,15 @@ public class WeaponEditor : EditorWindow
 
         GUILayout.Space(10);
         weaponListRef.weaponList[viewIndex - 1].Name = EditorGUILayout.TextField(new GUIContent("Name"), weaponListRef.weaponList[viewIndex - 1].Name as string);
+        weaponListRef.weaponList[viewIndex - 1].ShootingType = (ShootingType)EditorGUILayout.EnumPopup("Shooting type", weaponListRef.weaponList[viewIndex - 1].ShootingType);
         weaponListRef.weaponList[viewIndex - 1].WeaponType = (WeaponType)EditorGUILayout.EnumPopup("Weapon type", weaponListRef.weaponList[viewIndex - 1].WeaponType);
         weaponListRef.weaponList[viewIndex - 1].Changer = (Changer)EditorGUILayout.EnumPopup("Changer", weaponListRef.weaponList[viewIndex - 1].Changer);
 
         GUILayout.Space(5);
         weaponListRef.weaponList[viewIndex - 1].Mesh = (Mesh)EditorGUILayout.ObjectField("Weapon Model", weaponListRef.weaponList[viewIndex - 1].Mesh, typeof(Mesh), false);
         weaponListRef.weaponList[viewIndex - 1].Bullet = (GameObject)EditorGUILayout.ObjectField("Bullet prefab", weaponListRef.weaponList[viewIndex - 1].Bullet, typeof(GameObject), false);
+        weaponListRef.weaponList[viewIndex - 1].CrosshairTexture = (Texture2D)EditorGUILayout.ObjectField("Crosshair texture", weaponListRef.weaponList[viewIndex - 1].CrosshairTexture, typeof(Texture2D), false);
+        weaponListRef.weaponList[viewIndex - 1].FireSound = (AudioClip)EditorGUILayout.ObjectField("Fire sound", weaponListRef.weaponList[viewIndex - 1].FireSound, typeof(AudioClip), false);
 
         GUILayout.Space(5);
         weaponListRef.weaponList[viewIndex - 1].LevelRequired = EditorGUILayout.IntField("Level required", weaponListRef.weaponList[viewIndex - 1].LevelRequired);
@@ -132,22 +135,12 @@ public class WeaponEditor : EditorWindow
         weaponListRef.weaponList[viewIndex - 1].Ammo = EditorGUILayout.IntField("Ammo", weaponListRef.weaponList[viewIndex - 1].Ammo);
         weaponListRef.weaponList[viewIndex - 1].Weight = EditorGUILayout.FloatField("Weight", weaponListRef.weaponList[viewIndex - 1].Weight);
         weaponListRef.weaponList[viewIndex - 1].DamagePerHit = EditorGUILayout.FloatField("Damage per hit", weaponListRef.weaponList[viewIndex - 1].DamagePerHit);
+        weaponListRef.weaponList[viewIndex - 1].ForceToApply = EditorGUILayout.FloatField("Force to apply", weaponListRef.weaponList[viewIndex - 1].ForceToApply);
+        weaponListRef.weaponList[viewIndex - 1].Range = EditorGUILayout.FloatField("Range", weaponListRef.weaponList[viewIndex - 1].Range);
+        weaponListRef.weaponList[viewIndex - 1].CdBetweenShots = EditorGUILayout.FloatField("Cooldown between shots", weaponListRef.weaponList[viewIndex - 1].CdBetweenShots);
 
         GUILayout.Space(5);
-        switch (weaponListRef.weaponList[viewIndex - 1].Changer)
-        {
-            case Changer.AMMO:
-                weaponListRef.weaponList[viewIndex - 1].AmmoToChange = EditorGUILayout.FloatField("Ammo to change", weaponListRef.weaponList[viewIndex - 1].AmmoToChange);
-                break;
-            case Changer.TIME:
-                weaponListRef.weaponList[viewIndex - 1].TimeToChange = EditorGUILayout.FloatField("Time to change", weaponListRef.weaponList[viewIndex - 1].TimeToChange);
-                break;
-            case Changer.HIT:
-                weaponListRef.weaponList[viewIndex - 1].HitsToChange = EditorGUILayout.FloatField("Hits to change", weaponListRef.weaponList[viewIndex - 1].HitsToChange);
-                break;
-            default:
-                weaponListRef.weaponList[viewIndex - 1].AmmoToChange = EditorGUILayout.FloatField("Ammo to change", weaponListRef.weaponList[viewIndex - 1].AmmoToChange);
-                break;
-        }
+        weaponListRef.weaponList[viewIndex - 1].NumberToChange = EditorGUILayout.FloatField(new GUIContent("Number to change", "It's seconds to change, ammo to change or hits/kills to change, depending on the changer"),
+            weaponListRef.weaponList[viewIndex - 1].NumberToChange);
     }
 }
