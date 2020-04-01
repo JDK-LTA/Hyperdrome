@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class InputManager : Singleton<InputManager>
 {
+    public GameObject player;
+
     public delegate void OnInputContinous(float axis);
     public event OnInputContinous OnMouseX;
     public event OnInputContinous OnMouseY;
     public event OnInputContinous OnMoveForward;
     public event OnInputContinous OnMoveRight;
 
-    public delegate void OnInputHold(bool axis);
+    public delegate void OnInputHold(bool hold);
     public event OnInputHold OnHoldShoot;
     public event OnInputHold OnHoldAim;
     public event OnInputHold OnHoldRun;
@@ -25,10 +27,7 @@ public class InputManager : Singleton<InputManager>
     public delegate void OnInputRepTrigger();
     public event OnInputRepTrigger OnRepTriggerShoot;
 
-    private bool movingForward = false, movingRight = false, 
-        holdingShoot = false, holdingAim = false, 
-        holdingRun = false, holdingJet = false, triggeredJump = false,
-        triggeredShoot = false, triggeredAbility = false;
+    private bool movingForward = false, movingRight = false;
 
 
     // Update is called once per frame
@@ -66,84 +65,65 @@ public class InputManager : Singleton<InputManager>
         #endregion
 
         #region Hold and Trigger Input
-        
-        //HOLDS
-        if (Input.GetAxisRaw("Shoot") == 1)
-        {
-            OnRepTriggerShoot?.Invoke();
 
-            if (!holdingShoot)
-            {
-                OnHoldShoot?.Invoke(true);
-                holdingShoot = true;
-            }
-            if (!triggeredShoot)
-            {
-                OnTriggerShoot?.Invoke();
-                triggeredShoot = true;
-            }
+        //HOLDS
+        if (Input.GetButtonDown("Shoot"))
+        {
+            OnHoldShoot?.Invoke(true);
+            OnTriggerShoot?.Invoke();
         }
-        else if(Input.GetAxisRaw("Shoot") == 0 && holdingShoot)
+        else if (Input.GetButtonUp("Shoot"))
         {
             OnHoldShoot?.Invoke(false);
-
-            holdingShoot = false;
-            triggeredShoot = false;
         }
-        if (Input.GetAxisRaw("Aim") == 1 && !holdingAim)
+
+        if (Input.GetButtonDown("Aim"))
         {
             OnHoldAim?.Invoke(true);
-            holdingAim = true;
         }
-        else if (Input.GetAxisRaw("Aim") == 0 && holdingAim)
+        else if (Input.GetButtonUp("Aim"))
         {
             OnHoldAim?.Invoke(false);
-            holdingAim = false;
         }
-        if (Input.GetAxisRaw("Run") == 1 && !holdingRun)
+
+        if (Input.GetButtonDown("Run"))
         {
             OnHoldRun?.Invoke(true);
-            holdingRun = true;
         }
-        else if (Input.GetAxisRaw("Run") == 0 && holdingRun)
+        else if (Input.GetButtonUp("Run"))
         {
             OnHoldRun?.Invoke(false);
-            holdingRun = false;
         }
-        if (Input.GetAxisRaw("Jet") == 1 && !holdingJet)
+
+        if (Input.GetButtonDown("Jet"))
         {
             OnHoldJet?.Invoke(true);
-            holdingJet = true;
         }
-        else if (Input.GetAxisRaw("Jet") == 0 && holdingJet)
+        else if (Input.GetButtonUp("Jet"))
         {
             OnHoldJet?.Invoke(false);
-            holdingJet = false;
         }
         //
 
         //TRIGGERS
-        if (Input.GetAxisRaw("Jump") == 1 && !triggeredJump)
+        if (Input.GetButtonDown("Jump"))
         {
             OnTriggerJump?.Invoke();
-            triggeredJump = true;
         }
-        else if (Input.GetAxisRaw("Jump") == 0 && triggeredJump)
-        {
-            triggeredJump = false;
-        }
-        if (Input.GetAxisRaw("Ability") == 1 && !triggeredAbility)
+        if (Input.GetButtonDown("Ability"))
         {
             OnTriggerAbility?.Invoke();
-            triggeredAbility = true;
-        }
-        else if (Input.GetAxisRaw("Ability") == 0 && triggeredAbility)
-        {
-            triggeredAbility = false;
         }
         if (Input.GetButtonDown("Dash"))
         {
             OnTriggerDash?.Invoke();
+        }
+        //
+
+        //REPETITIVE TRIGGERS
+        if (Input.GetButton("Shoot"))
+        {
+            OnRepTriggerShoot?.Invoke();
         }
         //
         #endregion
