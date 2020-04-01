@@ -53,6 +53,7 @@ public class WeaponBase : MonoBehaviour
 
     protected AudioSource audioSource;
     protected bool canShoot = false;
+    protected bool isAiming = false;
 
     private float auxTimer;
 
@@ -83,7 +84,7 @@ public class WeaponBase : MonoBehaviour
 
     protected virtual void ShotsThatAreShot()
     {
-        ShootingBullet(Camera.main.transform.forward);
+        ShootingBullet(GetVariedDirection());
     }
     protected void ShootingBullet(Vector3 direction)
     {
@@ -102,5 +103,23 @@ public class WeaponBase : MonoBehaviour
         }
         Debug.DrawLine(Camera.main.transform.position, hit.point, Color.green, 10f);
 
+    }
+
+    protected Vector3 GetVariedDirection()
+    {
+        Vector3 direction;
+        if (!isAiming)
+        {
+            direction = Random.insideUnitCircle * variance;
+        }
+        else
+        {
+            direction = Random.insideUnitSphere * (variance / varianceDecreaseWhenAim);
+        }
+
+        direction.z = Range; // circle is at Z units 
+        direction = Camera.main.transform.TransformDirection(direction.normalized);
+
+        return direction;
     }
 }

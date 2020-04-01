@@ -11,6 +11,7 @@ public class ShotAuto : ShotBase
             auxTimer += Time.deltaTime;
             if (auxTimer >= cdBetweenShots)
             {
+                auxTimer = 0;
                 canShoot = true;
             }
         }

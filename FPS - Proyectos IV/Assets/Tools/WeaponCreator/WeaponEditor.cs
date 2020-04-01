@@ -361,7 +361,6 @@ public class WeaponEditor : EditorWindow
     {
         WeaponInfo weaponInfo = weaponListRef.weaponList[viewIndex - 1];
 
-
         GUILayout.Space(10);
         GUILayout.BeginHorizontal();
 

@@ -12,12 +12,8 @@ public class WeaponShotgun : WeaponBase
     protected override void ShotsThatAreShot()
     {
         for (int i = 0; i < nOfBulletsPerShot; i++)
-        {
-            Vector3 direction = Random.insideUnitCircle * variance;
-            direction.z = Range; // circle is at Z units 
-            direction = Camera.main.transform.TransformDirection(direction.normalized);
-            
-            ShootingBullet(direction);
+        {            
+            ShootingBullet(GetVariedDirection());
         }
     }
 }

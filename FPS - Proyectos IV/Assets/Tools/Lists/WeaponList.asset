@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   weaponList:
   - name: Prueba
-    shootingType: 1
-    weaponType: 2
+    shootingType: 2
+    weaponType: 0
     changer: 0
     mesh: {fileID: 4300010, guid: 34d1b8e01a0412f449dcefc77b05e27b, type: 3}
     materials:
