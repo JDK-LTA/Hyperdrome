@@ -27,6 +27,9 @@ public class InputManager : Singleton<InputManager>
     public delegate void OnInputRepTrigger();
     public event OnInputRepTrigger OnRepTriggerShoot;
 
+    public delegate void OnInputDebug();
+    public event OnInputDebug OnChangeWeapon;
+
     private bool movingForward = false, movingRight = false;
 
 
@@ -128,5 +131,11 @@ public class InputManager : Singleton<InputManager>
         //
         #endregion
 
+        #region Debug Input
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            OnChangeWeapon();
+        }
+        #endregion
     }
 }

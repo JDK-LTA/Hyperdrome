@@ -1,48 +1,49 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &6482529074775226919
+--- !u!114 &516343936794632205
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8790905756616340429}
+  m_GameObject: {fileID: 6694147646010364765}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53e796124dfc9a34ab48875a06312781, type: 3}
+  m_Script: {fileID: 11500000, guid: d067fa965d56d074684cfa9af1f5f583, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _nameOfWeapon: Prueba
-  _shootingType: 2
-  _weaponType: 0
+  _nameOfWeapon: Prueba2
+  _shootingType: 1
+  _weaponType: 2
   _changer: 0
   _bullet: {fileID: 0}
   _fireSound: {fileID: 0}
-  _levelRequired: 5
-  _ammo: 5
-  _weight: 5
-  _damagePerHit: 5
-  _forceToApply: 10
+  _levelRequired: 0
+  _ammo: 0
+  _weight: 0
+  _damagePerHit: 0
+  _forceToApply: 0
   _range: 15
-  _cdBetweenShots: 0.5
-  variance: 2
-  varianceDecreaseWhenAim: 4
-  speedDecreaseWhenAim: 1.5
-  _numberToChange: 5
+  _cdBetweenShots: 0
+  variance: 0.5
+  varianceDecreaseWhenAim: 0
+  speedDecreaseWhenAim: 0
+  _numberToChange: 0
   _raycastSpot: {fileID: 0}
---- !u!114 &8222964916824025906
+  nOfBulletsPerShot: 10
+--- !u!114 &8089362114660111213
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8790905756616340429}
+  m_GameObject: {fileID: 6694147646010364765}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c25a03f19b9653443981d13ac8a4298e, type: 3}
+  m_Script: {fileID: 11500000, guid: e55e46686e388934cb17b28a671dac51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1001 &4719699620249358121
+--- !u!1001 &7234553589605658553
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -52,7 +53,7 @@ PrefabInstance:
     - target: {fileID: 4071306813705813220, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
       propertyPath: m_Name
-      value: CW_Prueba
+      value: CW_Prueba2
       objectReference: {fileID: 0}
     - target: {fileID: 5176600576134307842, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
@@ -113,17 +114,17 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 4300010, guid: 34d1b8e01a0412f449dcefc77b05e27b, type: 3}
+      objectReference: {fileID: 4300006, guid: 3ad7c5979f6586d4a9532a55492a0ebe, type: 3}
     - target: {fileID: 3267214807680600860, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a46ba6d3f52eebd49a169fcf4114f9c1, type: 2}
+      objectReference: {fileID: 2100000, guid: f6acf520cc3bc374dbffd256f175bd4d, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08628a2f8858779488a3751bac51a99a, type: 3}
---- !u!1 &8790905756616340429 stripped
+--- !u!1 &6694147646010364765 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4071306813705813220, guid: 08628a2f8858779488a3751bac51a99a,
     type: 3}
-  m_PrefabInstance: {fileID: 4719699620249358121}
+  m_PrefabInstance: {fileID: 7234553589605658553}
   m_PrefabAsset: {fileID: 0}

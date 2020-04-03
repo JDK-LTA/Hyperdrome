@@ -32,6 +32,7 @@ public class WeaponInfo
     [SerializeField] private float cdBetweenShots;
     [SerializeField] private float variance;
     [SerializeField] private float varianceDecreaseWhenAim;
+    [SerializeField] private float speedDecreaseWhenAim;
 
     [SerializeField] private float numberToChange;
 
@@ -55,6 +56,7 @@ public class WeaponInfo
     public float CdBetweenShots { get => cdBetweenShots; set => cdBetweenShots = value; }
     public float Variance { get => variance; set => variance = value; }
     public float VarianceDecreaseWhenAim { get => varianceDecreaseWhenAim; set => varianceDecreaseWhenAim = value; }
+    public float SpeedDecreaseWhenAim { get => speedDecreaseWhenAim; set => speedDecreaseWhenAim = value; }
     /// <summary>
     /// It's seconds to change, ammo to change or hits/kills to change, depending on the changer
     /// </summary>

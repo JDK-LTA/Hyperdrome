@@ -7,7 +7,7 @@ using System.IO;
 using System.Reflection; 
 
 [CustomEditor(typeof(Readme))]
-[InitializeOnLoad]
+//[InitializeOnLoad]
 public class ReadmeEditor : Editor {
 	
 	static string kShowedReadmeSessionStateName = "ReadmeEditor.showedReadme";
@@ -39,8 +39,8 @@ public class ReadmeEditor : Editor {
 		var assembly = typeof(EditorApplication).Assembly; 
 		var windowLayoutType = assembly.GetType("UnityEditor.WindowLayout", true);
 		var method = windowLayoutType.GetMethod("LoadWindowLayout", BindingFlags.Public | BindingFlags.Static);
-		//method.Invoke(null, new object[]{Path.Combine(Application.dataPath, "About/Layout.wlt"), false});
-	}
+        method.Invoke(null, new object[] { Path.Combine(Application.dataPath, "About/Layout.wlt"), false });
+    }
 	
 	[MenuItem("Help/Asset Store Originals/SNAPS/About")]
 	static Readme SelectReadme() 

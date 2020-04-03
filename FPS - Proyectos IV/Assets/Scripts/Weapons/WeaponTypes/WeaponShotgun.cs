@@ -9,6 +9,7 @@ public class WeaponShotgun : WeaponBase
 
     public int NOfBulletsPerShot { get => nOfBulletsPerShot; set => nOfBulletsPerShot = value; }
 
+    
     protected override void ShotsThatAreShot()
     {
         for (int i = 0; i < nOfBulletsPerShot; i++)

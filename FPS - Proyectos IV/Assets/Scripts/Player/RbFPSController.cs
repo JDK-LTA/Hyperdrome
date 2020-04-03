@@ -166,7 +166,10 @@ public class RbFPSController : MonoBehaviour
             {
                 CurrentTargetSpeed *= RunMultiplier;
             }
-            //Debug.Log(CurrentTargetSpeed);
+            if (WeaponManager.Instance.Weapons[WeaponManager.Instance.selectedWeapon].GetComponent<WeaponBase>().IsAiming)
+            {
+                CurrentTargetSpeed /= WeaponManager.Instance.Weapons[WeaponManager.Instance.selectedWeapon].GetComponent<WeaponBase>().SpeedDecreaseWhenAim;
+            }
         }
     }
 
@@ -223,7 +226,6 @@ public class RbFPSController : MonoBehaviour
         InputManager.Instance.OnMouseX += UpdateMouseX;
         InputManager.Instance.OnMouseY += UpdateMouseY;
 
-        //GameObject weapon = 
     }
 
     // Update is called once per frame

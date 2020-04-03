@@ -10,9 +10,10 @@ public class WeaponEditor : EditorWindow
     private int viewIndex = 1;
     [SerializeField] private GameObject prefabToCopy;
 
-    public Material[] materials;
-    SerializedObject so;
-    SerializedProperty sp;
+    //public List<Material[]> materialsList;
+    //public Material[] materials;
+    //List<SerializedObject> so;
+    //List<SerializedProperty> sp;
 
     [MenuItem("Tools/Weapon Creator")]
     static void Init()
@@ -22,10 +23,27 @@ public class WeaponEditor : EditorWindow
 
     private void OnEnable()
     {
+        //so = new List<SerializedObject>();
+        //sp = new List<SerializedProperty>();
+        //materialsList = new List<Material[]>();
+
         weaponListRef = AssetDatabase.LoadAssetAtPath("Assets/Tools/Lists/WeaponList.asset", typeof(WeaponList)) as WeaponList;
-        so = new SerializedObject(this);
-        sp = so.FindProperty("materials");
+
+        //for (int i = 0; i < weaponListRef.weaponList.Count; i++)
+        //{
+        //    MaterialsAuxiliarMethod(weaponListRef.weaponList[i].Materials);
+        //}
     }
+
+    //private void MaterialsAuxiliarMethod(Material[] aux)
+    //{
+    //    materials = aux;
+    //    materialsList.Add(materials);
+
+    //    SerializedObject serializedObject = new SerializedObject(this);
+    //    so.Add(serializedObject);
+    //    sp.Add(serializedObject.FindProperty("materials"));
+    //}
 
     private void OnGUI()
     {
@@ -106,6 +124,9 @@ public class WeaponEditor : EditorWindow
     {
         WeaponInfo newWeapon = new WeaponInfo();
         weaponListRef.weaponList.Add(newWeapon);
+
+        //MaterialsAuxiliarMethod(newWeapon.Materials);
+
         viewIndex = weaponListRef.weaponList.Count;
     }
 
@@ -114,6 +135,11 @@ public class WeaponEditor : EditorWindow
         if (!weaponListRef.weaponList[i].IsCreated)
         {
             weaponListRef.weaponList.RemoveAt(i);
+            if (i == weaponListRef.weaponList.Count - 1)
+            {
+                viewIndex--;
+            }
+            //materialsList.RemoveAt(i);
         }
 
         //IF THE PREFAB ASSET HAS BEEN DESTROYED MANUALLY
@@ -172,6 +198,8 @@ public class WeaponEditor : EditorWindow
     }
     void CreateOrApplyPrefab()
     {
+        //Debug.Log(materialsList[0][0].name);
+        Debug.Log(weaponListRef.weaponList.Count);
         for (int i = 0; i < weaponListRef.weaponList.Count; i++)
         {
             CreateOrApplyPrefab(i);
@@ -333,8 +361,8 @@ public class WeaponEditor : EditorWindow
         wc.Changer = info.Changer;
 
         go.GetComponent<MeshFilter>().mesh = info.Mesh;
-        go.GetComponent<MeshRenderer>().materials = info.Materials;
-        //wc.CrosshairTexture = info.CrosshairTexture;
+        //Debug.Log(materials[i].name);
+        //go.GetComponent<MeshRenderer>().materials = materialsList[i];
 
         wc.Bullet = info.Bullet;
         wc.FireSound = info.FireSound;
@@ -350,6 +378,7 @@ public class WeaponEditor : EditorWindow
         sc.CdBetweenShots = info.CdBetweenShots;
         wc.Variance = info.Variance;
         wc.VarianceDecreaseWhenAim = info.VarianceDecreaseWhenAim;
+        wc.SpeedDecreaseWhenAim = info.SpeedDecreaseWhenAim;
 
         wc.NumberToChange = info.NumberToChange;
 
@@ -389,10 +418,10 @@ public class WeaponEditor : EditorWindow
 
         GUILayout.Label("Art and design variables", EditorStyles.boldLabel);
         weaponInfo.Mesh = (Mesh)EditorGUILayout.ObjectField("Weapon Model", weaponInfo.Mesh, typeof(Mesh), false);
-        
-        EditorGUILayout.PropertyField(sp, true);
-        so.ApplyModifiedProperties();
-        weaponInfo.Materials = materials;
+
+        //EditorGUILayout.PropertyField(sp[viewIndex - 1], true);
+        //so[viewIndex - 1].ApplyModifiedProperties();
+        //weaponInfo.Materials = materials;
 
         weaponInfo.CrosshairTexture = (Sprite)EditorGUILayout.ObjectField("Crosshair texture", weaponInfo.CrosshairTexture, typeof(Sprite), false);
         weaponInfo.Bullet = (GameObject)EditorGUILayout.ObjectField("Bullet prefab", weaponInfo.Bullet, typeof(GameObject), false);
@@ -408,6 +437,7 @@ public class WeaponEditor : EditorWindow
         weaponInfo.CdBetweenShots = EditorGUILayout.FloatField("Cooldown between shots", weaponInfo.CdBetweenShots);
         weaponInfo.Variance = EditorGUILayout.FloatField(new GUIContent("Variance between shots", "Less variance = more accuracy"), weaponInfo.Variance);
         weaponInfo.VarianceDecreaseWhenAim = EditorGUILayout.FloatField(new GUIContent("Variance decrease aiming", "It's a rate. It divides the Variance property"), weaponInfo.VarianceDecreaseWhenAim);
+        weaponInfo.SpeedDecreaseWhenAim = EditorGUILayout.FloatField(new GUIContent("Speed decrease aiming", "It's a rate. It divides the speed"), weaponInfo.SpeedDecreaseWhenAim);
 
         GUILayout.Space(5);
         GUILayout.Label("Specific weapon variables", EditorStyles.boldLabel);

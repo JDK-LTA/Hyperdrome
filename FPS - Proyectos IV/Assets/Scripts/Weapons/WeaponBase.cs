@@ -23,6 +23,7 @@ public class WeaponBase : MonoBehaviour
     [SerializeField] protected float _cdBetweenShots;
     [SerializeField] protected float variance;
     [SerializeField] protected float varianceDecreaseWhenAim;
+    [SerializeField] protected float speedDecreaseWhenAim;
 
     [SerializeField] protected float _numberToChange;
 
@@ -33,6 +34,7 @@ public class WeaponBase : MonoBehaviour
     public ShootingType ShootingType { get => _shootingType; set => _shootingType = value; }
     public WeaponType WeaponType { get => _weaponType; set => _weaponType = value; }
     public Changer Changer { get => _changer; set => _changer = value; }
+    public float NumberToChange { get => _numberToChange; set => _numberToChange = value; }
     public GameObject Bullet { get => _bullet; set => _bullet = value; }
     public AudioClip FireSound { get => _fireSound; set => _fireSound = value; }
     public int LevelRequired { get => _levelRequired; set => _levelRequired = value; }
@@ -42,18 +44,19 @@ public class WeaponBase : MonoBehaviour
     public float ForceToApply { get => _forceToApply; set => _forceToApply = value; }
     public float Range { get => _range; set => _range = value; }
     public float CdBetweenShots { get => _cdBetweenShots; set => _cdBetweenShots = value; }
-    public float NumberToChange { get => _numberToChange; set => _numberToChange = value; }
     public Transform RaycastSpot { get => _raycastSpot; set => _raycastSpot = value; }
     public float Variance { get => variance; set => variance = value; }
     public float VarianceDecreaseWhenAim { get => varianceDecreaseWhenAim; set => varianceDecreaseWhenAim = value; }
+    public float SpeedDecreaseWhenAim { get => speedDecreaseWhenAim; set => speedDecreaseWhenAim = value; }
     #endregion
 
     ShotBase shotComp;
+    private bool isAiming = false;
     public ShotBase ShotComp { get => shotComp; set => shotComp = value; }
+    public bool IsAiming { get => isAiming; set => isAiming = value; }
 
     protected AudioSource audioSource;
     protected bool canShoot = false;
-    protected bool isAiming = false;
 
     private float auxTimer;
 
@@ -66,6 +69,13 @@ public class WeaponBase : MonoBehaviour
     protected virtual void Start()
     {
         RaycastSpot = transform.Find("Shooting spot");
+
+        InputManager.Instance.OnHoldAim += Aiming;
+    }
+
+    protected virtual void Aiming(bool aux)
+    {
+        isAiming = aux;
     }
 
     // Update is called once per frame
