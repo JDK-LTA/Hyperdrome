@@ -1441,7 +1441,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1361342923083938}
   m_LocalRotation: {x: -0.3407749, y: -0.6195744, z: 0.3407749, w: 0.6195744}
-  m_LocalPosition: {x: 6.1629786e-35, y: 0.04616487, z: -1.0507122e-34}
+  m_LocalPosition: {x: 0, y: 0.04616487, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4779165475554914}
@@ -1449,7 +1449,7 @@ Transform:
   - {fileID: 4215550983232042}
   - {fileID: 4655862465958894}
   - {fileID: 4215031638029298}
-  m_Father: {fileID: 4431084402279646}
+  m_Father: {fileID: 4603173526484727759}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1363557860490002
@@ -2448,7 +2448,7 @@ Transform:
   m_LocalPosition: {x: -0.18393, y: 0.02, z: -0.0021059}
   m_LocalScale: {x: 40, y: 40, z: 40}
   m_Children:
-  - {fileID: 4745125048089396}
+  - {fileID: 4603173526484727759}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -3883,3 +3883,34 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
+--- !u!1 &9061830497049099345
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4603173526484727759}
+  m_Layer: 0
+  m_Name: Cosa
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4603173526484727759
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9061830497049099345}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 4745125048089396}
+  m_Father: {fileID: 4431084402279646}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
