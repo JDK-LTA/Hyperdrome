@@ -1,0 +1,83 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2eadda6ec3a281346b048e2be9e361a2, type: 3}
+  m_Name: WeaponList
+  m_EditorClassIdentifier: 
+  weaponList:
+  - name: Prueba
+    shootingType: 2
+    weaponType: 0
+    changer: 0
+    mesh: {fileID: 4300010, guid: 34d1b8e01a0412f449dcefc77b05e27b, type: 3}
+    materials:
+    - {fileID: 2100000, guid: f6acf520cc3bc374dbffd256f175bd4d, type: 2}
+    bullet: {fileID: 0}
+    crosshairTexture: {fileID: 10913, guid: 0000000000000000f000000000000000, type: 0}
+    fireSound: {fileID: 0}
+    levelRequired: 5
+    ammo: 5
+    weight: 5
+    damagePerHit: 5
+    forceToApply: 10
+    range: 15
+    cdBetweenShots: 0.5
+    variance: 2
+    varianceDecreaseWhenAim: 4
+    speedDecreaseWhenAim: 1.5
+    numberToChange: 5
+    raycastSpot: {fileID: 0}
+    nOfBulletsPerShot: 24
+  - name: Prueba2
+    shootingType: 1
+    weaponType: 2
+    changer: 0
+    mesh: {fileID: 4300006, guid: 3ad7c5979f6586d4a9532a55492a0ebe, type: 3}
+    materials:
+    - {fileID: 2100000, guid: f6acf520cc3bc374dbffd256f175bd4d, type: 2}
+    bullet: {fileID: 0}
+    crosshairTexture: {fileID: 0}
+    fireSound: {fileID: 0}
+    levelRequired: 0
+    ammo: 0
+    weight: 0
+    damagePerHit: 0
+    forceToApply: 0
+    range: 15
+    cdBetweenShots: 0
+    variance: 0.5
+    varianceDecreaseWhenAim: 0
+    speedDecreaseWhenAim: 0
+    numberToChange: 0
+    raycastSpot: {fileID: 0}
+    nOfBulletsPerShot: 10
+  - name: Prueba3
+    shootingType: 2
+    weaponType: 1
+    changer: 0
+    mesh: {fileID: 4300000, guid: ac4b748f8929540418552255a129f014, type: 3}
+    materials: []
+    bullet: {fileID: 0}
+    crosshairTexture: {fileID: 0}
+    fireSound: {fileID: 0}
+    levelRequired: 0
+    ammo: 0
+    weight: 0
+    damagePerHit: 0
+    forceToApply: 0
+    range: 10
+    cdBetweenShots: 0.3
+    variance: 3
+    varianceDecreaseWhenAim: 2
+    speedDecreaseWhenAim: 1.5
+    numberToChange: 15
+    raycastSpot: {fileID: 0}
+    nOfBulletsPerShot: 8

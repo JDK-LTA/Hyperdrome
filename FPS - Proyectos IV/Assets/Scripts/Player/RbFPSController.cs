@@ -6,6 +6,7 @@ using UnityEngine;
 [RequireComponent(typeof(CapsuleCollider))]
 public class RbFPSController : MonoBehaviour
 {
+    #region Settings classes
     [System.Serializable]
     public class MouseLook
     {
@@ -128,38 +129,21 @@ public class RbFPSController : MonoBehaviour
 
         private Vector3 lastInput = Vector3.zero;
 
-        private bool _Running;
+        private bool _running;
 
-        public bool Running { get => _Running; }
+        public bool Running { get => _running; }
 
         public void Init()
         {
-            InputManager.Instance.OnHoldRun += UpdateRunning;
+            InputManager.Instance.OnHoldRun += IsRunning;
         }
-        private void UpdateRunning(bool isRun)
+        private void IsRunning(bool hold)
         {
-            _Running = isRun;
+            _running = hold;
         }
 
         public void UpdateDesiredTargetSpeed(Vector3 input)
         {
-            //if (input.x > 0 || input.x < 0)
-            //{
-            //    CurrentTargetSpeed = StrafeSpeed;
-            //}
-            //if (input.z < 0)
-            //{
-            //    //backwards
-            //    CurrentTargetSpeed = BackwardSpeed;
-            //}
-            //if (input.z > 0)
-            //{
-            //    //forwards
-            //    //handled last as if strafing and moving forward at the same time forwards speed should take precedence
-            //    CurrentTargetSpeed = ForwardSpeed;
-            //}
-            //lastInput = input;
-
             if (input == Vector3.zero) return;
             input = new Vector3(Mathf.Abs(input.x), 0, Mathf.Abs(input.z));
 
@@ -178,11 +162,14 @@ public class RbFPSController : MonoBehaviour
                 CurrentTargetSpeed = StrafeSpeed;
             }
 
-            if (_Running)
+            if (_running)
             {
                 CurrentTargetSpeed *= RunMultiplier;
             }
-            //Debug.Log(CurrentTargetSpeed);
+            if (WeaponManager.Instance.Weapons[WeaponManager.Instance.selectedWeapon].GetComponent<WeaponBase>().IsAiming)
+            {
+                CurrentTargetSpeed /= WeaponManager.Instance.Weapons[WeaponManager.Instance.selectedWeapon].GetComponent<WeaponBase>().SpeedDecreaseWhenAim;
+            }
         }
     }
 
@@ -196,7 +183,9 @@ public class RbFPSController : MonoBehaviour
         [Tooltip("set it to 0.1 or more if you get stuck in wall")]
         public float shellOffset; //reduce the radius by that ratio to avoid getting stuck in wall (a value of 0.1f is nice)
     }
+    #endregion
 
+    #region Variables and properties
     public Camera cam;
     public MovementSettings movementSettings = new MovementSettings();
     public AdvancedSettings advancedSettings = new AdvancedSettings();
@@ -216,7 +205,9 @@ public class RbFPSController : MonoBehaviour
     public bool Jumping { get => _jumping; }
     public bool IsGrounded { get => _isGrounded; }
     public bool Running { get => movementSettings.Running; }
+    #endregion
 
+    #region Unity API Methods
     private void Awake()
     {
         _rigidbody = GetComponent<Rigidbody>();
@@ -234,6 +225,7 @@ public class RbFPSController : MonoBehaviour
         InputManager.Instance.OnTriggerDash += Dash;
         InputManager.Instance.OnMouseX += UpdateMouseX;
         InputManager.Instance.OnMouseY += UpdateMouseY;
+
     }
 
     // Update is called once per frame
@@ -246,9 +238,9 @@ public class RbFPSController : MonoBehaviour
     {
         GroundCheck();
         Move();
-
         XZDrag();
     }
+    #endregion
 
     private void XZDrag()
     {

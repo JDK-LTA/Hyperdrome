@@ -5,91 +5,131 @@ using UnityEngine;
 public class WeaponBase : MonoBehaviour
 {
     #region Weapon variables
-    protected ShootingType _shootingType;
-    protected WeaponType _weaponType;
-    protected Changer _changer;
-    protected string _name;
+    [SerializeField] protected string _nameOfWeapon;
+    [SerializeField] protected ShootingType _shootingType;
+    [SerializeField] protected WeaponType _weaponType;
+    [SerializeField] protected Changer _changer;
 
-    protected Mesh _mesh;
-    protected GameObject _bullet;
-    protected Texture2D _crosshairTexture;
-    protected AudioClip _fireSound;
+    [SerializeField] protected GameObject _bullet;
+    [SerializeField] protected AudioClip _fireSound;
 
-    protected bool _canShoot;
+    [SerializeField] protected int _levelRequired;
 
-    protected int _levelRequired;
+    [SerializeField] protected int _ammo;
+    [SerializeField] protected float _weight;
+    [SerializeField] protected float _damagePerHit;
+    [SerializeField] protected float _forceToApply;
+    [SerializeField] protected float _range;
+    [SerializeField] protected float _cdBetweenShots;
+    [SerializeField] protected float variance;
+    [SerializeField] protected float varianceDecreaseWhenAim;
+    [SerializeField] protected float speedDecreaseWhenAim;
 
-    protected int _ammo;
-    protected float _weight;
-    protected float _damagePerHit;
-    protected float _forceToApply;
-    protected float _range;
-    private float _cdBetweenShots;
+    [SerializeField] protected float _numberToChange;
 
-    protected float _numberToChange;
+    [SerializeField] protected Transform _raycastSpot;
 
-    protected Transform _raycastSpot;
 
-    protected AudioSource audioSource;
+    public string Name { get => _nameOfWeapon; set => _nameOfWeapon = value; }
+    public ShootingType ShootingType { get => _shootingType; set => _shootingType = value; }
+    public WeaponType WeaponType { get => _weaponType; set => _weaponType = value; }
+    public Changer Changer { get => _changer; set => _changer = value; }
+    public float NumberToChange { get => _numberToChange; set => _numberToChange = value; }
+    public GameObject Bullet { get => _bullet; set => _bullet = value; }
+    public AudioClip FireSound { get => _fireSound; set => _fireSound = value; }
+    public int LevelRequired { get => _levelRequired; set => _levelRequired = value; }
+    public int Ammo { get => _ammo; set => _ammo = value; }
+    public float Weight { get => _weight; set => _weight = value; }
+    public float DamagePerHit { get => _damagePerHit; set => _damagePerHit = value; }
+    public float ForceToApply { get => _forceToApply; set => _forceToApply = value; }
+    public float Range { get => _range; set => _range = value; }
+    public float CdBetweenShots { get => _cdBetweenShots; set => _cdBetweenShots = value; }
+    public Transform RaycastSpot { get => _raycastSpot; set => _raycastSpot = value; }
+    public float Variance { get => variance; set => variance = value; }
+    public float VarianceDecreaseWhenAim { get => varianceDecreaseWhenAim; set => varianceDecreaseWhenAim = value; }
+    public float SpeedDecreaseWhenAim { get => speedDecreaseWhenAim; set => speedDecreaseWhenAim = value; }
     #endregion
 
+    ShotBase shotComp;
+    private bool isAiming = false;
+    public ShotBase ShotComp { get => shotComp; set => shotComp = value; }
+    public bool IsAiming { get => isAiming; set => isAiming = value; }
+
+    protected AudioSource audioSource;
+    protected bool canShoot = false;
+
     private float auxTimer;
-    private bool shot = false;
 
     protected virtual void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        shotComp = GetComponent<ShotBase>();
     }
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        switch (_shootingType)
-        {
-            case ShootingType.LOCK:
-            case ShootingType.SEMI_AUTOMATIC:
-                InputManager.Instance.OnTriggerShoot += Shoot;
-                break;
-            case ShootingType.AUTOMATIC:
-                InputManager.Instance.OnRepTriggerShoot += Shoot;
-                break;
-            default:
-                break;
-        }
-        _raycastSpot = transform.Find("Shooting spot");
+        RaycastSpot = transform.Find("Shooting spot");
+
+        InputManager.Instance.OnHoldAim += Aiming;
+    }
+
+    protected virtual void Aiming(bool aux)
+    {
+        isAiming = aux;
     }
 
     // Update is called once per frame
     protected virtual void Update()
     {
-        if (shot)
-        {
-            auxTimer += Time.deltaTime;
-            if (auxTimer >= _cdBetweenShots)
-            {
-                shot = false;
-            }
-        }
+
     }
 
-    protected virtual void Shoot()
+    public void Shoot()
     {
-        if (!shot)
+        ShotsThatAreShot();
+
+        audioSource.PlayOneShot(FireSound);
+        shotComp.CanShoot = false;
+    }
+
+    protected virtual void ShotsThatAreShot()
+    {
+        ShootingBullet(GetVariedDirection());
+    }
+    protected void ShootingBullet(Vector3 direction)
+    {
+        Ray ray = new Ray(Camera.main.transform.position, direction);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, Range))
         {
-            Ray ray = new Ray(_raycastSpot.transform.position, _raycastSpot.forward);
 
-            RaycastHit hit;
-
-            if (Physics.Raycast(ray, out hit, _range))
+            Debug.Log("Hit" + hit.transform.name);
+            if (hit.rigidbody)
             {
-                Debug.Log("Hit" + hit.transform.name);
-                if (hit.rigidbody)
-                {
-                    hit.rigidbody.AddForce(ray.direction * _forceToApply);
-                    Debug.Log("Hit");
-                }
+                //hit.rigidbody.AddForce(ray.direction * ForceToApply);
+                Debug.Log("Hit");
             }
-
-            audioSource.PlayOneShot(_fireSound);
         }
+        Debug.DrawLine(Camera.main.transform.position, hit.point, Color.green, 10f);
+
+    }
+
+    protected Vector3 GetVariedDirection()
+    {
+        Vector3 direction;
+        if (!isAiming)
+        {
+            direction = Random.insideUnitCircle * variance;
+        }
+        else
+        {
+            direction = Random.insideUnitSphere * (variance / varianceDecreaseWhenAim);
+        }
+
+        direction.z = Range; // circle is at Z units 
+        direction = Camera.main.transform.TransformDirection(direction.normalized);
+
+        return direction;
     }
 }

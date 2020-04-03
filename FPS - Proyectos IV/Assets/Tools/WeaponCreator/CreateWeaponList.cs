@@ -5,7 +5,7 @@ using UnityEditor;
 
 public class CreateWeaponList
 {
-    [MenuItem("Assets/Lists/Weapon List")]
+    //[MenuItem("Assets/Lists/Weapon List")]
     public static WeaponList Create()
     {
         WeaponList asset = ScriptableObject.CreateInstance<WeaponList>();
