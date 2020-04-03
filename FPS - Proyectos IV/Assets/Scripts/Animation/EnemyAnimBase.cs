@@ -5,8 +5,8 @@ using UnityEngine.AI;
 
 public class EnemyAnimBase : MonoBehaviour
 {
-    Animator cmpAnimator;
-    NavMeshAgent cmpAgent;
+    Animator _animator;
+    NavMeshAgent _agent;
 
     public float interpolationSpeed = 3;
     float animatorSpeed;
@@ -20,36 +20,36 @@ public class EnemyAnimBase : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        cmpAnimator = this.GetComponent<Animator>();
-        cmpAgent = this.GetComponent<NavMeshAgent>();
+        _animator = GetComponent<Animator>();
+        _agent = transform.parent.GetComponent<NavMeshAgent>();
     }
 
     private void Start()
     {
-        GetComponent<EnemyBall>().ReadyToRun += TriggerRunning;
-        GetComponent<EnemyBall>().ReadyToExplode += TriggerExploding;
+        transform.parent.GetComponent<EnemyBall>().ReadyToRun += TriggerRunning;
+        transform.parent.GetComponent<EnemyBall>().ReadyToExplode += TriggerExploding;
     }
 
     private void Update()
     {
-        float agentSpeed = cmpAgent.velocity.magnitude;
+        float agentSpeed = _agent.velocity.magnitude;
         animatorSpeed = Mathf.MoveTowards(animatorSpeed, agentSpeed, interpolationSpeed * Time.deltaTime);
-        cmpAnimator.SetFloat("Speed", animatorSpeed);
-
-        if (isPreparingToRoll)
-        {
-
-        }
+        _animator.SetFloat("Speed", animatorSpeed);
     }
 
     private void TriggerRunning()
     {
-        cmpAnimator?.SetTrigger("PrepareToRoll");
+        _animator.SetTrigger("PrepareToRoll");
         isPreparingToRoll = true;
     }
     private void TriggerExploding()
     {
         //cmpAnimator?.SetTrigger("Explode");
         isExploding = true;
+    }
+
+    public void StartRunning()
+    {
+        StartRolling();
     }
 }
