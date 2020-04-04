@@ -6,6 +6,9 @@ public class WeaponManager : MonoBehaviour
 {
     public static WeaponManager Instance;
 
+    public delegate void WeaponEvents(EnemyBase enemyHit, float damageDealt);
+    public event WeaponEvents OnHit;
+
     private void Awake()
     {
         Instance = this;
@@ -63,5 +66,11 @@ public class WeaponManager : MonoBehaviour
             }
         }
         return listWeapons;
+    }
+
+    public void EnemyHit(EnemyBase enemy, float damage)
+    {
+        Debug.Log(enemy.transform.name);
+        OnHit?.Invoke(enemy, damage);
     }
 }

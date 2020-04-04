@@ -199,7 +199,7 @@ public class WeaponEditor : EditorWindow
     void CreateOrApplyPrefab()
     {
         //Debug.Log(materialsList[0][0].name);
-        Debug.Log(weaponListRef.weaponList.Count);
+        //Debug.Log(weaponListRef.weaponList.Count);
         for (int i = 0; i < weaponListRef.weaponList.Count; i++)
         {
             CreateOrApplyPrefab(i);
@@ -457,6 +457,7 @@ public class WeaponEditor : EditorWindow
         GUILayout.Space(20);
         GUILayout.BeginHorizontal();
 
+        //Debug.Log(weaponInfo.IsCreated);
         if (!weaponInfo.IsCreated)
         {
             if (GUILayout.Button("Create Prefab", GUILayout.ExpandWidth(false)))

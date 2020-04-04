@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c25a03f19b9653443981d13ac8a4298e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &8208663303564621037
+--- !u!114 &4443358421826622474
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -21,12 +21,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 6885673264865892732}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d067fa965d56d074684cfa9af1f5f583, type: 3}
+  m_Script: {fileID: 11500000, guid: a635d78c0ac3c9a4b867717c2ac3c803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   _nameOfWeapon: Prueba3
   _shootingType: 2
-  _weaponType: 2
+  _weaponType: 1
   _changer: 0
   _bullet: {fileID: 0}
   _fireSound: {fileID: 0}
@@ -42,7 +42,6 @@ MonoBehaviour:
   speedDecreaseWhenAim: 1.5
   _numberToChange: 15
   _raycastSpot: {fileID: 0}
-  nOfBulletsPerShot: 8
 --- !u!1001 &7426150616033109400
 PrefabInstance:
   m_ObjectHideFlags: 0

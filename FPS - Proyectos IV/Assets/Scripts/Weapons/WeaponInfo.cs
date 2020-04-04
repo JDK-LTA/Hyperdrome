@@ -5,9 +5,9 @@ using UnityEngine;
 [System.Serializable]
 public class WeaponInfo
 {
-    private string previousName = "";
+    [SerializeField] private string previousName = "";
     public string PreviousName { get => previousName; set => previousName = value; }
-    private bool isCreated = false;
+    [SerializeField] private bool isCreated = false;
     public bool IsCreated { get => isCreated; set => isCreated = value; }
 
     #region Base properties

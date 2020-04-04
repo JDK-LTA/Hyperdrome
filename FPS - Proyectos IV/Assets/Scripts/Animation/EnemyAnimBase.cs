@@ -50,6 +50,6 @@ public class EnemyAnimBase : MonoBehaviour
 
     public void StartRunning()
     {
-        StartRolling();
+        StartRolling?.Invoke();
     }
 }
