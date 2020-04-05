@@ -375,6 +375,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5357460761402764932, guid: cf695c808863b8b42bb02aead7b4deb8,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 78660c09ff101ea4cb77de408a9527da, type: 2}
     - target: {fileID: 4761295378156803344, guid: cf695c808863b8b42bb02aead7b4deb8,
         type: 3}
       propertyPath: positionInBuild
@@ -399,11 +404,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CW_Prueba
-      objectReference: {fileID: 0}
-    - target: {fileID: 8790905756616340429, guid: a4e0d7f30afad4b4fab8a8d0eeaf3a0d,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 479992902682095403, guid: a4e0d7f30afad4b4fab8a8d0eeaf3a0d,
         type: 3}
@@ -494,11 +494,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CW_Prueba2
-      objectReference: {fileID: 0}
-    - target: {fileID: 6694147646010364765, guid: 4fe7135093c81b646b3460ed7e8742f3,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2571756480892604347, guid: 4fe7135093c81b646b3460ed7e8742f3,
         type: 3}

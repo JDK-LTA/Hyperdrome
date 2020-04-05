@@ -100,14 +100,16 @@ public class WeaponBase : MonoBehaviour
     {
         Ray ray = new Ray(Camera.main.transform.position, direction);
         RaycastHit hit;
+        EnemyBase enemyHit;
 
         if (Physics.Raycast(ray, out hit, Range))
         {
-
-            Debug.Log("Hit" + hit.transform.name);
-            if (hit.rigidbody)
+            //Debug.Log("Hit" + hit.transform.name);
+            enemyHit = hit.transform.GetComponent<EnemyBase>();
+            if (enemyHit != null)
             {
-                //hit.rigidbody.AddForce(ray.direction * ForceToApply);
+                hit.rigidbody.AddForce(ray.direction * ForceToApply);
+                WeaponManager.Instance.EnemyHit(enemyHit, _damagePerHit);
                 Debug.Log("Hit");
             }
         }
