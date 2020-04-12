@@ -125,7 +125,7 @@ public class RbFPSController : MonoBehaviour
 
         public float JumpForce = 30f;
         public float DashDistance = 5f;
-        [HideInInspector] public float CurrentTargetSpeed = 8f;
+        /*[HideInInspector]*/ public float CurrentTargetSpeed = 8f;
 
         private Vector3 lastInput = Vector3.zero;
 
@@ -162,11 +162,11 @@ public class RbFPSController : MonoBehaviour
                 CurrentTargetSpeed = StrafeSpeed;
             }
 
-            if (_running)
+            if (!WeaponManager.Instance.Weapons[WeaponManager.Instance.selectedWeapon].GetComponent<WeaponBase>().IsAiming && _running)
             {
                 CurrentTargetSpeed *= RunMultiplier;
             }
-            if (WeaponManager.Instance.Weapons[WeaponManager.Instance.selectedWeapon].GetComponent<WeaponBase>().IsAiming)
+            else if (WeaponManager.Instance.Weapons[WeaponManager.Instance.selectedWeapon].GetComponent<WeaponBase>().IsAiming)
             {
                 CurrentTargetSpeed /= WeaponManager.Instance.Weapons[WeaponManager.Instance.selectedWeapon].GetComponent<WeaponBase>().SpeedDecreaseWhenAim;
             }

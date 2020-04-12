@@ -70,7 +70,7 @@ public class WeaponManager : MonoBehaviour
 
     public void EnemyHit(EnemyBase enemy, float damage)
     {
-        Debug.Log(enemy.transform.name);
+        //Debug.Log(enemy.transform.name);
         OnHit?.Invoke(enemy, damage);
     }
 }

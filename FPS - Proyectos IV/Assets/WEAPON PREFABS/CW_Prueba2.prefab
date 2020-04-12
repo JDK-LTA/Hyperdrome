@@ -25,9 +25,9 @@ MonoBehaviour:
   _forceToApply: 0
   _range: 40
   _cdBetweenShots: 0
-  variance: 0.5
-  varianceDecreaseWhenAim: 0
-  speedDecreaseWhenAim: 0
+  variance: 2.25
+  varianceDecreaseWhenAim: 2
+  speedDecreaseWhenAim: 2.5
   _numberToChange: 0
   _raycastSpot: {fileID: 0}
   nOfBulletsPerShot: 10

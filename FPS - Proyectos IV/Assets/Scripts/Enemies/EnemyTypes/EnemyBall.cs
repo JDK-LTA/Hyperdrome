@@ -37,7 +37,7 @@ public class EnemyBall : EnemyBase
             Rigidbody rb = hit.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                Debug.Log("kaboom");
+                //Debug.Log("kaboom");
                 rb.AddExplosionForce(explosionForce, transform.position, explosionRadius, 6f);
             }
         }
@@ -59,7 +59,6 @@ public class EnemyBall : EnemyBase
                 //Debug.Log(hit.collider?.gameObject.name);
                 if (hit.transform?.gameObject == player.gameObject && !isRunning)
                 {
-                    Debug.Log("Running");
                     isRunning = true;
                     canMove = false;
                     ReadyToRun?.Invoke();

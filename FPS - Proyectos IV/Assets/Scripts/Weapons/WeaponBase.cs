@@ -51,7 +51,7 @@ public class WeaponBase : MonoBehaviour
     #endregion
 
     ShotBase shotComp;
-    private bool isAiming = false;
+    [SerializeField] private bool isAiming = false;
     public ShotBase ShotComp { get => shotComp; set => shotComp = value; }
     public bool IsAiming { get => isAiming; set => isAiming = value; }
 
@@ -76,6 +76,7 @@ public class WeaponBase : MonoBehaviour
     protected virtual void Aiming(bool aux)
     {
         isAiming = aux;
+        Debug.Log(IsAiming);
     }
 
     // Update is called once per frame
@@ -110,7 +111,7 @@ public class WeaponBase : MonoBehaviour
             {
                 hit.rigidbody.AddForce(ray.direction * ForceToApply);
                 WeaponManager.Instance.EnemyHit(enemyHit, _damagePerHit);
-                Debug.Log("Hit");
+                //Debug.Log("Hit");
             }
         }
         Debug.DrawLine(Camera.main.transform.position, hit.point, Color.green, 10f);
@@ -120,6 +121,7 @@ public class WeaponBase : MonoBehaviour
     protected Vector3 GetVariedDirection()
     {
         Vector3 direction;
+        Debug.Log(IsAiming);
         if (!isAiming)
         {
             direction = Random.insideUnitCircle * variance;

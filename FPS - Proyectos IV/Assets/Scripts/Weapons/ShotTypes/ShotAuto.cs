@@ -24,5 +24,4 @@ public class ShotAuto : ShotBase
             }
         }
     }
-
 }
