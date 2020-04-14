@@ -28,5 +28,9 @@ public class ShotBase : MonoBehaviour
     protected virtual void IsShooting(bool hold)
     {
         shooting = hold;
+        if (!hold)
+        {
+            weapon.StopDrawingLaser();
+        }
     }
 }

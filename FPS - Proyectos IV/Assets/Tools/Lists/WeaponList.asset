@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: WeaponList
   m_EditorClassIdentifier: 
   weaponList:
-  - previousName: Prueba
+  - previousName: PruebaFusilAuto
     isCreated: 1
-    name: Prueba
+    name: PruebaFusilAuto
     shootingType: 2
     weaponType: 0
     changer: 0
@@ -38,9 +38,12 @@ MonoBehaviour:
     numberToChange: 5
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 24
-  - previousName: Prueba2
+    endSpeed: 10
+    lineStartWidth: 0.05
+    lineEndWidth: 0.05
+  - previousName: PruebaShotgun
     isCreated: 1
-    name: Prueba2
+    name: PruebaShotgun
     shootingType: 1
     weaponType: 2
     changer: 0
@@ -63,10 +66,13 @@ MonoBehaviour:
     numberToChange: 0
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 10
-  - previousName: Prueba3
+    endSpeed: 10
+    lineStartWidth: 0.05
+    lineEndWidth: 0.05
+  - previousName: PruebaLaser
     isCreated: 1
-    name: Prueba3
-    shootingType: 2
+    name: PruebaLaser
+    shootingType: 3
     weaponType: 1
     changer: 0
     mesh: {fileID: 4300000, guid: ac4b748f8929540418552255a129f014, type: 3}
@@ -79,11 +85,14 @@ MonoBehaviour:
     weight: 0
     damagePerHit: 0
     forceToApply: 0
-    range: 10
-    cdBetweenShots: 0.3
-    variance: 3
-    varianceDecreaseWhenAim: 3
-    speedDecreaseWhenAim: 2.5
+    range: 200
+    cdBetweenShots: 0
+    variance: 0
+    varianceDecreaseWhenAim: 1
+    speedDecreaseWhenAim: 1
     numberToChange: 15
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 8
+    endSpeed: 4
+    lineStartWidth: 0.02
+    lineEndWidth: 0.02

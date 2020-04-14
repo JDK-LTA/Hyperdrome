@@ -97,31 +97,36 @@ public class WeaponBase : MonoBehaviour
     {
         ShootingBullet(GetVariedDirection());
     }
-    protected void ShootingBullet(Vector3 direction)
+    protected virtual void ShootingBullet(Vector3 direction)
     {
         Ray ray = new Ray(Camera.main.transform.position, direction);
         RaycastHit hit;
-        EnemyBase enemyHit;
+        //EnemyBase enemyHit;
 
         if (Physics.Raycast(ray, out hit, Range))
         {
-            //Debug.Log("Hit" + hit.transform.name);
-            enemyHit = hit.transform.GetComponent<EnemyBase>();
-            if (enemyHit != null)
-            {
-                hit.rigidbody.AddForce(ray.direction * ForceToApply);
-                WeaponManager.Instance.EnemyHit(enemyHit, _damagePerHit);
-                //Debug.Log("Hit");
-            }
+            EnemyHitBehaviour(ref hit, ray);
         }
         Debug.DrawLine(Camera.main.transform.position, hit.point, Color.green, 10f);
 
     }
 
+    protected void EnemyHitBehaviour(ref RaycastHit hit, Ray ray)
+    {
+        EnemyBase enemyHit = hit.transform.GetComponent<EnemyBase>();
+        //Debug.Log("Hit" + hit.transform.name);
+        if (enemyHit != null)
+        {
+            hit.rigidbody.AddForce(ray.direction * ForceToApply);
+            WeaponManager.Instance.EnemyHit(enemyHit, _damagePerHit);
+            //Debug.Log("Hit");
+        }
+    }
+
     protected Vector3 GetVariedDirection()
     {
         Vector3 direction;
-        Debug.Log(IsAiming);
+        //Debug.Log(IsAiming);
         if (!isAiming)
         {
             direction = Random.insideUnitCircle * variance;
@@ -136,4 +141,6 @@ public class WeaponBase : MonoBehaviour
 
         return direction;
     }
+
+    public virtual void StopDrawingLaser() { }
 }

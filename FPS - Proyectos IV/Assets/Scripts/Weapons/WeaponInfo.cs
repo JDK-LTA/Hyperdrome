@@ -66,6 +66,13 @@ public class WeaponInfo
 
     [SerializeField] private int nOfBulletsPerShot;
     public int NOfBulletsPerShot { get => nOfBulletsPerShot; set => nOfBulletsPerShot = value; }
+
+    [SerializeField] private float endSpeed = 10f;
+    [SerializeField] private float lineStartWidth = 0.05f;
+    [SerializeField] private float lineEndWidth = 0.05f;
+    public float EndSpeed { get => endSpeed; set => endSpeed = value; }
+    public float LineStartWidth { get => lineStartWidth; set => lineStartWidth = value; }
+    public float LineEndWidth { get => lineEndWidth; set => lineEndWidth = value; }
 }
 
 public enum ShootingType

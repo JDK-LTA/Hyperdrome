@@ -135,7 +135,7 @@ public class WeaponEditor : EditorWindow
         if (!weaponListRef.weaponList[i].IsCreated)
         {
             weaponListRef.weaponList.RemoveAt(i);
-            if (i == weaponListRef.weaponList.Count - 1)
+            if (i == weaponListRef.weaponList.Count)
             {
                 viewIndex--;
             }
@@ -186,7 +186,7 @@ public class WeaponEditor : EditorWindow
                 //IF CAR NAME WAS CHANGED, CHANGE ITS PREFAB'S NAME
                 if (weaponListRef.weaponList[i].PreviousName != weaponListRef.weaponList[i].Name)
                 {
-                    AssetDatabase.RenameAsset("Assets/WEAPON PREFABS/CW_" + weaponListRef.weaponList[i].PreviousName + ".prefab", weaponListRef.weaponList[i].Name);
+                    AssetDatabase.RenameAsset("Assets/WEAPON PREFABS/CW_" + weaponListRef.weaponList[i].PreviousName + ".prefab", "CW_"+weaponListRef.weaponList[i].Name);
                     weaponListRef.weaponList[i].PreviousName = weaponListRef.weaponList[i].Name;
                 }
 
@@ -218,6 +218,12 @@ public class WeaponEditor : EditorWindow
         ShotBase sc;
         WeaponInfo info = weaponListRef.weaponList[i];
 
+        LineRenderer lr;
+        if (lr = go.GetComponent<LineRenderer>())
+        {
+            DestroyImmediate(lr);
+        }
+
         switch (info.WeaponType)
         {
             case WeaponType.NORMAL:
@@ -247,6 +253,11 @@ public class WeaponEditor : EditorWindow
                         wc = go.AddComponent<WeaponLaser>();
                     }
                 }
+                lr = go.AddComponent<LineRenderer>();
+                WeaponLaser wl = wc.GetComponent<WeaponLaser>();
+                wl.LineStartWidth = info.LineStartWidth;
+                wl.LineEndWidth = info.LineEndWidth;
+                wl.EndSpeed = info.EndSpeed;
                 break;
             case WeaponType.SHOTGUN:
                 if (!(wc = go.GetComponent<WeaponBase>()))
@@ -334,6 +345,20 @@ public class WeaponEditor : EditorWindow
                     {
                         DestroyImmediate(sc);
                         sc = go.AddComponent<ShotAuto>();
+                    }
+                }
+                break;
+            case ShootingType.HOLD:
+                if (!(sc = go.GetComponent<ShotBase>()))
+                {
+                    sc = go.AddComponent<ShotHold>();
+                }
+                else
+                {
+                    if (!(sc is ShotHold))
+                    {
+                        DestroyImmediate(sc);
+                        sc = go.AddComponent<ShotHold>();
                     }
                 }
                 break;
@@ -446,6 +471,9 @@ public class WeaponEditor : EditorWindow
             case WeaponType.NORMAL:
                 break;
             case WeaponType.LASER:
+                weaponInfo.EndSpeed = EditorGUILayout.FloatField("Speed of laser's end", weaponInfo.EndSpeed); 
+                weaponInfo.LineStartWidth = EditorGUILayout.FloatField("Width of laser's start", weaponInfo.LineStartWidth); 
+                weaponInfo.LineEndWidth = EditorGUILayout.FloatField("Width of laser's end", weaponInfo.LineEndWidth);
                 break;
             case WeaponType.SHOTGUN:
                 weaponInfo.NOfBulletsPerShot = EditorGUILayout.IntField("Number of bullets per shot", weaponInfo.NOfBulletsPerShot);
