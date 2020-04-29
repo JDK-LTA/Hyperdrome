@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class EnemyBase : MonoBehaviour
 {
+    protected int difficulty = 1;
+    public int Difficulty { get => difficulty; }
+
     protected NavMeshAgent agent;
     protected RbFPSController player;
 

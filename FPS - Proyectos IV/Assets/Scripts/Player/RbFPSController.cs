@@ -125,7 +125,8 @@ public class RbFPSController : MonoBehaviour
 
         public float JumpForce = 30f;
         public float DashDistance = 5f;
-        /*[HideInInspector]*/ public float CurrentTargetSpeed = 8f;
+        /*[HideInInspector]*/
+        public float CurrentTargetSpeed = 8f;
 
         private Vector3 lastInput = Vector3.zero;
 
@@ -148,8 +149,8 @@ public class RbFPSController : MonoBehaviour
             input = new Vector3(Mathf.Abs(input.x), 0, Mathf.Abs(input.z));
 
             Vector2 finalInput = new Vector2(input.x * (input.x / (input.x + input.z)), input.z * (input.z / (input.x + input.z)));
-            
-            if(input.z > 0)
+
+            if (input.z > 0)
             {
                 CurrentTargetSpeed = StrafeSpeed * finalInput.x + ForwardSpeed * finalInput.y;
             }
@@ -187,6 +188,7 @@ public class RbFPSController : MonoBehaviour
 
     #region Variables and properties
     public Camera cam;
+    public Transform feet;
     public MovementSettings movementSettings = new MovementSettings();
     public AdvancedSettings advancedSettings = new AdvancedSettings();
     public MouseLook mouseLook = new MouseLook();
@@ -199,6 +201,7 @@ public class RbFPSController : MonoBehaviour
     private bool _jump, _previouslyGrounded, _jumping, _isGrounded;
 
     private Vector3 _input = Vector3.zero;
+    private Vector3 _baseInput = Vector3.zero;
     private Vector3 _mouse = Vector3.zero;
 
     public Vector3 Velocity { get => _rigidbody.velocity; }
@@ -278,20 +281,54 @@ public class RbFPSController : MonoBehaviour
     private void UpdateInputX(float inp)
     {
         _input.x = inp;
+        _baseInput.x = inp;
         movementSettings.UpdateDesiredTargetSpeed(_input);
     }
     private void UpdateInputZ(float inp)
     {
         _input.z = inp;
+        _baseInput.z = inp;
         movementSettings.UpdateDesiredTargetSpeed(_input);
     }
     private void Move()
     {
         Vector3 moveDirection = _input * movementSettings.CurrentTargetSpeed * Time.fixedDeltaTime;
         moveDirection = transform.TransformDirection(moveDirection);
-        _rigidbody.MovePosition(_rigidbody.position + moveDirection);
+        if (CheckSteep())
+        {
+            _rigidbody.MovePosition(_rigidbody.position + moveDirection);
+        }
+    }
+
+    private bool CheckSteep()
+    {
+        Vector3 dir = feet.transform.TransformDirection(_baseInput);
+        Ray ray = new Ray(feet.position, dir);
+        RaycastHit hit;
+
+        if (Physics.Raycast(ray, out hit, 1f))
+        {
+            //Debug.Log(dir);
+            //Debug.Log(hit.normal);
+            //Debug.DrawRay(hit.point, hit.normal, Color.cyan, 5f);
+            //Debug.DrawRay(feet.position, dir, Color.red, 5f);
+            //Debug.Log(Vector3.Angle(hit.point - feet.transform.position, hit.normal));
+            if (Vector3.Angle(hit.point - feet.transform.position, hit.normal) < 135)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+        }
+        else
+        {
+            return true;
+        }
     }
     #endregion
+
     #region Jump
     private void UpdateJumpInput()
     {
@@ -336,8 +373,8 @@ public class RbFPSController : MonoBehaviour
     private void StickToGroundHelper()
     {
         RaycastHit hit;
-        if (Physics.SphereCast(transform.position, _collider.radius*(1f-advancedSettings.shellOffset), Vector3.down, out hit,
-            ((_collider.height/2f)-_collider.radius)+
+        if (Physics.SphereCast(transform.position, _collider.radius * (1f - advancedSettings.shellOffset), Vector3.down, out hit,
+            ((_collider.height / 2f) - _collider.radius) +
             advancedSettings.stickToGroundHelperDistance, Physics.AllLayers, QueryTriggerInteraction.Ignore))
         {
             if (Mathf.Abs(Vector3.Angle(hit.normal, Vector3.up)) < 85f)
@@ -351,7 +388,7 @@ public class RbFPSController : MonoBehaviour
     {
         _previouslyGrounded = _isGrounded;
         RaycastHit hit;
-        if (Physics.SphereCast(transform.position,_collider.radius*(1f - advancedSettings.shellOffset), Vector3.down, out hit,
+        if (Physics.SphereCast(transform.position, _collider.radius * (1f - advancedSettings.shellOffset), Vector3.down, out hit,
             ((_collider.height / 2f) - _collider.radius) + advancedSettings.groundCheckDistance, Physics.AllLayers, QueryTriggerInteraction.Ignore))
         {
             _isGrounded = true;
@@ -373,7 +410,7 @@ public class RbFPSController : MonoBehaviour
     #region Dash
     private void Dash()
     {
-        Vector3 dashVelocity = Vector3.Scale(transform.forward, 
+        Vector3 dashVelocity = Vector3.Scale(transform.forward,
             movementSettings.DashDistance * smoothXZDrag * new Vector3(1, 0, 1));
 
         _rigidbody.AddForce(dashVelocity, ForceMode.VelocityChange);
