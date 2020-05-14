@@ -32,9 +32,10 @@ MonoBehaviour:
   _raycastSpot: {fileID: 0}
   isAiming: 0
   lineMat: {fileID: 0}
-  endSpeed: 4
+  endSpeed: 3
   lineStartWidth: 0.02
   lineEndWidth: 0.02
+  offset: {x: 0, y: 0, z: 0}
 --- !u!114 &5071017720377492250
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -47,7 +48,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f19d693d7cad0f4486a18724fb3d37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!120 &7746951669827115747
+--- !u!120 &7680485792737347325
 LineRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

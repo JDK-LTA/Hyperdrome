@@ -44,7 +44,7 @@ RenderSettings:
 LightmapSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 11
-  m_GIWorkflowMode: 0
+  m_GIWorkflowMode: 1
   m_GISettings:
     serializedVersion: 2
     m_BounceScale: 1
@@ -96,7 +96,8 @@ LightmapSettings:
     m_PVRFilteringAtrousPositionSigmaAO: 1
     m_ShowResolutionOverlay: 1
     m_ExportTrainingData: 0
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: 127f52b9d706f9c4196920addc5fb9e5,
+    type: 2}
   m_UseShadowmask: 1
 --- !u!196 &4
 NavMeshSettings:
@@ -1282,15 +1283,20 @@ PrefabInstance:
       propertyPath: m_Mass
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 1333791188079436247, guid: 22f46343791fcaa468e9ce23fcd9fa74,
+    - target: {fileID: 3631550058338273945, guid: 22f46343791fcaa468e9ce23fcd9fa74,
         type: 3}
-      propertyPath: lineMat
-      value: 
-      objectReference: {fileID: 2100000, guid: f6acf520cc3bc374dbffd256f175bd4d, type: 2}
-    - target: {fileID: 1333791188079436247, guid: 22f46343791fcaa468e9ce23fcd9fa74,
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3631550058338273945, guid: 22f46343791fcaa468e9ce23fcd9fa74,
         type: 3}
-      propertyPath: timeToReachTarget
-      value: 1
+      propertyPath: m_LocalPosition.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 6256903684173583845, guid: 22f46343791fcaa468e9ce23fcd9fa74,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5425055730832857481, guid: 22f46343791fcaa468e9ce23fcd9fa74,
         type: 3}
@@ -1301,6 +1307,16 @@ PrefabInstance:
         type: 3}
       propertyPath: positionInBuild
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333791188079436247, guid: 22f46343791fcaa468e9ce23fcd9fa74,
+        type: 3}
+      propertyPath: lineMat
+      value: 
+      objectReference: {fileID: 2100000, guid: f6acf520cc3bc374dbffd256f175bd4d, type: 2}
+    - target: {fileID: 1333791188079436247, guid: 22f46343791fcaa468e9ce23fcd9fa74,
+        type: 3}
+      propertyPath: timeToReachTarget
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22f46343791fcaa468e9ce23fcd9fa74, type: 3}

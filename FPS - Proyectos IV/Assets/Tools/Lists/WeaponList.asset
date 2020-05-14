@@ -93,7 +93,7 @@ MonoBehaviour:
     numberToChange: 15
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 8
-    endSpeed: 4
+    endSpeed: 3
     lineStartWidth: 0.02
     lineEndWidth: 0.02
   - previousName: 
