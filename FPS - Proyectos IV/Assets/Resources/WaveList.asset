@@ -13,12 +13,24 @@ MonoBehaviour:
   m_Name: WaveList
   m_EditorClassIdentifier: 
   waves:
+  - totalDifficulty: 25
+    enemiesThatCanSpawn:
+    - {fileID: 1528915638184230, guid: 8e0f285c21cdcf14e8d5c06c57ba936b, type: 3}
+    enemiesThisWave:
+    - {fileID: 3073357397487411516, guid: 8e0f285c21cdcf14e8d5c06c57ba936b, type: 3}
+    positionsToSpawn:
+    - {x: -15, y: 0, z: 15}
+    - {x: -15, y: 0, z: -20}
+    - {x: 15, y: 0, z: 15}
+    - {x: 15, y: 0, z: -20}
+    percentageOfSpawnsPerSubwave: 1
   - totalDifficulty: 0
     enemiesThatCanSpawn: []
+    enemiesThisWave: []
+    positionsToSpawn: []
     percentageOfSpawnsPerSubwave: 0
   - totalDifficulty: 0
     enemiesThatCanSpawn: []
-    percentageOfSpawnsPerSubwave: 0
-  - totalDifficulty: 0
-    enemiesThatCanSpawn: []
+    enemiesThisWave: []
+    positionsToSpawn: []
     percentageOfSpawnsPerSubwave: 0
