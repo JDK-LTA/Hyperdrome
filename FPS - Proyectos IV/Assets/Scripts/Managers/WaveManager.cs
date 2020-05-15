@@ -8,67 +8,134 @@ public class WaveManager : Singleton<WaveManager>
     private int _currentWave = 0;
     private List<WaveInfo> _waves;
 
-    private List<GameObject> _enemiesThisWave;
+    private List<EnemyBase> _enemiesThisWave;
+    private List<Vector3> _positionsToSpawn;
     private int _waveDifficulty;
     private int _currentDifficulty;
     private int _percPerSubwave;
 
     private List<EnemyBase> _createdEnemies;
 
+    public UnityEngine.UI.Text debugText;
+
     private void Start()
     {
-        _waves = Resources.Load<WaveList>("WaveList.prefab").waves;
+        _waves = Resources.Load<WaveList>("WaveList").waves;
 
         UpdateWave();
     }
 
     private void UpdateWave()
     {
-        _enemiesThisWave = _waves[_currentWave].EnemiesThatCanSpawn;
+        _enemiesThisWave = _waves[_currentWave].EnemiesThisWave;
+        _positionsToSpawn = _waves[_currentWave].PositionsToSpawn;
+
         _waveDifficulty = _waves[_currentWave].TotalDifficulty;
         _currentDifficulty = _waves[_currentWave].TotalDifficulty;
+
         _percPerSubwave = _waves[_currentWave].PercentageOfSpawnsPerSubwave;
     }
 
-    private void SpawnEnemies()
+    bool isSpawning = false;
+    float tPerCheck = 0;
+    float cdPerCheck = 5;
+    float tPerSpawn = 0;
+    float cdPerSpawn = 0.75f;
+    private void Update()
     {
-        int nOfEnemyDiffSpawned = 0;
-        List<GameObject> enemiesToSpawn = new List<GameObject>();
-        List<Vector3> spawnPoints = new List<Vector3>();
-
-        while (nOfEnemyDiffSpawned < (_percPerSubwave * _waveDifficulty) / 100 && _currentDifficulty > 0)
+        if (Input.GetKeyDown(KeyCode.O))
         {
-            int i = Random.Range(0, _enemiesThisWave.Count);
-            EnemyBase ebComp = _enemiesThisWave[i].GetComponent<EnemyBase>();
+            isSpawning = !isSpawning;
+        }
 
-            if (ebComp.Difficulty < _currentDifficulty)
+        if (isSpawning)
+        {
+            if (_currentDifficulty > 0)
             {
-                //METER ENEMIGO EN UNA LISTA, GENERAR N POSICIONES DE SPAWN DENTRO DE UN CÍRCULO DE POSIBILIDADES Y METERLAS EN UNA LISTA, SPAWNEARLOS EN DICHAS POSICIONES
-                enemiesToSpawn.Add(_enemiesThisWave[i]);
-                spawnPoints.Add(GetSpawnPosition());
+                tPerSpawn += Time.deltaTime;
+                if (tPerSpawn >= cdPerSpawn)
+                {
+                    tPerSpawn = 0;
+                    SpawnEnemy();
+                }
+            }
+        }
+        debugText.text = "Difficulty: " + _currentDifficulty;
+    }
 
-                _currentDifficulty -= ebComp.Difficulty;
+    private void SpawnEnemy()
+    {
+        List<EnemyBase> possibleEnemies = new List<EnemyBase>();
+
+        for (int i = 0; i < _enemiesThisWave.Count; i++)
+        {
+            if (_enemiesThisWave[i].Difficulty <= _currentDifficulty)
+            {
+                possibleEnemies.Add(_enemiesThisWave[i]);
             }
         }
 
-        List<GameObject> inactiveEnemies = GetInactiveEnemies();
-        for (int i = 0; i < enemiesToSpawn.Count; i++)
-        {
-            if (inactiveEnemies.Count > 0)
-            {
-                //CONVERTIR ENEMIGO INACTIVO EN ACTIVO DEL TIPO QUE QUIERO
-                ConvertEnemy(inactiveEnemies[inactiveEnemies.Count - 1], enemiesToSpawn[i]);
-            }
-            else
-            {
-                GameObject go = Instantiate(enemiesToSpawn[i], spawnPoints[i], new Quaternion(0, 0, 0, 0));
-            }
-        }
+        int ran = Random.Range(0, possibleEnemies.Count);
+
+        Instantiate(possibleEnemies[ran].gameObject, GetSpawnPosition(), Quaternion.identity);
+
+        _currentDifficulty -= possibleEnemies[ran].Difficulty;
     }
     private Vector3 GetSpawnPosition()
     {
+        int ran = Random.Range(0, _positionsToSpawn.Count);
 
-        return Vector3.zero;
+        return _positionsToSpawn[ran];
+    }
+
+
+
+
+    public void AddDifficulty(int add)
+    {
+        _currentDifficulty += add;
+    }
+
+
+    private void SpawnEnemies()
+    {
+        while (_currentDifficulty > 0)
+        {
+
+        }
+
+        //int nOfEnemyDiffSpawned = 0;
+        //List<GameObject> enemiesToSpawn = new List<GameObject>();
+        //List<Vector3> spawnPoints = new List<Vector3>();
+
+        //while (nOfEnemyDiffSpawned < (_percPerSubwave * _waveDifficulty) / 100 && _currentDifficulty > 0)
+        //{
+        //    int i = Random.Range(0, _enemiesThisWave.Count);
+        //    EnemyBase ebComp = _enemiesThisWave[i].GetComponent<EnemyBase>();
+
+        //    if (ebComp.Difficulty < _currentDifficulty)
+        //    {
+        //        //METER ENEMIGO EN UNA LISTA, GENERAR N POSICIONES DE SPAWN DENTRO DE UN CÍRCULO DE POSIBILIDADES Y METERLAS EN UNA LISTA, SPAWNEARLOS EN DICHAS POSICIONES
+        //        enemiesToSpawn.Add(_enemiesThisWave[i]);
+        //        spawnPoints.Add(GetSpawnPosition());
+
+        //        _currentDifficulty -= ebComp.Difficulty;
+        //    }
+        //}
+
+        //List<GameObject> inactiveEnemies = GetInactiveEnemies();
+        //for (int i = 0; i < enemiesToSpawn.Count; i++)
+        //{
+        //    //if (inactiveEnemies.Count > 0)
+        //    //{
+        //    //    //CONVERTIR ENEMIGO INACTIVO EN ACTIVO DEL TIPO QUE QUIERO
+        //    //    ConvertEnemy(inactiveEnemies[inactiveEnemies.Count - 1], enemiesToSpawn[i]);
+        //    //}
+        //    //else
+        //    //{
+        //        GameObject go = Instantiate(enemiesToSpawn[i], spawnPoints[i], new Quaternion(0, 0, 0, 0));
+        //    //}
+        //}
     }
     private List<GameObject> GetInactiveEnemies()
     {
@@ -103,9 +170,6 @@ public class WaveManager : Singleton<WaveManager>
             inactive.AddComponent(comps[i].GetType());
         }
     }
-
-
-
 
     class GFG : IComparer<int>
     {

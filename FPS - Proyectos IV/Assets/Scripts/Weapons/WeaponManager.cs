@@ -26,7 +26,7 @@ public class WeaponManager : MonoBehaviour
 
     private void Start()
     {
-        _player = GameObject.FindObjectOfType<RbFPSController>();
+        _player = FindObjectOfType<RbFPSController>();
 
         weapons = ArrangeWeapons();
         GetFirstWeapon();
@@ -76,11 +76,9 @@ public class WeaponManager : MonoBehaviour
         for (int i = 0; i < positions.Length; i++)
         {
             listWeapons.Add(positions[i].gameObject);
-            Debug.Log(listWeapons[i].gameObject.name);
         }
 
         listWeapons.Sort(delegate(GameObject p1, GameObject p2) { return p1.GetComponent<PositionInBuild>().positionInBuild.CompareTo(p2.GetComponent<PositionInBuild>().positionInBuild); });
-        Debug.Log(listWeapons[0].gameObject.name);
 
         return listWeapons;
     }

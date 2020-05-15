@@ -101,6 +101,6 @@ public class WeaponLaser : WeaponBase
             * Vector3.Distance(RaycastSpot.position, bezierCtrlPoint), endSpeed, 500);
 
         bezierCtrlPoint = Vector3.MoveTowards(bezierCtrlPoint, endPoint, Time.deltaTime * actualSpeed);
-        Debug.Log("Speed: " + actualSpeed);
+        //Debug.Log("Speed: " + actualSpeed);
     }
 }

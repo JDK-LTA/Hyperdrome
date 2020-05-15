@@ -50,6 +50,6 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void Die()
     {
-
+        WaveManager.Instance.AddDifficulty(difficulty);
     }
 }

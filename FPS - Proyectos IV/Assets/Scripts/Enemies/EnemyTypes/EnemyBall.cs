@@ -93,6 +93,7 @@ public class EnemyBall : EnemyBase
 
     protected override void Die()
     {
+        base.Die();
         Explode();
     }
 }
