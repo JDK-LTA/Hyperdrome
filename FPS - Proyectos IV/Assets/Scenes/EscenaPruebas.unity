@@ -1296,7 +1296,7 @@ PrefabInstance:
     - target: {fileID: 6256903684173583845, guid: 22f46343791fcaa468e9ce23fcd9fa74,
         type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5425055730832857481, guid: 22f46343791fcaa468e9ce23fcd9fa74,
         type: 3}
@@ -1317,6 +1317,16 @@ PrefabInstance:
         type: 3}
       propertyPath: timeToReachTarget
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1333791188079436247, guid: 22f46343791fcaa468e9ce23fcd9fa74,
+        type: 3}
+      propertyPath: endSpeed
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3398932346402854174, guid: 22f46343791fcaa468e9ce23fcd9fa74,
+        type: 3}
+      propertyPath: selectedWeapon
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22f46343791fcaa468e9ce23fcd9fa74, type: 3}
