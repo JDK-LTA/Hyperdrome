@@ -1,54 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!114 &4443358421826622474
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6885673264865892732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a635d78c0ac3c9a4b867717c2ac3c803, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _nameOfWeapon: PruebaLaser
-  _shootingType: 3
-  _weaponType: 1
-  _changer: 0
-  _bullet: {fileID: 0}
-  _fireSound: {fileID: 0}
-  _levelRequired: 0
-  _ammo: 0
-  _weight: 0
-  _damagePerHit: 0
-  _forceToApply: 0
-  _range: 200
-  _cdBetweenShots: 0
-  variance: 0
-  varianceDecreaseWhenAim: 1
-  speedDecreaseWhenAim: 1
-  _numberToChange: 15
-  _raycastSpot: {fileID: 0}
-  isAiming: 0
-  lineMat: {fileID: 0}
-  endSpeed: 3
-  lineStartWidth: 0.02
-  lineEndWidth: 0.02
-  offset: {x: 0, y: 0, z: 0}
---- !u!114 &5071017720377492250
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6885673264865892732}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f19d693d7cad0f4486a18724fb3d37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!120 &7680485792737347325
+--- !u!120 &6566856291808883422
 LineRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -143,6 +95,54 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
+--- !u!114 &4443358421826622474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6885673264865892732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a635d78c0ac3c9a4b867717c2ac3c803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nameOfWeapon: PruebaLaser
+  _shootingType: 3
+  _weaponType: 1
+  _changer: 0
+  _bullet: {fileID: 0}
+  _fireSound: {fileID: 0}
+  _levelRequired: 0
+  _ammo: 0
+  _weight: 0
+  _damagePerHit: 0
+  _forceToApply: 0
+  _range: 200
+  _cdBetweenShots: 0
+  variance: 0
+  varianceDecreaseWhenAim: 1
+  speedDecreaseWhenAim: 1
+  _numberToChange: 15
+  _raycastSpot: {fileID: 0}
+  isAiming: 0
+  lineMat: {fileID: 0}
+  endSpeed: 5
+  lineStartWidth: 0.02
+  lineEndWidth: 0.02
+  offset: {x: 0, y: 0, z: 0}
+--- !u!114 &5071017720377492250
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6885673264865892732}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f19d693d7cad0f4486a18724fb3d37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7426150616033109400
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -215,6 +215,16 @@ PrefabInstance:
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300000, guid: ac4b748f8929540418552255a129f014, type: 3}
+    - target: {fileID: 8809122096531430108, guid: 08628a2f8858779488a3751bac51a99a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.6
+      objectReference: {fileID: 0}
+    - target: {fileID: 8809122096531430108, guid: 08628a2f8858779488a3751bac51a99a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08628a2f8858779488a3751bac51a99a, type: 3}
 --- !u!1 &6885673264865892732 stripped

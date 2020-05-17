@@ -9,6 +9,8 @@ public class WeaponManager : MonoBehaviour
 
     public delegate void WeaponEvents(EnemyBase enemyHit, float damageDealt);
     public event WeaponEvents OnHit;
+    public delegate void OrderEv();
+    public event OrderEv OnWeaponsInit;
 
     private void Awake()
     {
@@ -18,7 +20,7 @@ public class WeaponManager : MonoBehaviour
     public int selectedWeapon = 0;
     public int maxNumberOfWeapons = 2;
 
-    private List<GameObject> weapons;
+    [SerializeField] private List<GameObject> weapons;
 
     public List<GameObject> Weapons { get => weapons; }
 
@@ -31,6 +33,8 @@ public class WeaponManager : MonoBehaviour
         weapons = ArrangeWeapons();
         GetFirstWeapon();
         InputManager.Instance.OnChangeWeapon += NextWeapon;
+
+        OnWeaponsInit();
     }
 
     private void Update()
@@ -68,6 +72,10 @@ public class WeaponManager : MonoBehaviour
 
     }
 
+    public void UpdateWeapons()
+    {
+        weapons = ArrangeWeapons();
+    }
     private List<GameObject> ArrangeWeapons()
     {
         List<GameObject> listWeapons = new List<GameObject>();

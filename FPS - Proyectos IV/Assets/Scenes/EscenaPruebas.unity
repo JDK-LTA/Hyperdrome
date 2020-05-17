@@ -1402,21 +1402,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3398932346402854172, guid: 22f46343791fcaa468e9ce23fcd9fa74,
-        type: 3}
-      propertyPath: m_Mass
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3631550058338273945, guid: 22f46343791fcaa468e9ce23fcd9fa74,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3631550058338273945, guid: 22f46343791fcaa468e9ce23fcd9fa74,
-        type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.6
-      objectReference: {fileID: 0}
     - target: {fileID: 6256903684173583845, guid: 22f46343791fcaa468e9ce23fcd9fa74,
         type: 3}
       propertyPath: m_IsActive
@@ -1446,11 +1431,6 @@ PrefabInstance:
         type: 3}
       propertyPath: endSpeed
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 3398932346402854174, guid: 22f46343791fcaa468e9ce23fcd9fa74,
-        type: 3}
-      propertyPath: selectedWeapon
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 22f46343791fcaa468e9ce23fcd9fa74, type: 3}

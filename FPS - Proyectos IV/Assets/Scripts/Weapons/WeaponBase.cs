@@ -117,9 +117,9 @@ public class WeaponBase : MonoBehaviour
         //Debug.Log("Hit" + hit.transform.name);
         if (enemyHit != null)
         {
-            hit.rigidbody.AddForce(ray.direction * ForceToApply);
+            hit.rigidbody?.AddForce(ray.direction * ForceToApply);
             WeaponManager.Instance.EnemyHit(enemyHit, _damagePerHit);
-            //Debug.Log("Hit");
+            Debug.Log("Hit");
         }
     }
 

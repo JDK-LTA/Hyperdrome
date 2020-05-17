@@ -4,21 +4,20 @@ using UnityEngine;
 
 public class EnemyBall : EnemyBase
 {
-    private bool readyToExplode = false, isRunning = false, canMove = true;
+    private bool readyToExplode = false, isRunning = false;
     [SerializeField] private float distanceToRun = 30f;
     [SerializeField] private float distanceToExplode = 2f;
     [SerializeField] private float explosionRadius = 8f;
     [SerializeField] private float explosionForce = 4f;
 
-    public delegate void OnBall();
-    public event OnBall ReadyToRun;
-    public event OnBall ReadyToExplode;
+    public event EnemyEvents ReadyToExplode;
+
     // Start is called before the first frame update
     protected override void Start()
     {
-        EnemyAnimBase anim = GetComponentInChildren<EnemyAnimBase>();
+        EnemyAnimBall anim = GetComponentInChildren<EnemyAnimBall>();
         anim.Explode += Explode;
-        anim.StartRolling += Run;
+        anim.StartRunningEvent += Run;
     }
 
     protected void Run()
@@ -61,19 +60,20 @@ public class EnemyBall : EnemyBase
                 {
                     isRunning = true;
                     canMove = false;
-                    ReadyToRun?.Invoke();
+
+                    OnReadyToRun();
                 }
 
 
-                if (canMove)
-                {
-                    agent.isStopped = false;
-                }
-                else
-                {
-                    agent.isStopped = true;
-                }
-
+                //if (canMove)
+                //{
+                //    agent.isStopped = false;
+                //}
+                //else
+                //{
+                //    agent.isStopped = true;
+                //}
+                agent.isStopped = !canMove;
                 agent.destination = player.transform.position;
             }
             else
