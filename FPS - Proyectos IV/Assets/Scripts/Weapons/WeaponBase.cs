@@ -56,9 +56,10 @@ public class WeaponBase : MonoBehaviour
     public bool IsAiming { get => isAiming; set => isAiming = value; }
 
     protected AudioSource audioSource;
-    protected bool canShoot = false;
+    protected bool canShoot = false, firstShot = false;
 
-    private float auxTimer;
+    private float auxTimer = 0;
+    [HideInInspector] public float auxNoToChange;
 
     protected virtual void Awake()
     {
@@ -69,8 +70,15 @@ public class WeaponBase : MonoBehaviour
     protected virtual void Start()
     {
         RaycastSpot = transform.Find("Shooting spot");
+        auxNoToChange = _numberToChange;
 
         InputManager.Instance.OnHoldAim += Aiming;
+    }
+
+    public void ResetWeapon()
+    {
+        auxNoToChange = _numberToChange;
+        firstShot = false;
     }
 
     protected virtual void Aiming(bool aux)
@@ -82,15 +90,39 @@ public class WeaponBase : MonoBehaviour
     // Update is called once per frame
     protected virtual void Update()
     {
+        if (_changer == Changer.TIME && firstShot)
+        {
+            auxTimer += Time.deltaTime;
+            if (auxTimer >= _numberToChange)
+            {
+                auxTimer = 0;
 
+                ResetWeapon();
+                WeaponManager.Instance.NextWeapon();
+            }
+        }
     }
 
     public void Shoot()
     {
+        if (!firstShot)
+        {
+            firstShot = true;
+        }
         ShotsThatAreShot();
 
         audioSource.PlayOneShot(FireSound);
         shotComp.CanShoot = false;
+
+        if (_changer == Changer.AMMO)
+        {
+            auxNoToChange--;
+            if (auxNoToChange == 0)
+            {
+                ResetWeapon();
+                WeaponManager.Instance.NextWeapon();
+            }
+        }
     }
 
     protected virtual void ShotsThatAreShot()
@@ -117,6 +149,16 @@ public class WeaponBase : MonoBehaviour
         //Debug.Log("Hit" + hit.transform.name);
         if (enemyHit != null)
         {
+            if (_changer == Changer.HIT)
+            {
+                auxNoToChange--;
+                if (auxNoToChange == 0)
+                {
+                    ResetWeapon();
+                    WeaponManager.Instance.NextWeapon();
+                }
+            }
+
             hit.rigidbody?.AddForce(ray.direction * ForceToApply);
             WeaponManager.Instance.EnemyHit(enemyHit, _damagePerHit);
             Debug.Log("Hit");

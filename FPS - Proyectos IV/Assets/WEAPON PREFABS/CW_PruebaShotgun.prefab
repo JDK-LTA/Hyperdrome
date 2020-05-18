@@ -15,7 +15,7 @@ MonoBehaviour:
   _nameOfWeapon: PruebaShotgun
   _shootingType: 1
   _weaponType: 2
-  _changer: 0
+  _changer: 2
   _bullet: {fileID: 0}
   _fireSound: {fileID: 0}
   _levelRequired: 0
@@ -28,9 +28,10 @@ MonoBehaviour:
   variance: 2.25
   varianceDecreaseWhenAim: 2
   speedDecreaseWhenAim: 2.5
-  _numberToChange: 0
+  _numberToChange: 15
   _raycastSpot: {fileID: 0}
   isAiming: 0
+  auxNoToChange: 0
   nOfBulletsPerShot: 10
 --- !u!114 &8089362114660111213
 MonoBehaviour:
@@ -111,16 +112,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3267214807680600860, guid: 08628a2f8858779488a3751bac51a99a,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 2954963d08a0b044e8f84eece7126e53, type: 2}
     - target: {fileID: 5819289931294228022, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
       propertyPath: m_Mesh
       value: 
       objectReference: {fileID: 4300006, guid: 3ad7c5979f6586d4a9532a55492a0ebe, type: 3}
+    - target: {fileID: 3267214807680600860, guid: 08628a2f8858779488a3751bac51a99a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 2954963d08a0b044e8f84eece7126e53, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08628a2f8858779488a3751bac51a99a, type: 3}
 --- !u!1 &6694147646010364765 stripped

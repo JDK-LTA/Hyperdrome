@@ -34,7 +34,7 @@ public class WeaponManager : MonoBehaviour
         GetFirstWeapon();
         InputManager.Instance.OnChangeWeapon += NextWeapon;
 
-        OnWeaponsInit();
+        OnWeaponsInit?.Invoke();
     }
 
     private void Update()
@@ -65,7 +65,9 @@ public class WeaponManager : MonoBehaviour
         for (int i = 0; i < weapons.Count; i++)
         {
             if (i == selectedWeapon)
+            {
                 weapons[i].SetActive(true);
+            }
             else
                 weapons[i].SetActive(false);
         }
