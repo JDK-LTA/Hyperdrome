@@ -12,11 +12,11 @@ public class EnemyBase : MonoBehaviour
     protected RbFPSController player;
 
     [SerializeField] protected float maxHp = 100;
+    public float damagePerAttack = 10;
+
     protected float currentHp;
     protected bool isDead = false, canMove = true;
 
-    [SerializeField] protected float walkingSpeed = 3f;
-    [SerializeField] protected float runningSpeed = 6f;
     [SerializeField] protected bool golden = false;
 
     public bool Golden { get => golden; set => golden = value; }

@@ -5,7 +5,10 @@ using UnityEngine;
 public class GameManager : Singleton<GameManager>
 {
     public int nOfPiecesGot = 0;
+    private float playerHp = 100;
     
+    public float PlayerHp { get => playerHp; }
+
     public void BringPieces()
     {
         WaveManager.Instance.PiecesToEndWave -= nOfPiecesGot;
@@ -15,4 +18,22 @@ public class GameManager : Singleton<GameManager>
         }
         nOfPiecesGot = 0;
     }
+
+    public void PlayerTakeHit(float dmg)
+    {
+        playerHp -= dmg;
+        Debug.Log("Hit. HP: " + playerHp);
+
+        if (playerHp <= 0)
+        {
+            PlayerDeath();
+        }
+    }
+
+    private void PlayerDeath()
+    {
+        Debug.Log("MUERTA");
+        Time.timeScale = 0;
+    }
+
 }

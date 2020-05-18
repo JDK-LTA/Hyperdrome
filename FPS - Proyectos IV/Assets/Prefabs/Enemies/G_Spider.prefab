@@ -926,8 +926,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   difficulty: 2
   maxHp: 100
-  walkingSpeed: 3
-  runningSpeed: 6
+  damagePerAttack: 10
+  golden: 1
   distanceToAttack: 3
 --- !u!1 &4219697788511264337
 GameObject:

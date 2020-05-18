@@ -41,7 +41,7 @@ public class WaveManager : Singleton<WaveManager>
         _currentDifficulty = _waves[_currentWave].TotalDifficulty;
 
         _goldenDifficulty = _waves[_currentWave].GoldenDifficulty;
-        _goldenThisWave = _waves[_currentWave].GoldenEnemiesThisWave;
+        _goldenThisWave = new List<EnemyBase>(_waves[_currentWave].GoldenEnemiesThisWave);
         _gCurrentDifficulty = _goldenDifficulty;
         piecesToEndWave = _waves[_currentWave].GoldenEnemiesThisWave.Count;
         //_percPerSubwave = _waves[_currentWave].PercentageOfSpawnsPerSubwave;

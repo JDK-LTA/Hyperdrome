@@ -14,25 +14,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waves:
   - totalDifficulty: 25
-    enemiesThatCanSpawn:
-    - {fileID: 1528915638184230, guid: 8e0f285c21cdcf14e8d5c06c57ba936b, type: 3}
-    - {fileID: 4219697788511264335, guid: 80b7356fdae1b044cb1dab5430c66e74, type: 3}
     enemiesThisWave:
     - {fileID: 3073357397487411516, guid: 8e0f285c21cdcf14e8d5c06c57ba936b, type: 3}
     - {fileID: 816783409, guid: 80b7356fdae1b044cb1dab5430c66e74, type: 3}
+    goldenEnemiesThisWave:
+    - {fileID: 816783409, guid: f70cdf0080e13f04980320ea20cac028, type: 3}
+    goldenDifficulty: 2
     positionsToSpawn:
     - {x: -15, y: 0, z: 15}
     - {x: -15, y: 0, z: -20}
     - {x: 15, y: 0, z: 15}
     - {x: 15, y: 0, z: -20}
-    percentageOfSpawnsPerSubwave: 1
+  - totalDifficulty: 60
+    enemiesThisWave:
+    - {fileID: 816783409, guid: 80b7356fdae1b044cb1dab5430c66e74, type: 3}
+    goldenEnemiesThisWave: []
+    goldenDifficulty: 0
+    positionsToSpawn:
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 0, z: 0}
+    - {x: 0, y: 0, z: 0}
   - totalDifficulty: 0
-    enemiesThatCanSpawn: []
     enemiesThisWave: []
+    goldenEnemiesThisWave: []
+    goldenDifficulty: 0
     positionsToSpawn: []
-    percentageOfSpawnsPerSubwave: 0
-  - totalDifficulty: 0
-    enemiesThatCanSpawn: []
-    enemiesThisWave: []
-    positionsToSpawn: []
-    percentageOfSpawnsPerSubwave: 0

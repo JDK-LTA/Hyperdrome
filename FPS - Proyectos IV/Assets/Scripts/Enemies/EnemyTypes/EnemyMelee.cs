@@ -11,6 +11,15 @@ public class EnemyMelee : EnemyBase
     public event EnemyEvents ReadyToAttack;
     public event EnemyEvents MeleeDie;
 
+    private BoxCollider attackTrigger;
+
+    protected override void Start()
+    {
+        base.Start();
+
+        attackTrigger = GetComponentInChildren<BoxCollider>();
+    }
+
     protected override void Update()
     {
         base.Update();
@@ -39,11 +48,15 @@ public class EnemyMelee : EnemyBase
         readyToAttack = false;
         canMove = true;
         agent.isStopped = false;
-    }
 
+    }
+    private void ActivateAttackTrigger()
+    {
+        attackTrigger.gameObject.SetActive(false);
+    }
     private void Attack()
     {
-
+        attackTrigger.gameObject.SetActive(true);
     }
     protected override void Die()
     {

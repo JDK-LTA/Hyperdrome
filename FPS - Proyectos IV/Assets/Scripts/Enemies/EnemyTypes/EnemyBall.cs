@@ -9,6 +9,8 @@ public class EnemyBall : EnemyBase
     [SerializeField] private float distanceToExplode = 2f;
     [SerializeField] private float explosionRadius = 8f;
     [SerializeField] private float explosionForce = 4f;
+    [SerializeField] protected float walkingSpeed = 3f;
+    [SerializeField] protected float runningSpeed = 6f;
 
     public event EnemyEvents ReadyToExplode;
 
@@ -38,6 +40,16 @@ public class EnemyBall : EnemyBase
             {
                 //Debug.Log("kaboom");
                 rb.AddExplosionForce(explosionForce, transform.position, explosionRadius, 6f);
+
+                if (rb.gameObject == player.gameObject)
+                {
+                    float dmgDistance = distanceToExplode / Vector3.Distance(transform.position, player.gameObject.transform.position);
+
+                    if (dmgDistance > 0.5f)
+                    {
+                        GameManager.Instance.PlayerTakeHit(damagePerAttack * dmgDistance);
+                    }
+                }
             }
         }
 
@@ -52,7 +64,7 @@ public class EnemyBall : EnemyBase
             if (Vector3.Distance(transform.position, player.gameObject.transform.position) > distanceToExplode)
             {
                 RaycastHit hit;
-                Physics.Raycast(transform.position, player.transform.position-transform.position, out hit, distanceToRun);
+                Physics.Raycast(transform.position, player.transform.position - transform.position, out hit, distanceToRun);
                 //Debug.DrawLine(transform.position, hit.point, Color.magenta, 5f);
                 //Debug.Log(Vector3.Distance(transform.position, player.transform.position));
                 //Debug.Log(hit.collider?.gameObject.name);

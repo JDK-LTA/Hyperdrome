@@ -35,7 +35,7 @@ MonoBehaviour:
     variance: 2
     varianceDecreaseWhenAim: 4
     speedDecreaseWhenAim: 2.5
-    numberToChange: 5
+    numberToChange: 100
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 24
     endSpeed: 10
