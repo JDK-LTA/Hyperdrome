@@ -17,7 +17,9 @@ public class EnemyBase : MonoBehaviour
 
     [SerializeField] protected float walkingSpeed = 3f;
     [SerializeField] protected float runningSpeed = 6f;
+    [SerializeField] protected bool golden = false;
 
+    public bool Golden { get => golden; set => golden = value; }
     public float CurrentHp { get => currentHp; set => currentHp = value; }
 
     public delegate void EnemyEvents();
@@ -29,13 +31,11 @@ public class EnemyBase : MonoBehaviour
         player = FindObjectOfType<RbFPSController>();
     }
 
-    // Start is called before the first frame update
     protected virtual void Start()
     {
-        
+        currentHp = maxHp;
     }
 
-    // Update is called once per frame
     protected virtual void Update()
     {
 
@@ -44,8 +44,6 @@ public class EnemyBase : MonoBehaviour
     public virtual void TakeHit(float damage)
     {
         currentHp -= damage;
-        //Debug.Log(gameObject.name + ": " + currentHp);
-        //Debug.Log(isDead);
         if (currentHp <= 0 && !isDead)
         {
             isDead = true;
@@ -55,7 +53,12 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void Die()
     {
-        WaveManager.Instance.AddDifficulty(difficulty);
+
+        if (golden)
+        {
+            Instantiate(EnemiesManager.Instance.goldenPiece, transform.position, transform.rotation);
+        }
+        WaveManager.Instance.AddDifficulty(difficulty, golden);
     }
 
     protected virtual void OnReadyToRun()

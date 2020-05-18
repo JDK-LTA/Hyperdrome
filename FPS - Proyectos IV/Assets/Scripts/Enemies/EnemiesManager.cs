@@ -5,11 +5,12 @@ using UnityEngine;
 public class EnemiesManager : MonoBehaviour
 {
     public static EnemiesManager Instance;
-
     private void Awake()
     {
         Instance = this;
     }
+
+    public GameObject goldenPiece;
 
     private void Start()
     {

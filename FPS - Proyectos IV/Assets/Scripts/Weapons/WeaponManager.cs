@@ -45,7 +45,6 @@ public class WeaponManager : MonoBehaviour
     {
         selectedWeapon = 0;
         weapons[selectedWeapon].SetActive(true);
-        Debug.Log(weapons[0].gameObject.name);
 
         if (weapons.Count > 1)
         {

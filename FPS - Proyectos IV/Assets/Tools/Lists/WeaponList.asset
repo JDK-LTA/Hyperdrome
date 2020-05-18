@@ -46,7 +46,7 @@ MonoBehaviour:
     name: PruebaShotgun
     shootingType: 1
     weaponType: 2
-    changer: 0
+    changer: 2
     mesh: {fileID: 4300006, guid: 3ad7c5979f6586d4a9532a55492a0ebe, type: 3}
     materials:
     - {fileID: 2100000, guid: f6acf520cc3bc374dbffd256f175bd4d, type: 2}
@@ -63,7 +63,7 @@ MonoBehaviour:
     variance: 2.25
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 2.5
-    numberToChange: 0
+    numberToChange: 15
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 10
     endSpeed: 10
@@ -74,7 +74,7 @@ MonoBehaviour:
     name: PruebaLaser
     shootingType: 3
     weaponType: 1
-    changer: 0
+    changer: 1
     mesh: {fileID: 4300000, guid: ac4b748f8929540418552255a129f014, type: 3}
     materials: []
     bullet: {fileID: 0}
@@ -90,14 +90,14 @@ MonoBehaviour:
     variance: 0
     varianceDecreaseWhenAim: 1
     speedDecreaseWhenAim: 1
-    numberToChange: 15
+    numberToChange: 6
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 8
     endSpeed: 5
     lineStartWidth: 0.02
     lineEndWidth: 0.02
-  - previousName: 
-    isCreated: 0
+  - previousName: asdasd
+    isCreated: 1
     name: asdasd
     shootingType: 0
     weaponType: 0

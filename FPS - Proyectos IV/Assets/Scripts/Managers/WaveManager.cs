@@ -12,7 +12,14 @@ public class WaveManager : Singleton<WaveManager>
     private List<Vector3> _positionsToSpawn;
     private int _waveDifficulty;
     private int _currentDifficulty;
-    private int _percPerSubwave;
+
+    private int _goldenDifficulty;
+    private int _gCurrentDifficulty;
+    private List<EnemyBase> _goldenThisWave;
+    private int piecesToEndWave;
+    public int PiecesToEndWave { get => piecesToEndWave; set => piecesToEndWave = value; }
+
+    //private int _percPerSubwave;
 
     private List<EnemyBase> _createdEnemies;
 
@@ -33,45 +40,91 @@ public class WaveManager : Singleton<WaveManager>
         _waveDifficulty = _waves[_currentWave].TotalDifficulty;
         _currentDifficulty = _waves[_currentWave].TotalDifficulty;
 
-        _percPerSubwave = _waves[_currentWave].PercentageOfSpawnsPerSubwave;
+        _goldenDifficulty = _waves[_currentWave].GoldenDifficulty;
+        _goldenThisWave = _waves[_currentWave].GoldenEnemiesThisWave;
+        _gCurrentDifficulty = _goldenDifficulty;
+        piecesToEndWave = _waves[_currentWave].GoldenEnemiesThisWave.Count;
+        //_percPerSubwave = _waves[_currentWave].PercentageOfSpawnsPerSubwave;
+    }
+    public void PrepareToEndWave()
+    {
+        isSpawning = false;
+        tPerSpawn = 0;
+        tPerGolden = 0;
+    }
+    private void EndWave()
+    {
+        //END WAVE STUFF
+
+        //JUST TO TRY, LET'S BEGIN NEXT ROUND FOR NOW
+        BeginNextWave();
+    }
+    private void BeginNextWave()
+    {
+        _currentWave++;
+        UpdateWave();
+        isSpawning = true;
     }
 
-    bool isSpawning = false;
-    float tPerCheck = 0;
-    float cdPerCheck = 5;
+    bool isSpawning = true, debugSpawn = false;
+    float tPerGolden = 0;
+    [SerializeField] float cdPerGolden = 8;
     float tPerSpawn = 0;
-    float cdPerSpawn = 0.75f;
+    [SerializeField] float cdPerSpawn = 0.75f;
+    private EnemyBase lastEnemySpawned = null;
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.O))
         {
-            isSpawning = !isSpawning;
+            debugSpawn = !debugSpawn;
         }
 
         if (isSpawning)
         {
-            if (_currentDifficulty > 0)
+            if (debugSpawn)
             {
-                tPerSpawn += Time.deltaTime;
-                if (tPerSpawn >= cdPerSpawn)
+
+                if (_currentDifficulty > 0)
                 {
-                    tPerSpawn = 0;
-                    SpawnEnemy();
+                    tPerSpawn += Time.deltaTime;
+                    if (tPerSpawn >= cdPerSpawn)
+                    {
+                        tPerSpawn = 0;
+                        SpawnEnemy(_enemiesThisWave, ref _currentDifficulty);
+                    }
                 }
+                if (_goldenDifficulty > 0)
+                {
+                    tPerGolden += Time.deltaTime;
+                    if (tPerGolden >= cdPerGolden)
+                    {
+                        tPerGolden = 0;
+                        SpawnEnemy(_goldenThisWave, ref _gCurrentDifficulty);
+                        _goldenThisWave.Remove(lastEnemySpawned);
+                    }
+                }
+            }
+        }
+        else
+        {
+            if (_currentDifficulty == _waveDifficulty)
+            {
+                EndWave();
             }
         }
         debugText.text = "Difficulty: " + _currentDifficulty;
     }
 
-    private void SpawnEnemy()
+    private void SpawnEnemy(List<EnemyBase> enemyList, ref int difficultyToReduce)
     {
         List<EnemyBase> possibleEnemies = new List<EnemyBase>();
 
-        for (int i = 0; i < _enemiesThisWave.Count; i++)
+        for (int i = 0; i < enemyList.Count; i++)
         {
-            if (_enemiesThisWave[i].Difficulty <= _currentDifficulty)
+            if (enemyList[i].Difficulty <= difficultyToReduce)
             {
-                possibleEnemies.Add(_enemiesThisWave[i]);
+                possibleEnemies.Add(enemyList[i]);
             }
         }
 
@@ -79,7 +132,8 @@ public class WaveManager : Singleton<WaveManager>
 
         Instantiate(possibleEnemies[ran].gameObject, GetSpawnPosition(), Quaternion.identity);
 
-        _currentDifficulty -= possibleEnemies[ran].Difficulty;
+        lastEnemySpawned = possibleEnemies[ran];
+        difficultyToReduce -= possibleEnemies[ran].Difficulty;
     }
     private Vector3 GetSpawnPosition()
     {
@@ -91,9 +145,16 @@ public class WaveManager : Singleton<WaveManager>
 
 
 
-    public void AddDifficulty(int add)
+    public void AddDifficulty(int add, bool golden)
     {
-        _currentDifficulty += add;
+        if (!golden)
+        {
+            _currentDifficulty += add;
+        }
+        else
+        {
+            _gCurrentDifficulty += add;
+        }
     }
 
 
