@@ -33,12 +33,16 @@ public class WeaponManager : MonoBehaviour
         weapons = ArrangeWeapons();
         GetFirstWeapon();
         InputManager.Instance.OnChangeWeapon += NextWeapon;
-
-        OnWeaponsInit?.Invoke();
     }
 
+    bool init = false;
     private void Update()
     {
+        if (!init)
+        {
+            init = true;
+            OnWeaponsInit.Invoke();
+        }
     }
 
     private void GetFirstWeapon()
@@ -76,11 +80,16 @@ public class WeaponManager : MonoBehaviour
     public void UpdateWeapons()
     {
         weapons = ArrangeWeapons();
+        GetFirstWeapon();
     }
     private List<GameObject> ArrangeWeapons()
     {
-        List<GameObject> listWeapons = new List<GameObject>();
+        for (int i = 0; i < weapons.Count; i++)
+        {
+            weapons[i].SetActive(true);
+        }
 
+        List<GameObject> listWeapons = new List<GameObject>();
         PositionInBuild[] positions = GetComponentsInChildren<PositionInBuild>();
         for (int i = 0; i < positions.Length; i++)
         {
