@@ -28,14 +28,14 @@ MonoBehaviour:
     levelRequired: 5
     ammo: 5
     weight: 5
-    damagePerHit: 5
+    damagePerHit: 20
     forceToApply: 10
-    range: 15
+    range: 30
     cdBetweenShots: 0.5
     variance: 2
     varianceDecreaseWhenAim: 4
     speedDecreaseWhenAim: 2.5
-    numberToChange: 100
+    numberToChange: 400
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 24
     endSpeed: 10

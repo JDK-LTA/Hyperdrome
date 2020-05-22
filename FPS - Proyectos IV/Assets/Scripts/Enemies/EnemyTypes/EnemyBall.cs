@@ -96,7 +96,7 @@ public class EnemyBall : EnemyBase
                     canMove = false;
                     agent.isStopped = true;
                     ReadyToExplode?.Invoke();
-                    Explode();
+                    Die();
                 }
                 //ANIMACION DE EXPLOTAR
             }

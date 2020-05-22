@@ -41,7 +41,7 @@ public class WeaponManager : MonoBehaviour
         if (!init)
         {
             init = true;
-            OnWeaponsInit.Invoke();
+            OnWeaponsInit?.Invoke();
         }
     }
 

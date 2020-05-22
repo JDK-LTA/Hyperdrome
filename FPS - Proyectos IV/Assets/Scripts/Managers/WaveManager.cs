@@ -5,7 +5,7 @@ using UnityEditor;
 
 public class WaveManager : Singleton<WaveManager>
 {
-    private int _currentWave = 0;
+    [SerializeField] private int _currentWave = 0;
     private List<WaveInfo> _waves;
 
     private List<EnemyBase> _enemiesThisWave;
@@ -128,12 +128,15 @@ public class WaveManager : Singleton<WaveManager>
             }
         }
 
-        int ran = Random.Range(0, possibleEnemies.Count);
+        if (possibleEnemies.Count > 0)
+        {
+            int ran = Random.Range(0, possibleEnemies.Count);
 
-        Instantiate(possibleEnemies[ran].gameObject, GetSpawnPosition(), Quaternion.identity);
+            Instantiate(possibleEnemies[ran].gameObject, GetSpawnPosition(), Quaternion.identity);
 
-        lastEnemySpawned = possibleEnemies[ran];
-        difficultyToReduce -= possibleEnemies[ran].Difficulty;
+            lastEnemySpawned = possibleEnemies[ran];
+            difficultyToReduce -= possibleEnemies[ran].Difficulty;
+        }
     }
     private Vector3 GetSpawnPosition()
     {

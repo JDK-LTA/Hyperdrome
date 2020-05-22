@@ -38,7 +38,7 @@ public class EnemyMelee : EnemyBase
                 canMove = false;
                 agent.isStopped = true;
                 ReadyToAttack?.Invoke();
-                Attack();
+                //Attack();
             }
         }
     }
@@ -50,11 +50,11 @@ public class EnemyMelee : EnemyBase
         agent.isStopped = false;
 
     }
-    private void ActivateAttackTrigger()
+    private void DeactivateAttackTrigger()
     {
         attackTrigger.gameObject.SetActive(false);
     }
-    private void Attack()
+    private void ActivateAttackTrigger()
     {
         attackTrigger.gameObject.SetActive(true);
     }

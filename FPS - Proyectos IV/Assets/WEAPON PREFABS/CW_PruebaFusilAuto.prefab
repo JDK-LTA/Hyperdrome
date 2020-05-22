@@ -21,14 +21,14 @@ MonoBehaviour:
   _levelRequired: 5
   _ammo: 5
   _weight: 5
-  _damagePerHit: 5
+  _damagePerHit: 20
   _forceToApply: 10
-  _range: 15
+  _range: 30
   _cdBetweenShots: 0.5
   variance: 2
   varianceDecreaseWhenAim: 4
   speedDecreaseWhenAim: 2.5
-  _numberToChange: 100
+  _numberToChange: 400
   _raycastSpot: {fileID: 0}
   isAiming: 0
   auxNoToChange: 0

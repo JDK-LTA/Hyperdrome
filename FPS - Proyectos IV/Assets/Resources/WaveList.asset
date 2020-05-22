@@ -13,11 +13,12 @@ MonoBehaviour:
   m_Name: WaveList
   m_EditorClassIdentifier: 
   waves:
-  - totalDifficulty: 25
+  - totalDifficulty: 5
     enemiesThisWave:
     - {fileID: 3073357397487411516, guid: 8e0f285c21cdcf14e8d5c06c57ba936b, type: 3}
     - {fileID: 816783409, guid: 80b7356fdae1b044cb1dab5430c66e74, type: 3}
     goldenEnemiesThisWave:
+    - {fileID: 816783409, guid: f70cdf0080e13f04980320ea20cac028, type: 3}
     - {fileID: 816783409, guid: f70cdf0080e13f04980320ea20cac028, type: 3}
     goldenDifficulty: 2
     positionsToSpawn:
@@ -28,14 +29,11 @@ MonoBehaviour:
   - totalDifficulty: 60
     enemiesThisWave:
     - {fileID: 816783409, guid: 80b7356fdae1b044cb1dab5430c66e74, type: 3}
-    goldenEnemiesThisWave: []
-    goldenDifficulty: 0
+    goldenEnemiesThisWave:
+    - {fileID: 816783409, guid: f70cdf0080e13f04980320ea20cac028, type: 3}
+    goldenDifficulty: 1
     positionsToSpawn:
-    - {x: 0, y: 0, z: 0}
-    - {x: 0, y: 0, z: 0}
-    - {x: 0, y: 0, z: 0}
-    - {x: 0, y: 0, z: 0}
-    - {x: 0, y: 0, z: 0}
+    - {x: -15, y: 1, z: -30}
   - totalDifficulty: 0
     enemiesThisWave: []
     goldenEnemiesThisWave: []
