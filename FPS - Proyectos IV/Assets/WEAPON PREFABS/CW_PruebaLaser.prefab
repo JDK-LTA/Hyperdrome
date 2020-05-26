@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f19d693d7cad0f4486a18724fb3d37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!120 &524077467572706479
+--- !u!120 &4807011368055613948
 LineRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
