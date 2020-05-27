@@ -22,7 +22,6 @@ public class GameManager : Singleton<GameManager>
     public void PlayerTakeHit(float dmg)
     {
         playerHp -= dmg;
-        //Debug.Log("Hit. HP: " + playerHp);
 
         if (playerHp <= 0)
         {

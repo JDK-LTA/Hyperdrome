@@ -6,15 +6,15 @@ using System.Linq;
 //TODO: CLEAR CODE AND PREPARE FOR WAVE-ENDING STUFF
 public class InventorySystem : MonoBehaviour
 {
-    [SerializeField] Transform itemsParent;
-
     [SerializeField] private List<GameObject> weaponSlots;
     public UIWeapon selectedWeaponSlot;
     public Transform selectedItem;
 
     public GameObject draggableItem;
 
-    [SerializeField] private GameObject weaponPanel;
+    [SerializeField] private GameObject weaponPanelPrefab;
+    [SerializeField] private GameObject pickPanel;
+    [SerializeField] private GameObject buildPanel;
 
     public static InventorySystem Instance;
     private void Awake()
@@ -29,15 +29,30 @@ public class InventorySystem : MonoBehaviour
     }
     private void WeaponsInitiated()
     {
+        CreateBuildPanels();
+    }
+    private void CreateBuildPanels()
+    {
         for (int i = 0; i < WeaponManager.Instance.Weapons.Count; i++)
         {
-            GameObject go = Instantiate(weaponPanel, transform);
+            GameObject go = Instantiate(weaponPanelPrefab, transform);
             go.GetComponentInChildren<UnityEngine.UI.Image>().color = new Color32((byte)Random.Range(0, 255), (byte)Random.Range(0, 255), (byte)Random.Range(0, 255), 255);
 
             weaponSlots.Add(go);
 
             go.GetComponentInChildren<UIWeapon>().positionInPanel = i;
         }
+    }
+    private void DestroyBuildPanels()
+    {
+        for (int i = weaponSlots.Count - 1; i >= 0; i--)
+        {
+            Destroy(weaponSlots[i]);
+        }
+    }
+    private void CreatePickPanels()
+    {
+
     }
 
     // Update is called once per frame

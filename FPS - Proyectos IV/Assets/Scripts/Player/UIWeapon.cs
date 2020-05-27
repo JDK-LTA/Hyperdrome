@@ -15,6 +15,8 @@ public class UIWeapon : MonoBehaviour, IPointerDownHandler, IBeginDragHandler, I
 
     private Image thisImage;
 
+    private bool picked = false;
+
     private void Start()
     {
         draggable = InventorySystem.Instance.draggableItem;

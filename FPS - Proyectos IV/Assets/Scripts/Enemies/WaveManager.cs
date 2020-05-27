@@ -18,6 +18,8 @@ public class WaveManager : Singleton<WaveManager>
     private List<EnemyBase> _goldenThisWave;
     private int piecesToEndWave;
     public int PiecesToEndWave { get => piecesToEndWave; set => piecesToEndWave = value; }
+    public List<WaveInfo> Waves { get => _waves; }
+    public int CurrentWave { get => _currentWave; }
 
     //private int _percPerSubwave;
 
@@ -55,12 +57,18 @@ public class WaveManager : Singleton<WaveManager>
     private void EndWave()
     {
         //END WAVE STUFF
+        WeaponManager.Instance._player.CanMove(false);
+        ShowWeaponChoosingPanel(true);
 
         //JUST TO TRY, LET'S BEGIN NEXT ROUND FOR NOW
         BeginNextWave();
     }
+    private void ShowWeaponChoosingPanel(bool show)
+    {
+    }
     private void BeginNextWave()
     {
+        ShowWeaponChoosingPanel(false);
         _currentWave++;
         UpdateWave();
         isSpawning = true;

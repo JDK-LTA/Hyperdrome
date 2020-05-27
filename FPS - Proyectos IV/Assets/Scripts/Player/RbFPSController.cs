@@ -19,6 +19,8 @@ public class RbFPSController : MonoBehaviour
         public float smoothTime = 5f;
         public bool lockCursor = true;
 
+        public bool lockCamera = false;
+
         private Quaternion _characterTargetRot;
         private Quaternion _cameraTargetRot;
         private bool _cursorIsLocked = true;
@@ -32,14 +34,16 @@ public class RbFPSController : MonoBehaviour
 
         public void LookRotation(Transform character, Transform camera)
         {
-            float yRot = Input.GetAxis("Mouse X") * XSensitivity;
-            float xRot = Input.GetAxis("Mouse Y") * YSensitivity;
+            float yRot = lockCamera ? 0 : Input.GetAxis("Mouse X") * XSensitivity;
+            float xRot = lockCamera ? 0 : Input.GetAxis("Mouse Y") * YSensitivity;
+
 
             _characterTargetRot *= Quaternion.Euler(0f, yRot, 0f);
             _cameraTargetRot *= Quaternion.Euler(-xRot, 0f, 0f);
 
             if (clampVerticalRotation)
                 _cameraTargetRot = ClampRotationAroundXAxis(_cameraTargetRot);
+
 
             if (smooth)
             {
@@ -134,6 +138,8 @@ public class RbFPSController : MonoBehaviour
 
         public bool Running { get => _running; }
 
+        public bool lockMovement = false;
+
         public void Init()
         {
             InputManager.Instance.OnHoldRun += IsRunning;
@@ -170,6 +176,11 @@ public class RbFPSController : MonoBehaviour
             else if (WeaponManager.Instance.Weapons[WeaponManager.Instance.selectedWeapon].GetComponent<WeaponBase>().IsAiming)
             {
                 CurrentTargetSpeed /= WeaponManager.Instance.Weapons[WeaponManager.Instance.selectedWeapon].GetComponent<WeaponBase>().SpeedDecreaseWhenAim;
+            }
+
+            if (lockMovement)
+            {
+                CurrentTargetSpeed = 0;
             }
         }
     }
@@ -231,6 +242,7 @@ public class RbFPSController : MonoBehaviour
 
     }
 
+
     // Update is called once per frame
     private void Update()
     {
@@ -244,6 +256,11 @@ public class RbFPSController : MonoBehaviour
         XZDrag();
     }
     #endregion
+    public void CanMove(bool canMove)
+    {
+        movementSettings.lockMovement = canMove;
+        mouseLook.lockCamera = canMove;
+    }
 
     private void XZDrag()
     {
