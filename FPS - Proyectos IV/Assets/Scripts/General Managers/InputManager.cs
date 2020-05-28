@@ -70,65 +70,69 @@ public class InputManager : Singleton<InputManager>
         #region Hold and Trigger Input
 
         //HOLDS
-        if (Input.GetButtonDown("Shoot"))
+        if (!WeaponManager.Instance._player.movementSettings.lockMovement)
         {
-            OnHoldShoot?.Invoke(true);
-            OnTriggerShoot?.Invoke();
-        }
-        else if (Input.GetButtonUp("Shoot"))
-        {
-            OnHoldShoot?.Invoke(false);
-        }
 
-        if (Input.GetButtonDown("Aim"))
-        {
-            OnHoldAim?.Invoke(true);
-        }
-        else if (Input.GetButtonUp("Aim"))
-        {
-            OnHoldAim?.Invoke(false);
-        }
+            if (Input.GetButtonDown("Shoot"))
+            {
+                OnHoldShoot?.Invoke(true);
+                OnTriggerShoot?.Invoke();
+            }
+            else if (Input.GetButtonUp("Shoot"))
+            {
+                OnHoldShoot?.Invoke(false);
+            }
 
-        if (Input.GetButtonDown("Run"))
-        {
-            OnHoldRun?.Invoke(true);
-        }
-        else if (Input.GetButtonUp("Run"))
-        {
-            OnHoldRun?.Invoke(false);
-        }
+            if (Input.GetButtonDown("Aim"))
+            {
+                OnHoldAim?.Invoke(true);
+            }
+            else if (Input.GetButtonUp("Aim"))
+            {
+                OnHoldAim?.Invoke(false);
+            }
 
-        if (Input.GetButtonDown("Jet"))
-        {
-            OnHoldJet?.Invoke(true);
-        }
-        else if (Input.GetButtonUp("Jet"))
-        {
-            OnHoldJet?.Invoke(false);
-        }
-        //
+            if (Input.GetButtonDown("Run"))
+            {
+                OnHoldRun?.Invoke(true);
+            }
+            else if (Input.GetButtonUp("Run"))
+            {
+                OnHoldRun?.Invoke(false);
+            }
 
-        //TRIGGERS
-        if (Input.GetButtonDown("Jump"))
-        {
-            OnTriggerJump?.Invoke();
-        }
-        if (Input.GetButtonDown("Ability"))
-        {
-            OnTriggerAbility?.Invoke();
-        }
-        if (Input.GetButtonDown("Dash"))
-        {
-            OnTriggerDash?.Invoke();
-        }
-        //
+            if (Input.GetButtonDown("Jet"))
+            {
+                OnHoldJet?.Invoke(true);
+            }
+            else if (Input.GetButtonUp("Jet"))
+            {
+                OnHoldJet?.Invoke(false);
+            }
+            //
 
-        //REPETITIVE TRIGGERS
-        if (Input.GetButton("Shoot"))
-        {
-            OnRepTriggerShoot?.Invoke();
+            //TRIGGERS
+            if (Input.GetButtonDown("Jump"))
+            {
+                OnTriggerJump?.Invoke();
+            }
+            if (Input.GetButtonDown("Ability"))
+            {
+                OnTriggerAbility?.Invoke();
+            }
+            if (Input.GetButtonDown("Dash"))
+            {
+                OnTriggerDash?.Invoke();
+            }
+            //
+
+            //REPETITIVE TRIGGERS
+            if (Input.GetButton("Shoot"))
+            {
+                OnRepTriggerShoot?.Invoke();
+            }
+            //
         }
-        //
         #endregion
 
         #region Debug Input

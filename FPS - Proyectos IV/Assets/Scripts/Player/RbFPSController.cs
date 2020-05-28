@@ -200,6 +200,7 @@ public class RbFPSController : MonoBehaviour
     #region Variables and properties
     public Camera cam;
     public Transform feet;
+    public Transform weaponsParent;
     public MovementSettings movementSettings = new MovementSettings();
     public AdvancedSettings advancedSettings = new AdvancedSettings();
     public MouseLook mouseLook = new MouseLook();
@@ -258,8 +259,9 @@ public class RbFPSController : MonoBehaviour
     #endregion
     public void CanMove(bool canMove)
     {
-        movementSettings.lockMovement = canMove;
-        mouseLook.lockCamera = canMove;
+        movementSettings.lockMovement = !canMove;
+        mouseLook.lockCamera = !canMove;
+        mouseLook.lockCursor = canMove;
     }
 
     private void XZDrag()

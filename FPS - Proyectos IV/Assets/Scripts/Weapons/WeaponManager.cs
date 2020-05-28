@@ -24,14 +24,13 @@ public class WeaponManager : MonoBehaviour
 
     public List<GameObject> Weapons { get => weapons; }
 
-    public RbFPSController _player;
+    [HideInInspector] public RbFPSController _player;
 
     private void Start()
     {
-        _player = FindObjectOfType<RbFPSController>();
+        _player = GetComponent<RbFPSController>();
 
-        weapons = ArrangeWeapons();
-        GetFirstWeapon();
+        UpdateWeapons();
         InputManager.Instance.OnChangeWeapon += NextWeapon;
     }
 
@@ -48,6 +47,10 @@ public class WeaponManager : MonoBehaviour
     private void GetFirstWeapon()
     {
         selectedWeapon = 0;
+        //foreach (var item in weapons)
+        //{
+        //    Debug.Log(item.name);
+        //}
         weapons[selectedWeapon].SetActive(true);
 
         if (weapons.Count > 1)
@@ -77,10 +80,21 @@ public class WeaponManager : MonoBehaviour
 
     }
 
+    public IEnumerator UpdateWeaponsCoroutine()
+    {
+        yield return null;
+        UpdateWeapons();
+    }
+
     public void UpdateWeapons()
     {
         weapons = ArrangeWeapons();
         GetFirstWeapon();
+
+        for (int i = 0; i < weapons.Count; i++)
+        {
+            weapons[i].GetComponent<WeaponBase>().ResetWeapon();
+        }
     }
     private List<GameObject> ArrangeWeapons()
     {
@@ -90,13 +104,13 @@ public class WeaponManager : MonoBehaviour
         }
 
         List<GameObject> listWeapons = new List<GameObject>();
-        PositionInBuild[] positions = GetComponentsInChildren<PositionInBuild>();
+        PositionInBuild[] positions = _player.weaponsParent.GetComponentsInChildren<PositionInBuild>();
         for (int i = 0; i < positions.Length; i++)
         {
             listWeapons.Add(positions[i].gameObject);
         }
 
-        listWeapons.Sort(delegate(GameObject p1, GameObject p2) { return p1.GetComponent<PositionInBuild>().positionInBuild.CompareTo(p2.GetComponent<PositionInBuild>().positionInBuild); });
+        listWeapons.Sort(delegate (GameObject p1, GameObject p2) { return p1.GetComponent<PositionInBuild>().positionInBuild.CompareTo(p2.GetComponent<PositionInBuild>().positionInBuild); });
 
         return listWeapons;
     }

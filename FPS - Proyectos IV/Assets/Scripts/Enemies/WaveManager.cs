@@ -61,13 +61,17 @@ public class WaveManager : Singleton<WaveManager>
         ShowWeaponChoosingPanel(true);
 
         //JUST TO TRY, LET'S BEGIN NEXT ROUND FOR NOW
-        BeginNextWave();
     }
     private void ShowWeaponChoosingPanel(bool show)
     {
+        FindObjectOfType<InventoryManager>().gameObject.SetActive(show);
     }
-    private void BeginNextWave()
+    public void BeginNextWave()
     {
+        WeaponManager.Instance._player.CanMove(true);
+
+        WeaponManager.Instance.UpdateWeapons();
+
         ShowWeaponChoosingPanel(false);
         _currentWave++;
         UpdateWave();

@@ -8,14 +8,15 @@ public class InventoryManager : Singleton<InventoryManager>
     [SerializeField] private GameObject buildPanelParent;
     [SerializeField] private int nOfWeaponsToChooseFrom = 3;
     [SerializeField] private GameObject panelTemplatePrefab;
+    [SerializeField] private GameObject nextWaveButton;
 
     private List<PickablePanel> newWeaponPanels;
     private List<PickablePanel> buildPanels;
     private List<PickablePanel> lastRoundPickablePanels;
 
-    private PickablePanel panelHovering;
-    private PickablePanel panelClicked;
-    private bool anyPanelClicked = false;
+    [SerializeField] private PickablePanel panelHovering;
+    [SerializeField] private PickablePanel panelClicked;
+    [SerializeField] private bool anyPanelClicked = false;
     private bool addedNewWeapon = false;
 
     public PickablePanel PanelHovering { get => panelHovering; set => panelHovering = value; }
@@ -25,13 +26,23 @@ public class InventoryManager : Singleton<InventoryManager>
 
     private void OnEnable()
     {
-        CreateAllPanels();
+        WeaponManager.Instance.OnWeaponsInit += CreateAllPanels;
+
+        newWeaponPanels = new List<PickablePanel>();
+        buildPanels = new List<PickablePanel>();
+        lastRoundPickablePanels = new List<PickablePanel>();
+        //CreateAllPanels();
     }
     private void OnDisable()
     {
         DestroyAllPanels();
     }
-    private void CreateAllPanels()
+    public void BeginNextWave()
+    {
+        WaveManager.Instance.BeginNextWave();
+    }
+
+    public void CreateAllPanels()
     {
         CreateNrwPanels();
         CreateBuildPanels();
@@ -53,6 +64,8 @@ public class InventoryManager : Singleton<InventoryManager>
             tempPP.PositionInBuild = i;
             tempPP.Weapon = WeaponPrefabsLists.Instance.weaponPrefabLists[WaveManager.Instance.CurrentWave][ran];
             tempPP.CurrentTrueNewFalse = false;
+
+            newWeaponPanels.Add(tempPP);
         }
     }
     private void CreateBuildPanels()
@@ -70,7 +83,7 @@ public class InventoryManager : Singleton<InventoryManager>
     }
     private void DestroyAllPanels()
     {
-        for (int i = newWeaponPanels.Count -1; i >= 0; i--)
+        for (int i = newWeaponPanels.Count - 1; i >= 0; i--)
         {
             Destroy(newWeaponPanels[i].gameObject);
         }
@@ -90,13 +103,21 @@ public class InventoryManager : Singleton<InventoryManager>
         }
     }
 
-    public void DeactivateUnusablePanels()
+    public void DeactivateUnusablePanels(bool all)
     {
         for (int i = 0; i < newWeaponPanels.Count; i++)
         {
-            newWeaponPanels[i].PanelSetActive(newWeaponPanels[i].Picked);
+            if (all)
+            {
+                newWeaponPanels[i].PanelSetActive(false);
+            }
+            else
+            {
+                newWeaponPanels[i].PanelSetActive(newWeaponPanels[i].Picked);
+            }
         }
     }
+
     private void ActivateAllPanels()
     {
         for (int i = 0; i < newWeaponPanels.Count; i++)
@@ -108,20 +129,24 @@ public class InventoryManager : Singleton<InventoryManager>
     public void SwapPickAndBuildPanels()
     {
         addedNewWeapon = true;
+        nextWaveButton.SetActive(true);
 
         int indexPicked = newWeaponPanels.IndexOf(panelClicked);
         int indexBuild = buildPanels.IndexOf(panelHovering);
 
-        newWeaponPanels.Remove(panelClicked);
-        buildPanels.Remove(panelHovering);
-
         newWeaponPanels.Insert(indexPicked, panelHovering);
         buildPanels.Insert(indexBuild, panelClicked);
 
+        newWeaponPanels.Remove(panelClicked);
+        buildPanels.Remove(panelHovering);
+
         int aux = panelHovering.PositionInBuild;
 
-        Destroy(WeaponManager.Instance.Weapons[aux]);
-        GameObject tempNewWeapon = Instantiate(panelClicked.Weapon, WeaponManager.Instance._player.cam.transform);
+        GameObject tempRemovingW = WeaponManager.Instance.Weapons[aux];
+        WeaponManager.Instance.Weapons.Remove(WeaponManager.Instance.Weapons[aux]);
+        Destroy(tempRemovingW);
+
+        GameObject tempNewWeapon = Instantiate(panelClicked.Weapon, WeaponManager.Instance._player.weaponsParent.transform);
         WeaponManager.Instance.Weapons.Insert(aux, tempNewWeapon);
         WeaponManager.Instance.Weapons[aux].GetComponent<PositionInBuild>().positionInBuild = aux;
 
@@ -136,9 +161,19 @@ public class InventoryManager : Singleton<InventoryManager>
         SortChildren(buildPanelParent.transform);
         SortChildren(nrwPanelParent.transform);
 
+        RestartPanelsVariables();
+        DeactivateUnusablePanels(true);
+
         //BETTER UPDATEWEAPONS WHEN CLICKING "DONE" BUTTON, BUT LET'S KEEP THIS FOR DEBUGGING PURPOSES FOR NOW
-        WeaponManager.Instance.UpdateWeapons();
+        StartCoroutine(WeaponManager.Instance.UpdateWeaponsCoroutine());
     }
+
+    private void RestartPanelsVariables()
+    {
+        panelClicked = null;
+        anyPanelClicked = false;
+    }
+
     public void SwapBuildPanels()
     {
         int aux = panelHovering.PositionInBuild;
@@ -150,6 +185,12 @@ public class InventoryManager : Singleton<InventoryManager>
         panelClicked.PositionInBuild = aux;
 
         SortChildren(buildPanelParent.transform);
+        RestartPanelsVariables();
+
+        if (!addedNewWeapon)
+        {
+            ActivateAllPanels();
+        }
 
         //BETTER UPDATEWEAPONS WHEN CLICKING "DONE" BUTTON, BUT LET'S KEEP THIS FOR DEBUGGING PURPOSES FOR NOW
         WeaponManager.Instance.UpdateWeapons();
@@ -167,12 +208,11 @@ public class InventoryManager : Singleton<InventoryManager>
             children.Add(child);
             child.parent = null;
         }
-        
+
         children.Sort((Transform t1, Transform t2) => { return t1.GetComponent<PickablePanel>().PositionInBuild.CompareTo(t2.GetComponent<PickablePanel>().PositionInBuild); });
 
         foreach (Transform child in children)
         {
-            Debug.Log(child.GetComponent<PickablePanel>().PositionInBuild);
             child.parent = parent;
         }
     }

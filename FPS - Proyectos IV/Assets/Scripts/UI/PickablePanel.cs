@@ -7,10 +7,10 @@ using UnityEngine.EventSystems;
 public class PickablePanel : MonoBehaviour, IPointerClickHandler, IPointerEnterHandler, IPointerExitHandler
 {
     [SerializeField] private bool currentTrueNewFalse;
-    private GameObject weapon;
+    [SerializeField] private GameObject weapon;
     private Image weaponImage;
 
-    protected bool showDeactivated;
+    [SerializeField] protected bool showDeactivated;
     private int positionInBuild = -1;
     private bool picked = false;
 
@@ -33,6 +33,7 @@ public class PickablePanel : MonoBehaviour, IPointerClickHandler, IPointerEnterH
             if (!InventoryManager.Instance.AnyPanelClicked)
             {
                 InventoryManager.Instance.PanelClicked = this;
+                InventoryManager.Instance.AnyPanelClicked = true;
                 ClickBehaviour();
             }
             else
@@ -66,7 +67,7 @@ public class PickablePanel : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     {
         picked = true;
 
-        InventoryManager.Instance.DeactivateUnusablePanels();
+        InventoryManager.Instance.DeactivateUnusablePanels(false);
     }
 
     public void PanelSetActive(bool active)
@@ -76,6 +77,6 @@ public class PickablePanel : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         tempColor.a = active ? 1f : 0.5f;
         weaponImage.color = tempColor;
 
-        showDeactivated = active;
+        showDeactivated = !active;
     }
 }

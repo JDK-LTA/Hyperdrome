@@ -163,7 +163,7 @@ public class WeaponEditor : EditorWindow
             weaponListRef.weaponList[i].IsCreated = true;
             weaponListRef.weaponList[i].PreviousName = weaponListRef.weaponList[i].Name;
 
-            prefabToCopy = (GameObject)AssetDatabase.LoadMainAssetAtPath("Assets/Resources/WEAPON PREFABS/CW_Configurable.prefab");
+            prefabToCopy = (GameObject)AssetDatabase.LoadMainAssetAtPath("Assets/Tools/WeaponCreator/CW_Configurable.prefab");
 
             tempWeapon = (GameObject)PrefabUtility.InstantiatePrefab(prefabToCopy);
             ApplyChanges(tempWeapon, i);
@@ -471,8 +471,10 @@ public class WeaponEditor : EditorWindow
             case WeaponType.NORMAL:
                 break;
             case WeaponType.LASER:
-                weaponInfo.EndSpeed = EditorGUILayout.FloatField("Speed of laser's end", weaponInfo.EndSpeed);
-                weaponInfo.LineStartWidth = EditorGUILayout.FloatField("Width of laser's start", weaponInfo.LineStartWidth);
+                weaponInfo.EndSpeed = EditorGUILayout.FloatField("Speed of laser's end", weaponInfo.EndSpeed);
+
+                weaponInfo.LineStartWidth = EditorGUILayout.FloatField("Width of laser's start", weaponInfo.LineStartWidth);
+
                 weaponInfo.LineEndWidth = EditorGUILayout.FloatField("Width of laser's end", weaponInfo.LineEndWidth);
                 break;
             case WeaponType.SHOTGUN:
