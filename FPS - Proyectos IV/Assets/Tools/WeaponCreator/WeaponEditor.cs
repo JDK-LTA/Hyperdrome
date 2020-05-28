@@ -471,8 +471,8 @@ public class WeaponEditor : EditorWindow
             case WeaponType.NORMAL:
                 break;
             case WeaponType.LASER:
-                weaponInfo.EndSpeed = EditorGUILayout.FloatField("Speed of laser's end", weaponInfo.EndSpeed);
-                weaponInfo.LineStartWidth = EditorGUILayout.FloatField("Width of laser's start", weaponInfo.LineStartWidth);
+                weaponInfo.EndSpeed = EditorGUILayout.FloatField("Speed of laser's end", weaponInfo.EndSpeed);
+                weaponInfo.LineStartWidth = EditorGUILayout.FloatField("Width of laser's start", weaponInfo.LineStartWidth);
                 weaponInfo.LineEndWidth = EditorGUILayout.FloatField("Width of laser's end", weaponInfo.LineEndWidth);
                 break;
             case WeaponType.SHOTGUN:

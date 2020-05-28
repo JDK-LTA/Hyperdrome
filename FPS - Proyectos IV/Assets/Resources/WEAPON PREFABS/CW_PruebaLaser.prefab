@@ -21,14 +21,14 @@ MonoBehaviour:
   _levelRequired: 0
   _ammo: 0
   _weight: 0
-  _damagePerHit: 0
+  _damagePerHit: 2
   _forceToApply: 0
   _range: 200
   _cdBetweenShots: 0
   variance: 0
   varianceDecreaseWhenAim: 1
   speedDecreaseWhenAim: 1
-  _numberToChange: 6
+  _numberToChange: 10
   _raycastSpot: {fileID: 0}
   isAiming: 0
   auxNoToChange: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f19d693d7cad0f4486a18724fb3d37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!120 &361320713189098338
+--- !u!120 &4807011368055613948
 LineRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

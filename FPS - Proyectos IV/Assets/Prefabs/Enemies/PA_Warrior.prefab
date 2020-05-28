@@ -983,10 +983,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   difficulty: 2
-  maxHp: 100
-  damagePerAttack: 10
+  maxHp: 35
+  damagePerAttack: 5
   golden: 0
-  distanceToAttack: 3
+  distanceToAttack: 2
 --- !u!1 &4219697788511264337
 GameObject:
   m_ObjectHideFlags: 0

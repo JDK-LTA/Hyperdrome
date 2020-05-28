@@ -1,5 +1,17 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &7070237648680345077
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6574447805376179966}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88f760f486aff4942949e1be1e7df038, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &7409617305264198984
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32,18 +44,6 @@ MonoBehaviour:
   _raycastSpot: {fileID: 0}
   isAiming: 0
   auxNoToChange: 0
---- !u!114 &7070237648680345077
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6574447805376179966}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88f760f486aff4942949e1be1e7df038, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &7186916573792490010
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -54,7 +54,7 @@ PrefabInstance:
     - target: {fileID: 4071306813705813220, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
       propertyPath: m_Name
-      value: CW_Configurable
+      value: CW_asdasd
       objectReference: {fileID: 0}
     - target: {fileID: 5176600576134307842, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}

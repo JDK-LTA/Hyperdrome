@@ -2517,13 +2517,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 17a51b81d083ee6489b87936a4c3d486, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  difficulty: 1
   maxHp: 100
-  walkingSpeed: 3
-  runningSpeed: 6
-  distanceToRun: 20
-  distanceToExplode: 5
+  damagePerAttack: 10
+  golden: 0
+  distanceToRun: 15
+  distanceToExplode: 3
   explosionRadius: 10
   explosionForce: 1000
+  walkingSpeed: 3
+  runningSpeed: 6
 --- !u!1 &1533244445735912
 GameObject:
   m_ObjectHideFlags: 0
