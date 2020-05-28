@@ -143,7 +143,7 @@ public class WeaponEditor : EditorWindow
         }
 
         //IF THE PREFAB ASSET HAS BEEN DESTROYED MANUALLY
-        else if (AssetDatabase.LoadMainAssetAtPath("Assets/WEAPON PREFABS/CW_" + weaponListRef.weaponList[i].PreviousName + ".prefab") == null)
+        else if (AssetDatabase.LoadMainAssetAtPath("Assets/Resources/WEAPON PREFABS/CW_" + weaponListRef.weaponList[i].PreviousName + ".prefab") == null)
         {
             throw new System.Exception("The " + weaponListRef.weaponList[i].Name + " has been manually deleted. Hit the 'Destroy prefab' button first.");
         }
@@ -163,16 +163,16 @@ public class WeaponEditor : EditorWindow
             weaponListRef.weaponList[i].IsCreated = true;
             weaponListRef.weaponList[i].PreviousName = weaponListRef.weaponList[i].Name;
 
-            prefabToCopy = (GameObject)AssetDatabase.LoadMainAssetAtPath("Assets/WEAPON PREFABS/CW_Configurable.prefab");
+            prefabToCopy = (GameObject)AssetDatabase.LoadMainAssetAtPath("Assets/Resources/WEAPON PREFABS/CW_Configurable.prefab");
 
             tempWeapon = (GameObject)PrefabUtility.InstantiatePrefab(prefabToCopy);
             ApplyChanges(tempWeapon, i);
 
-            PrefabUtility.SaveAsPrefabAsset(tempWeapon, "Assets/WEAPON PREFABS/CW_" + weaponListRef.weaponList[i].Name + ".prefab");
+            PrefabUtility.SaveAsPrefabAsset(tempWeapon, "Assets/Resources/WEAPON PREFABS/CW_" + weaponListRef.weaponList[i].Name + ".prefab");
         }
         else
         {
-            prefabToCopy = (GameObject)AssetDatabase.LoadMainAssetAtPath("Assets/WEAPON PREFABS/CW_" + weaponListRef.weaponList[i].PreviousName + ".prefab");
+            prefabToCopy = (GameObject)AssetDatabase.LoadMainAssetAtPath("Assets/Resources/WEAPON PREFABS/CW_" + weaponListRef.weaponList[i].PreviousName + ".prefab");
 
             if (prefabToCopy == null)
             {
@@ -186,7 +186,7 @@ public class WeaponEditor : EditorWindow
                 //IF CAR NAME WAS CHANGED, CHANGE ITS PREFAB'S NAME
                 if (weaponListRef.weaponList[i].PreviousName != weaponListRef.weaponList[i].Name)
                 {
-                    AssetDatabase.RenameAsset("Assets/WEAPON PREFABS/CW_" + weaponListRef.weaponList[i].PreviousName + ".prefab", "CW_"+weaponListRef.weaponList[i].Name);
+                    AssetDatabase.RenameAsset("Assets/Resources/WEAPON PREFABS/CW_" + weaponListRef.weaponList[i].PreviousName + ".prefab", "CW_" + weaponListRef.weaponList[i].Name);
                     weaponListRef.weaponList[i].PreviousName = weaponListRef.weaponList[i].Name;
                 }
 
@@ -208,7 +208,7 @@ public class WeaponEditor : EditorWindow
     void DestroyPrefab()
     {
         weaponListRef.weaponList[viewIndex - 1].IsCreated = false;
-        FileUtil.DeleteFileOrDirectory("Assets/WEAPON PREFABS/CW_" + weaponListRef.weaponList[viewIndex - 1].Name + ".prefab");
+        FileUtil.DeleteFileOrDirectory("Assets/Resources/WEAPON PREFABS/CW_" + weaponListRef.weaponList[viewIndex - 1].Name + ".prefab");
         AssetDatabase.Refresh();
     }
 
@@ -394,8 +394,8 @@ public class WeaponEditor : EditorWindow
 
         wc.LevelRequired = info.LevelRequired;
 
-        wc.Ammo = info.Ammo;
-        wc.Weight = info.Weight;
+        //wc.Ammo = info.Ammo;
+        //wc.Weight = info.Weight;
         wc.DamagePerHit = info.DamagePerHit;
         wc.ForceToApply = info.ForceToApply;
         wc.Range = info.Range;
@@ -407,7 +407,7 @@ public class WeaponEditor : EditorWindow
 
         wc.NumberToChange = info.NumberToChange;
 
-        wc.RaycastSpot = info.RaycastSpot;
+        //wc.RaycastSpot = info.RaycastSpot;
         #endregion
     }
 
@@ -454,8 +454,8 @@ public class WeaponEditor : EditorWindow
 
 
         GUILayout.Label("General weapon variables", EditorStyles.boldLabel);
-        weaponInfo.Ammo = EditorGUILayout.IntField("Ammo", weaponInfo.Ammo);
-        weaponInfo.Weight = EditorGUILayout.FloatField("Weight", weaponInfo.Weight);
+        //weaponInfo.Ammo = EditorGUILayout.IntField("Ammo", weaponInfo.Ammo);
+        //weaponInfo.Weight = EditorGUILayout.FloatField("Weight", weaponInfo.Weight);
         weaponInfo.DamagePerHit = EditorGUILayout.FloatField("Damage per hit", weaponInfo.DamagePerHit);
         weaponInfo.ForceToApply = EditorGUILayout.FloatField("Force to apply", weaponInfo.ForceToApply);
         weaponInfo.Range = EditorGUILayout.FloatField("Range", weaponInfo.Range);
@@ -466,13 +466,13 @@ public class WeaponEditor : EditorWindow
 
         GUILayout.Space(5);
         GUILayout.Label("Specific weapon variables", EditorStyles.boldLabel);
-        switch (weaponListRef.weaponList[viewIndex-1].WeaponType)
+        switch (weaponListRef.weaponList[viewIndex - 1].WeaponType)
         {
             case WeaponType.NORMAL:
                 break;
             case WeaponType.LASER:
-                weaponInfo.EndSpeed = EditorGUILayout.FloatField("Speed of laser's end", weaponInfo.EndSpeed); 
-                weaponInfo.LineStartWidth = EditorGUILayout.FloatField("Width of laser's start", weaponInfo.LineStartWidth); 
+                weaponInfo.EndSpeed = EditorGUILayout.FloatField("Speed of laser's end", weaponInfo.EndSpeed);
+                weaponInfo.LineStartWidth = EditorGUILayout.FloatField("Width of laser's start", weaponInfo.LineStartWidth);
                 weaponInfo.LineEndWidth = EditorGUILayout.FloatField("Width of laser's end", weaponInfo.LineEndWidth);
                 break;
             case WeaponType.SHOTGUN:
