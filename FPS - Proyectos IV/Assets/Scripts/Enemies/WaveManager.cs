@@ -64,7 +64,7 @@ public class WaveManager : Singleton<WaveManager>
     }
     private void ShowWeaponChoosingPanel(bool show)
     {
-        FindObjectOfType<InventoryManager>().gameObject.SetActive(show);
+        WeaponPrefabsLists.Instance.inventory.SetActive(show);
     }
     public void BeginNextWave()
     {

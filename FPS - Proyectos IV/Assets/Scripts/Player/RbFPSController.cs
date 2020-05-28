@@ -261,7 +261,8 @@ public class RbFPSController : MonoBehaviour
     {
         movementSettings.lockMovement = !canMove;
         mouseLook.lockCamera = !canMove;
-        mouseLook.lockCursor = canMove;
+        mouseLook.SetCursorLock(canMove);
+        //mouseLook.lockCursor = canMove;
     }
 
     private void XZDrag()

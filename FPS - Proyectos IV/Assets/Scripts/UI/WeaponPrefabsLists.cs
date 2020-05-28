@@ -32,6 +32,6 @@ public class WeaponPrefabsLists : MonoBehaviour
 
         weaponPrefabLists.TrimExcess();
 
-        inventory.SetActive(true);
+        //inventory.SetActive(true);
     }
 }

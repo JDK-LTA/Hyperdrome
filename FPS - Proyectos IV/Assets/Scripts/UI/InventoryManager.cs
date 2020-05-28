@@ -26,12 +26,12 @@ public class InventoryManager : Singleton<InventoryManager>
 
     private void OnEnable()
     {
-        WeaponManager.Instance.OnWeaponsInit += CreateAllPanels;
+        //WeaponManager.Instance.OnWeaponsInit += CreateAllPanels;
 
         newWeaponPanels = new List<PickablePanel>();
         buildPanels = new List<PickablePanel>();
         lastRoundPickablePanels = new List<PickablePanel>();
-        //CreateAllPanels();
+        CreateAllPanels();
     }
     private void OnDisable()
     {
