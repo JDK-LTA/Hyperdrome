@@ -53,7 +53,7 @@ public class WeaponLaser : WeaponBase
     protected override void ShootingBullet(Vector3 direction)
     {
         Vector3 shootPos = _raycastSpot.position;
-        Ray ray = new Ray(/*Camera.main.transform.position*/shootPos, direction);
+        Ray ray = new Ray(shootPos, direction);
 
         if (Physics.Raycast(ray, out RaycastHit hit, _range))
         {
@@ -62,7 +62,7 @@ public class WeaponLaser : WeaponBase
         }
         else
         {
-            endPoint = Camera.main.transform.forward * _range;
+            endPoint = shootPos + Camera.main.transform.forward * _range;
         }
 
         if (!isLine)
@@ -91,7 +91,7 @@ public class WeaponLaser : WeaponBase
         for (int i = 0; i < numPoints; i++)
         {
             float t = i / (float)numPoints;
-            positions[i] = CalculateQuadBezierPoint(t, /*Camera.main.transform.position*/shootPos, endPoint, bezierCtrlPoint);
+            positions[i] = CalculateQuadBezierPoint(t, shootPos, endPoint, bezierCtrlPoint);
         }
         line.SetPositions(positions);
     }
@@ -101,6 +101,5 @@ public class WeaponLaser : WeaponBase
             * Vector3.Distance(RaycastSpot.position, bezierCtrlPoint), endSpeed, 500);
 
         bezierCtrlPoint = Vector3.MoveTowards(bezierCtrlPoint, endPoint, Time.deltaTime * actualSpeed);
-        //Debug.Log("Speed: " + actualSpeed);
     }
 }
