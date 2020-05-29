@@ -14,8 +14,10 @@ public class WeaponManager : MonoBehaviour
 
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         Instance = this;
     }
+    
 
     public int selectedWeapon = 0;
     public int maxNumberOfWeapons = 2;
@@ -63,7 +65,7 @@ public class WeaponManager : MonoBehaviour
     }
     public void NextWeapon()
     {
-        if (selectedWeapon >= maxNumberOfWeapons - 1)
+        if (selectedWeapon >= weapons.Count - 1)
             selectedWeapon = 0;
         else
             selectedWeapon++;

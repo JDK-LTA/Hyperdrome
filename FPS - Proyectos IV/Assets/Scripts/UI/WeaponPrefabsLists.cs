@@ -2,13 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WeaponPrefabsLists : MonoBehaviour
+public class WeaponPrefabsLists : Singleton<WeaponPrefabsLists>
 {
-    public static WeaponPrefabsLists Instance;
-    private void Awake()
-    {
-        Instance = this;
-    }
+    //public static WeaponPrefabsLists Instance;
+    //private void Awake()
+    //{
+    //    Instance = this;
+    //}
 
     public List<List<GameObject>> weaponPrefabLists;
     public GameObject[] prefabs;
@@ -16,7 +16,7 @@ public class WeaponPrefabsLists : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        /*GameObject[] */prefabs = Resources.LoadAll<GameObject>("WEAPON PREFABS");
+        prefabs = Resources.LoadAll<GameObject>("WEAPON PREFABS");
         weaponPrefabLists = new List<List<GameObject>>();
 
         for (int i = 0; i < 8; i++)
@@ -31,7 +31,5 @@ public class WeaponPrefabsLists : MonoBehaviour
         }
 
         weaponPrefabLists.TrimExcess();
-
-        //inventory.SetActive(true);
     }
 }
