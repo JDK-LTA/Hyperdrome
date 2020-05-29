@@ -12,6 +12,8 @@ public class EnemyShooter : EnemyBase
 
     float timer;
 
+    public event EnemyEvents OnShoot;
+
     protected override void Start()
     {
         base.Start();
@@ -55,6 +57,8 @@ public class EnemyShooter : EnemyBase
         EnemyBullet eb = go.GetComponent<EnemyBullet>();
         eb.Speed = bulletSpeed;
         eb.Dmg = damagePerAttack;
+
+        OnShoot?.Invoke();
     }
 
     protected override void Die()
