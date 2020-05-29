@@ -53,7 +53,6 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void Die()
     {
-
         if (golden)
         {
             Instantiate(EnemiesManager.Instance.goldenPiece, transform.position, transform.rotation);

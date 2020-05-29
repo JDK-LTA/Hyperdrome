@@ -5,7 +5,7 @@ using UnityEditor;
 
 public class WaveManager : Singleton<WaveManager>
 {
-    [SerializeField] private int _currentWave = 0;
+    [SerializeField] private int _currentWave = -1;
     private List<WaveInfo> _waves;
 
     private List<EnemyBase> _enemiesThisWave;
@@ -31,7 +31,15 @@ public class WaveManager : Singleton<WaveManager>
     {
         _waves = Resources.Load<WaveList>("WaveList").waves;
 
-        UpdateWave();
+        StartCoroutine(FirstWave());
+        //UpdateWave();
+    }
+
+    IEnumerator FirstWave()
+    {
+        yield return new WaitForSeconds(2);
+
+        EndWave();
     }
 
     private void UpdateWave()
@@ -59,8 +67,6 @@ public class WaveManager : Singleton<WaveManager>
         //END WAVE STUFF
         WeaponManager.Instance._player.CanMove(false);
         ShowWeaponChoosingPanel(true);
-
-        //JUST TO TRY, LET'S BEGIN NEXT ROUND FOR NOW
     }
     private void ShowWeaponChoosingPanel(bool show)
     {

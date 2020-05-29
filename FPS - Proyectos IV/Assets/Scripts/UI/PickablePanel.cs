@@ -30,22 +30,32 @@ public class PickablePanel : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     {
         if (!showDeactivated)
         {
-            if (!InventoryManager.Instance.AnyPanelClicked)
+            GeneralClickPanelStuff();
+        }
+    }
+
+    private void GeneralClickPanelStuff()
+    {
+        if (!InventoryManager.Instance.AnyPanelClicked)
+        {
+            InventoryManager.Instance.PanelClicked = this;
+            InventoryManager.Instance.AnyPanelClicked = true;
+            ClickBehaviour();
+
+            if (WeaponManager.Instance.Weapons.Count < WeaponManager.Instance.maxNumberOfWeapons && !currentTrueNewFalse)
             {
-                InventoryManager.Instance.PanelClicked = this;
-                InventoryManager.Instance.AnyPanelClicked = true;
-                ClickBehaviour();
+                InventoryManager.Instance.AddWeapon();
+            }
+        }
+        else
+        {
+            if (InventoryManager.Instance.PanelClicked.CurrentTrueNewFalse)
+            {
+                InventoryManager.Instance.SwapBuildPanels();
             }
             else
             {
-                if (InventoryManager.Instance.PanelClicked.CurrentTrueNewFalse)
-                {
-                    InventoryManager.Instance.SwapBuildPanels();
-                }
-                else
-                {
-                    InventoryManager.Instance.SwapPickAndBuildPanels();
-                }
+                InventoryManager.Instance.SwapPickAndBuildPanels();
             }
         }
     }

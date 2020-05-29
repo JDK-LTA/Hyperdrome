@@ -24,6 +24,10 @@ public class EnemyAnimBase : MonoBehaviour
         {
             _agent = transform.parent.GetComponent<NavMeshAgent>();
         }
+        if (_agent == null)
+        {
+            _agent = transform.parent.parent.GetComponent<NavMeshAgent>();
+        }
     }
 
     protected virtual void Start()

@@ -146,7 +146,7 @@ public class WeaponBase : MonoBehaviour
     protected void EnemyHitBehaviour(ref RaycastHit hit, Ray ray)
     {
         EnemyBase enemyHit = hit.transform.GetComponent<EnemyBase>();
-        //Debug.Log("Hit" + hit.transform.name);
+
         if (enemyHit != null)
         {
             if (_changer == Changer.HIT)
@@ -161,21 +161,21 @@ public class WeaponBase : MonoBehaviour
 
             hit.rigidbody?.AddForce(ray.direction * ForceToApply);
             WeaponManager.Instance.EnemyHit(enemyHit, _damagePerHit);
-            //Debug.Log("Hit");
+
         }
     }
 
     protected Vector3 GetVariedDirection()
     {
         Vector3 direction;
-        //Debug.Log(IsAiming);
+
         if (!isAiming)
         {
             direction = Random.insideUnitCircle * variance;
         }
         else
         {
-            direction = Random.insideUnitSphere * (variance / varianceDecreaseWhenAim);
+            direction = Random.insideUnitCircle * (variance / varianceDecreaseWhenAim);
         }
 
         direction.z = Range; // circle is at Z units 
