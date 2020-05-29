@@ -56,4 +56,11 @@ public class EnemyShooter : EnemyBase
         eb.Speed = bulletSpeed;
         eb.Dmg = damagePerAttack;
     }
+
+    protected override void Die()
+    {
+        base.Die();
+
+        Destroy(gameObject);
+    }
 }

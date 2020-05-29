@@ -9,10 +9,6 @@ public class EnemyBullet : MonoBehaviour
     public float Speed { get => speed; set => speed = value; }
     public float Dmg { get => dmg; set => dmg = value; }
 
-    private void Start()
-    {
-        Debug.Log(transform.forward);
-    }
     // Update is called once per frame
     void Update()
     {
