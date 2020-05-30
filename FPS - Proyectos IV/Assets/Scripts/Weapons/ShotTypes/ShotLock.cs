@@ -10,9 +10,23 @@ public class ShotLock : ShotSemi
     protected override void Start()
     {
         base.Start();
+        transform.GetComponentInParent<WeaponAnimator>().LockFinished += IfNotShootingCanShoot;
     }
+
     protected override void Update()
     {
-        base.Update();
+        if (canShoot)
+        {
+            if (shooting)
+            {
+                weapon.Shoot();
+                canShoot = false;
+            }
+        }
+    }
+
+    protected override void IfNotShootingCanShoot()
+    {
+        canShoot = true;
     }
 }

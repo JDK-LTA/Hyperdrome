@@ -9,8 +9,14 @@ public class WeaponManager : MonoBehaviour
 
     public delegate void WeaponEvents(EnemyBase enemyHit, float damageDealt);
     public event WeaponEvents OnHit;
-    public delegate void OrderEv();
-    public event OrderEv OnWeaponsInit;
+    public delegate void WeaponSimpleEvents();
+    public event WeaponSimpleEvents OnWeaponsInit;
+    public event WeaponSimpleEvents OnShoot;
+
+    public void TriggerShootEvent()
+    {
+        OnShoot?.Invoke();
+    }
 
     private void Awake()
     {
@@ -107,6 +113,7 @@ public class WeaponManager : MonoBehaviour
 
         List<GameObject> listWeapons = new List<GameObject>();
         PositionInBuild[] positions = _player.weaponsParent.GetComponentsInChildren<PositionInBuild>();
+
         for (int i = 0; i < positions.Length; i++)
         {
             listWeapons.Add(positions[i].gameObject);

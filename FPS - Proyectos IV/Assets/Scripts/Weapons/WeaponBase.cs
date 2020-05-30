@@ -59,7 +59,7 @@ public class WeaponBase : MonoBehaviour
     protected bool canShoot = false, firstShot = false;
 
     private float auxTimer = 0;
-    [HideInInspector] public float auxNoToChange;
+    public float auxNoToChange;
 
     protected virtual void Awake()
     {
@@ -84,7 +84,6 @@ public class WeaponBase : MonoBehaviour
     protected virtual void Aiming(bool aux)
     {
         isAiming = aux;
-        Debug.Log(IsAiming);
     }
 
     // Update is called once per frame
@@ -113,6 +112,7 @@ public class WeaponBase : MonoBehaviour
 
         audioSource.PlayOneShot(FireSound);
         shotComp.CanShoot = false;
+        WeaponManager.Instance.TriggerShootEvent();
 
         if (_changer == Changer.AMMO)
         {
