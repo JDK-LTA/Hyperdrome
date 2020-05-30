@@ -27,6 +27,13 @@ public class WaveManager : Singleton<WaveManager>
 
     public UnityEngine.UI.Text debugText;
 
+    bool isSpawning = true, debugSpawn = false;
+    float tPerGolden = 0;
+    [SerializeField] float cdPerGolden = 8;
+    float tPerSpawn = 0;
+    [SerializeField] float cdPerSpawn = 0.75f;
+    private EnemyBase lastEnemySpawned = null;
+
     private void Start()
     {
         _waves = Resources.Load<WaveList>("WaveList").waves;
@@ -47,6 +54,9 @@ public class WaveManager : Singleton<WaveManager>
         _enemiesThisWave = _waves[_currentWave].EnemiesThisWave;
         _positionsToSpawn = _waves[_currentWave].PositionsToSpawn;
 
+        cdPerSpawn = _waves[_currentWave].CdBetweenEnemiesSpawn;
+        cdPerGolden = _waves[_currentWave].CdBetweenGoldenSpawn;
+
         _waveDifficulty = _waves[_currentWave].TotalDifficulty;
         _currentDifficulty = _waves[_currentWave].TotalDifficulty;
 
@@ -54,7 +64,6 @@ public class WaveManager : Singleton<WaveManager>
         _goldenThisWave = new List<EnemyBase>(_waves[_currentWave].GoldenEnemiesThisWave);
         _gCurrentDifficulty = _goldenDifficulty;
         piecesToEndWave = _waves[_currentWave].GoldenEnemiesThisWave.Count;
-        //_percPerSubwave = _waves[_currentWave].PercentageOfSpawnsPerSubwave;
     }
     public void PrepareToEndWave()
     {
@@ -83,13 +92,6 @@ public class WaveManager : Singleton<WaveManager>
         UpdateWave();
         isSpawning = true;
     }
-
-    bool isSpawning = true, debugSpawn = false;
-    float tPerGolden = 0;
-    [SerializeField] float cdPerGolden = 8;
-    float tPerSpawn = 0;
-    [SerializeField] float cdPerSpawn = 0.75f;
-    private EnemyBase lastEnemySpawned = null;
 
     private void Update()
     {

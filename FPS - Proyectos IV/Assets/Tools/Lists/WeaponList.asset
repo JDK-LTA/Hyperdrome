@@ -102,7 +102,7 @@ MonoBehaviour:
     shootingType: 0
     weaponType: 0
     changer: 0
-    mesh: {fileID: 0}
+    mesh: {fileID: 4300004, guid: e16953ee70c66b64aacb5cfc435bfe21, type: 3}
     materials: []
     bullet: {fileID: 0}
     crosshairTexture: {fileID: 0}
@@ -110,14 +110,14 @@ MonoBehaviour:
     levelRequired: 0
     ammo: 0
     weight: 0
-    damagePerHit: 0
-    forceToApply: 0
-    range: 0
-    cdBetweenShots: 0
-    variance: 0
-    varianceDecreaseWhenAim: 0
-    speedDecreaseWhenAim: 0
-    numberToChange: 0
+    damagePerHit: 10
+    forceToApply: 1
+    range: 50
+    cdBetweenShots: 1
+    variance: 1
+    varianceDecreaseWhenAim: 1
+    speedDecreaseWhenAim: 1
+    numberToChange: 100
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 0
     endSpeed: 10

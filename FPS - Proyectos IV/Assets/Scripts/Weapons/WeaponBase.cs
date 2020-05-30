@@ -59,7 +59,9 @@ public class WeaponBase : MonoBehaviour
     protected bool canShoot = false, firstShot = false;
 
     private float auxTimer = 0;
-    [HideInInspector] public float auxNoToChange;
+    public float auxNoToChange;
+
+    private ParticleSystem muzzle;
 
     protected virtual void Awake()
     {
@@ -69,7 +71,9 @@ public class WeaponBase : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        RaycastSpot = transform.Find("Shooting spot");
+        _raycastSpot = transform.Find("Shooting spot");
+        muzzle = _raycastSpot.GetComponent<ParticleSystem>();
+
         auxNoToChange = _numberToChange;
 
         InputManager.Instance.OnHoldAim += Aiming;
@@ -84,7 +88,6 @@ public class WeaponBase : MonoBehaviour
     protected virtual void Aiming(bool aux)
     {
         isAiming = aux;
-        Debug.Log(IsAiming);
     }
 
     // Update is called once per frame
@@ -112,7 +115,13 @@ public class WeaponBase : MonoBehaviour
         ShotsThatAreShot();
 
         audioSource.PlayOneShot(FireSound);
+        if (_weaponType != WeaponType.LASER)
+        {
+            muzzle.Play();
+        }
         shotComp.CanShoot = false;
+        WeaponManager.Instance.TriggerShootEvent();
+
 
         if (_changer == Changer.AMMO)
         {

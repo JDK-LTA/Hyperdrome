@@ -32,11 +32,12 @@ public class ShotSemi : ShotBase
 
     }
 
-    private void IfNotShootingCanShoot()
+    protected virtual void IfNotShootingCanShoot()
     {
         if (!shooting)
         {
             canShoot = true;
+            auxTimer = 0;
         }
     }
 }
