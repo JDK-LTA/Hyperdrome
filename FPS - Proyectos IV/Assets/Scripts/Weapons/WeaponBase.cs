@@ -61,6 +61,8 @@ public class WeaponBase : MonoBehaviour
     private float auxTimer = 0;
     public float auxNoToChange;
 
+    private ParticleSystem muzzle;
+
     protected virtual void Awake()
     {
         audioSource = GetComponent<AudioSource>();
@@ -69,7 +71,9 @@ public class WeaponBase : MonoBehaviour
     // Start is called before the first frame update
     protected virtual void Start()
     {
-        RaycastSpot = transform.Find("Shooting spot");
+        _raycastSpot = transform.Find("Shooting spot");
+        muzzle = _raycastSpot.GetComponent<ParticleSystem>();
+
         auxNoToChange = _numberToChange;
 
         InputManager.Instance.OnHoldAim += Aiming;
@@ -111,8 +115,13 @@ public class WeaponBase : MonoBehaviour
         ShotsThatAreShot();
 
         audioSource.PlayOneShot(FireSound);
+        if (_weaponType != WeaponType.LASER)
+        {
+            muzzle.Play();
+        }
         shotComp.CanShoot = false;
         WeaponManager.Instance.TriggerShootEvent();
+
 
         if (_changer == Changer.AMMO)
         {
