@@ -57,7 +57,7 @@ public class GameManager : Singleton<GameManager>
     private void PostProCalc()
     {
         float x = playerHp / playerMaxHp;
-        float y = 0.025f + 1.95f * x - x * x;
+        float y = 0.025f - 0.05f * x + x * x;
         ppvPlayer.weight = 1 - y;
     }
 

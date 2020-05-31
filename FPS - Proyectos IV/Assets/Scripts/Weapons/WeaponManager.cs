@@ -22,6 +22,8 @@ public class WeaponManager : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         Instance = this;
+
+        _player = GetComponent<RbFPSController>();
     }
 
 
@@ -36,7 +38,6 @@ public class WeaponManager : MonoBehaviour
 
     private void Start()
     {
-        _player = GetComponent<RbFPSController>();
 
         UpdateWeapons();
         InputManager.Instance.OnChangeWeapon += NextWeapon;
