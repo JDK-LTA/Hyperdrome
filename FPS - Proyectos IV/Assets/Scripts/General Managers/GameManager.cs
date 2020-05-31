@@ -28,6 +28,7 @@ public class GameManager : Singleton<GameManager>
     public void BringPieces()
     {
         WaveManager.Instance.PiecesToEndWave -= nOfPiecesGot;
+        UIManager.Instance.UpdatePiecesText(WaveManager.Instance.PiecesToEndWave);
         if (WaveManager.Instance.PiecesToEndWave <= 0)
         {
             WaveManager.Instance.PrepareToEndWave();
@@ -49,8 +50,15 @@ public class GameManager : Singleton<GameManager>
         }
         else
         {
-            ppvPlayer.weight = 1 - (playerHp / playerMaxHp);
+            PostProCalc();
         }
+    }
+
+    private void PostProCalc()
+    {
+        float x = playerHp / playerMaxHp;
+        float y = 0.025f + 1.95f * x - x * x;
+        ppvPlayer.weight = 1 - y;
     }
 
     private void PlayerDeath()
@@ -64,7 +72,7 @@ public class GameManager : Singleton<GameManager>
         if (regenerating)
         {
             playerHp += regenAmountPerSec * Time.deltaTime;
-            ppvPlayer.weight = 1 - (playerHp / playerMaxHp);
+            PostProCalc();
 
             if (playerHp >= playerMaxHp)
             {
