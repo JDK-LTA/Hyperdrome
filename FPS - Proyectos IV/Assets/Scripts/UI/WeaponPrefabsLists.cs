@@ -18,6 +18,7 @@ public class WeaponPrefabsLists : Singleton<WeaponPrefabsLists>
     {
         prefabs = Resources.LoadAll<GameObject>("WEAPON PREFABS");
         weaponPrefabLists = new List<List<GameObject>>();
+        inventory = Resources.FindObjectsOfTypeAll<InventoryManager>()[0].gameObject;
 
         for (int i = 0; i < 30; i++)
         {
