@@ -13,7 +13,7 @@ public class WeaponManager : MonoBehaviour
         Instance = this;
 
         _player = GetComponent<RbFPSController>();
-        SceneManager.activeSceneChanged += OnSceneSwitch; 
+        SceneManager.activeSceneChanged += OnSceneSwitch;
     }
 
     public int selectedWeapon = 0;
@@ -62,7 +62,10 @@ public class WeaponManager : MonoBehaviour
 
     private void Start()
     {
-        transform.position = new Vector3(-15.11f, 0.5f, -16.498f);
+        if (!InputManager.Instance.debug)
+        {
+            transform.position = new Vector3(-15.11f, 0.5f, -16.498f);
+        }
 
         UpdateWeapons();
         InputManager.Instance.OnChangeWeapon += NextWeapon;
