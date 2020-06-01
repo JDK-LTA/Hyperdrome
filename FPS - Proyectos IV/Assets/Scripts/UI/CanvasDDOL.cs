@@ -7,7 +7,7 @@ public class CanvasDDOL : MonoBehaviour
 {
     public static CanvasDDOL Instance;
 
-    [SerializeField] private GameObject endPanel, pauseMenu;
+    [SerializeField] private GameObject endPanel, pauseMenu, pressFText;
 
     private void Awake()
     {
@@ -32,5 +32,9 @@ public class CanvasDDOL : MonoBehaviour
     public void SetPauseMenuActive(bool value)
     {
         pauseMenu.SetActive(value);
+    }
+    public void SetPressFTextActive(bool value)
+    {
+        pressFText.SetActive(value);
     }
 }

@@ -23,6 +23,7 @@ public class InputManager : Singleton<InputManager>
     public event OnInputTrigger OnTriggerShoot;
     public event OnInputTrigger OnTriggerAbility;
     public event OnInputTrigger OnTriggerDash;
+    public event OnInputTrigger OnTriggerDeliver;
 
     public delegate void OnInputRepTrigger();
     public event OnInputRepTrigger OnRepTriggerShoot;
@@ -143,6 +144,10 @@ public class InputManager : Singleton<InputManager>
                 if (Input.GetButtonDown("Dash"))
                 {
                     OnTriggerDash?.Invoke();
+                }
+                if (Input.GetKeyDown(KeyCode.F))
+                {
+                    OnTriggerDeliver?.Invoke();
                 }
                 //
 

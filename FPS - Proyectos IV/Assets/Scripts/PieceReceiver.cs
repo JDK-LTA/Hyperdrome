@@ -8,7 +8,14 @@ public class PieceReceiver : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            GameManager.Instance.BringPieces();
+            GameManager.Instance.CanDeliver(true);
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            GameManager.Instance.CanDeliver(false);
         }
     }
 }

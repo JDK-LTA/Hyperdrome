@@ -6,6 +6,8 @@ using UnityEngine.Rendering.PostProcessing;
 public class GameManager : Singleton<GameManager>
 {
     public int nOfPiecesGot = 0;
+    [HideInInspector] public bool canDeliverPieces = false;
+
     [SerializeField] private float playerHp = 100;
     private float playerMaxHp;
 
@@ -25,12 +27,25 @@ public class GameManager : Singleton<GameManager>
     {
         playerMaxHp = playerHp;
     }
-
     public void Init()
     {
         ppvPlayer = WeaponManager.Instance._player.GetComponent<PostProcessVolume>();
     }
 
+    public void CanDeliver(bool value)
+    {
+        canDeliverPieces = value;
+        CanvasDDOL.Instance.SetPressFTextActive(value);
+
+        if (value)
+        {
+            InputManager.Instance.OnTriggerDeliver += BringPieces;
+        }
+        else
+        {
+            InputManager.Instance.OnTriggerDeliver -= BringPieces;
+        }
+    }
     public void BringPieces()
     {
         WaveManager.Instance.PiecesToEndWave -= nOfPiecesGot;
