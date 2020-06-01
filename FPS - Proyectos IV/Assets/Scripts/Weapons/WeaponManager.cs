@@ -7,6 +7,25 @@ using UnityEngine.SceneManagement;
 public class WeaponManager : MonoBehaviour
 {
     public static WeaponManager Instance;
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+        Instance = this;
+
+        _player = GetComponent<RbFPSController>();
+        SceneManager.activeSceneChanged += OnSceneSwitch; 
+    }
+
+    public int selectedWeapon = 0;
+    public int maxNumberOfWeapons = 2;
+
+    [SerializeField] private List<GameObject> weapons;
+
+    private Vector3 respawnPos = Vector3.zero;
+
+    public List<GameObject> Weapons { get => weapons; }
+
+    [HideInInspector] public RbFPSController _player;
 
     public delegate void WeaponEvents(EnemyBase enemyHit, float damageDealt, Vector3 hitPoint);
     public event WeaponEvents OnHit;
@@ -19,39 +38,27 @@ public class WeaponManager : MonoBehaviour
         OnShoot?.Invoke();
     }
 
-    private void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-        Instance = this;
-
-        _player = GetComponent<RbFPSController>();
-        SceneManager.activeSceneChanged += OnSceneSwitch; 
-    }
-
     private void OnSceneSwitch(Scene current, Scene next)
     {
         if (next.name == "Nivel2")
         {
-            transform.position = new Vector3(-45f, -35f, 95f);
+            respawnPos = new Vector3(-45f, -35f, 95f);
+            Respawn();
         }
         else if (next.name == "Nivel3")
         {
-            transform.position = new Vector3(262f, 189f, 84f);
+            respawnPos = new Vector3(262f, 189f, 84f);
+            Respawn();
         }
         else if (next.name == "MainMenu")
         {
-            Destroy(gameObject);
         }
     }
+    public void Respawn()
+    {
+        transform.position = respawnPos;
+    }
 
-    public int selectedWeapon = 0;
-    public int maxNumberOfWeapons = 2;
-
-    [SerializeField] private List<GameObject> weapons;
-
-    public List<GameObject> Weapons { get => weapons; }
-
-    [HideInInspector] public RbFPSController _player;
 
     private void Start()
     {

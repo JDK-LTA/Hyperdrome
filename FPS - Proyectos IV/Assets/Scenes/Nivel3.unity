@@ -30638,6 +30638,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1030877968}
   - component: {fileID: 1030877969}
+  - component: {fileID: 1030877970}
   m_Layer: 0
   m_Name: Death
   m_TagString: Untagged
@@ -30653,7 +30654,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1030877967}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.84, y: 41.5, z: 62.77}
+  m_LocalPosition: {x: -67.4, y: 15.7, z: -3.1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 947444067}
@@ -30670,8 +30671,20 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 216.81798, y: 29.851929, z: 165.75032}
-  m_Center: {x: -58.295372, y: -14.425964, z: -45.074104}
+  m_Size: {x: 350, y: 20, z: 350}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1030877970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1030877967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a934d30869e7a34bb1d23c806e86f35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1031815549
 PrefabInstance:
   m_ObjectHideFlags: 0
