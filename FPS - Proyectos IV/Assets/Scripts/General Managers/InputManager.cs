@@ -39,7 +39,17 @@ public class InputManager : Singleton<InputManager>
         initiated = true;
     }
 
-
+    public bool debug = false;
+    private void Start()
+    {
+        if (debug)
+        {
+            GameManager.Instance.Init();
+            Init();
+            WeaponPrefabsLists.Instance.Init();
+            WaveManager.Instance.Init();
+        }
+    }
 
     // Update is called once per frame
     private void Update()
