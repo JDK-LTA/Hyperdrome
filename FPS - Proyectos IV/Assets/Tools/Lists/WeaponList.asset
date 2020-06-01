@@ -30,7 +30,7 @@ MonoBehaviour:
     weight: 5
     damagePerHit: 20
     forceToApply: 10
-    range: 30
+    range: 5
     cdBetweenShots: 0.5
     variance: 2
     varianceDecreaseWhenAim: 4
@@ -118,33 +118,6 @@ MonoBehaviour:
     varianceDecreaseWhenAim: 1
     speedDecreaseWhenAim: 1
     numberToChange: 100
-    raycastSpot: {fileID: 0}
-    nOfBulletsPerShot: 0
-    endSpeed: 10
-    lineStartWidth: 0.05
-    lineEndWidth: 0.05
-  - previousName: Gun
-    isCreated: 1
-    name: Gun
-    shootingType: 1
-    weaponType: 0
-    changer: 1
-    mesh: {fileID: 4300000, guid: dbeb07ce6436fdc4988bcc03b8afc948, type: 3}
-    materials: []
-    bullet: {fileID: 0}
-    crosshairTexture: {fileID: 0}
-    fireSound: {fileID: 0}
-    levelRequired: 0
-    ammo: 0
-    weight: 0
-    damagePerHit: 5
-    forceToApply: 0
-    range: 10
-    cdBetweenShots: 0
-    variance: 2
-    varianceDecreaseWhenAim: 5
-    speedDecreaseWhenAim: 1
-    numberToChange: 15
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 0
     endSpeed: 10
@@ -242,7 +215,7 @@ MonoBehaviour:
     bullet: {fileID: 0}
     crosshairTexture: {fileID: 0}
     fireSound: {fileID: 0}
-    levelRequired: 1
+    levelRequired: 0
     ammo: 0
     weight: 0
     damagePerHit: 30
@@ -396,7 +369,7 @@ MonoBehaviour:
   - previousName: RiffleFast
     isCreated: 1
     name: RiffleFast
-    shootingType: 1
+    shootingType: 0
     weaponType: 0
     changer: 1
     mesh: {fileID: 4300000, guid: 97247a95be0d8f14b849964664f93547, type: 3}
@@ -404,13 +377,13 @@ MonoBehaviour:
     bullet: {fileID: 0}
     crosshairTexture: {fileID: 0}
     fireSound: {fileID: 0}
-    levelRequired: 2
+    levelRequired: 4
     ammo: 0
     weight: 0
     damagePerHit: 40
     forceToApply: 3
     range: 50
-    cdBetweenShots: 2
+    cdBetweenShots: 3
     variance: 8
     varianceDecreaseWhenAim: 6
     speedDecreaseWhenAim: 2.5
@@ -423,7 +396,7 @@ MonoBehaviour:
   - previousName: RiffleHeavy
     isCreated: 1
     name: RiffleHeavy
-    shootingType: 1
+    shootingType: 0
     weaponType: 0
     changer: 2
     mesh: {fileID: 4300000, guid: 97247a95be0d8f14b849964664f93547, type: 3}
@@ -437,9 +410,9 @@ MonoBehaviour:
     damagePerHit: 150
     forceToApply: 2
     range: 50
-    cdBetweenShots: 3
-    variance: 8
-    varianceDecreaseWhenAim: 6
+    cdBetweenShots: 1
+    variance: 20
+    varianceDecreaseWhenAim: 20
     speedDecreaseWhenAim: 2.5
     numberToChange: 5
     raycastSpot: {fileID: 0}
@@ -471,9 +444,9 @@ MonoBehaviour:
     numberToChange: 30
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 0
-    endSpeed: 10
-    lineStartWidth: 0.05
-    lineEndWidth: 0.05
+    endSpeed: 5
+    lineStartWidth: 0.02
+    lineEndWidth: 0.02
   - previousName: LaserStrong
     isCreated: 1
     name: LaserStrong
@@ -495,6 +468,411 @@ MonoBehaviour:
     variance: 0
     varianceDecreaseWhenAim: 1
     speedDecreaseWhenAim: 2.5
+    numberToChange: 20
+    raycastSpot: {fileID: 0}
+    nOfBulletsPerShot: 0
+    endSpeed: 5
+    lineStartWidth: 0.02
+    lineEndWidth: 0.02
+  - previousName: PistolLock
+    isCreated: 1
+    name: PistolLock
+    shootingType: 0
+    weaponType: 0
+    changer: 2
+    mesh: {fileID: 4300006, guid: d19a3d4883acbe9479fb1517c870cb35, type: 3}
+    materials: []
+    bullet: {fileID: 0}
+    crosshairTexture: {fileID: 0}
+    fireSound: {fileID: 0}
+    levelRequired: 2
+    ammo: 0
+    weight: 0
+    damagePerHit: 100
+    forceToApply: 1
+    range: 5
+    cdBetweenShots: 1
+    variance: 10
+    varianceDecreaseWhenAim: 10
+    speedDecreaseWhenAim: 1.5
+    numberToChange: 10
+    raycastSpot: {fileID: 0}
+    nOfBulletsPerShot: 0
+    endSpeed: 10
+    lineStartWidth: 0.05
+    lineEndWidth: 0.05
+  - previousName: AssaultLock
+    isCreated: 1
+    name: AssaultLock
+    shootingType: 0
+    weaponType: 0
+    changer: 1
+    mesh: {fileID: 4300002, guid: 584761fab006d6d42b4d0d8c56a51241, type: 3}
+    materials: []
+    bullet: {fileID: 0}
+    crosshairTexture: {fileID: 0}
+    fireSound: {fileID: 0}
+    levelRequired: 4
+    ammo: 0
+    weight: 0
+    damagePerHit: 50
+    forceToApply: 1
+    range: 15
+    cdBetweenShots: 1
+    variance: 10
+    varianceDecreaseWhenAim: 10
+    speedDecreaseWhenAim: 2
+    numberToChange: 60
+    raycastSpot: {fileID: 0}
+    nOfBulletsPerShot: 0
+    endSpeed: 10
+    lineStartWidth: 0.05
+    lineEndWidth: 0.05
+  - previousName: SubmachineAuto2
+    isCreated: 1
+    name: SubmachineAuto2
+    shootingType: 2
+    weaponType: 0
+    changer: 1
+    mesh: {fileID: 4300004, guid: e16953ee70c66b64aacb5cfc435bfe21, type: 3}
+    materials: []
+    bullet: {fileID: 0}
+    crosshairTexture: {fileID: 0}
+    fireSound: {fileID: 0}
+    levelRequired: 5
+    ammo: 0
+    weight: 0
+    damagePerHit: 40
+    forceToApply: 1
+    range: 8
+    cdBetweenShots: 0
+    variance: 10
+    varianceDecreaseWhenAim: 8
+    speedDecreaseWhenAim: 1.5
+    numberToChange: 60
+    raycastSpot: {fileID: 0}
+    nOfBulletsPerShot: 0
+    endSpeed: 10
+    lineStartWidth: 0.05
+    lineEndWidth: 0.05
+  - previousName: ShotgunShort2
+    isCreated: 1
+    name: ShotgunShort2
+    shootingType: 1
+    weaponType: 2
+    changer: 0
+    mesh: {fileID: 4300000, guid: 9a812875c504fe54885166292ba580be, type: 3}
+    materials: []
+    bullet: {fileID: 0}
+    crosshairTexture: {fileID: 0}
+    fireSound: {fileID: 0}
+    levelRequired: 4
+    ammo: 0
+    weight: 0
+    damagePerHit: 8
+    forceToApply: 2
+    range: 5
+    cdBetweenShots: 1.2
+    variance: 10
+    varianceDecreaseWhenAim: 2
+    speedDecreaseWhenAim: 2
+    numberToChange: 50
+    raycastSpot: {fileID: 0}
+    nOfBulletsPerShot: 4
+    endSpeed: 10
+    lineStartWidth: 0.05
+    lineEndWidth: 0.05
+  - previousName: LaserMiddle
+    isCreated: 1
+    name: LaserMiddle
+    shootingType: 3
+    weaponType: 1
+    changer: 2
+    mesh: {fileID: 4300012, guid: 6ec4e98e91c69f144b1f8242b1a0e7d3, type: 3}
+    materials: []
+    bullet: {fileID: 0}
+    crosshairTexture: {fileID: 0}
+    fireSound: {fileID: 0}
+    levelRequired: 5
+    ammo: 0
+    weight: 0
+    damagePerHit: 12
+    forceToApply: 1
+    range: 10
+    cdBetweenShots: 0
+    variance: 0
+    varianceDecreaseWhenAim: 1
+    speedDecreaseWhenAim: 1
+    numberToChange: 40
+    raycastSpot: {fileID: 0}
+    nOfBulletsPerShot: 0
+    endSpeed: 10
+    lineStartWidth: 0.05
+    lineEndWidth: 0.05
+  - previousName: PistolAuto2
+    isCreated: 1
+    name: PistolAuto2
+    shootingType: 2
+    weaponType: 0
+    changer: 2
+    mesh: {fileID: 4300006, guid: d19a3d4883acbe9479fb1517c870cb35, type: 3}
+    materials: []
+    bullet: {fileID: 0}
+    crosshairTexture: {fileID: 0}
+    fireSound: {fileID: 0}
+    levelRequired: 3
+    ammo: 0
+    weight: 0
+    damagePerHit: 18
+    forceToApply: 1
+    range: 10
+    cdBetweenShots: 0
+    variance: 6
+    varianceDecreaseWhenAim: 2
+    speedDecreaseWhenAim: 1
+    numberToChange: 50
+    raycastSpot: {fileID: 0}
+    nOfBulletsPerShot: 0
+    endSpeed: 10
+    lineStartWidth: 0.05
+    lineEndWidth: 0.05
+  - previousName: PistolSemi2
+    isCreated: 1
+    name: PistolSemi2
+    shootingType: 1
+    weaponType: 0
+    changer: 0
+    mesh: {fileID: 4300006, guid: d19a3d4883acbe9479fb1517c870cb35, type: 3}
+    materials: []
+    bullet: {fileID: 0}
+    crosshairTexture: {fileID: 0}
+    fireSound: {fileID: 0}
+    levelRequired: 5
+    ammo: 0
+    weight: 0
+    damagePerHit: 20
+    forceToApply: 1
+    range: 10
+    cdBetweenShots: 0
+    variance: 4
+    varianceDecreaseWhenAim: 2
+    speedDecreaseWhenAim: 1.5
+    numberToChange: 35
+    raycastSpot: {fileID: 0}
+    nOfBulletsPerShot: 0
+    endSpeed: 10
+    lineStartWidth: 0.05
+    lineEndWidth: 0.05
+  - previousName: SubmachineSemi2
+    isCreated: 1
+    name: SubmachineSemi2
+    shootingType: 1
+    weaponType: 0
+    changer: 1
+    mesh: {fileID: 4300004, guid: e16953ee70c66b64aacb5cfc435bfe21, type: 3}
+    materials: []
+    bullet: {fileID: 0}
+    crosshairTexture: {fileID: 0}
+    fireSound: {fileID: 0}
+    levelRequired: 3
+    ammo: 0
+    weight: 0
+    damagePerHit: 18
+    forceToApply: 1
+    range: 8
+    cdBetweenShots: 0
+    variance: 6
+    varianceDecreaseWhenAim: 2.5
+    speedDecreaseWhenAim: 1.5
+    numberToChange: 60
+    raycastSpot: {fileID: 0}
+    nOfBulletsPerShot: 0
+    endSpeed: 10
+    lineStartWidth: 0.05
+    lineEndWidth: 0.05
+  - previousName: AssaultAuto2
+    isCreated: 1
+    name: AssaultAuto2
+    shootingType: 2
+    weaponType: 0
+    changer: 1
+    mesh: {fileID: 4300002, guid: 584761fab006d6d42b4d0d8c56a51241, type: 3}
+    materials: []
+    bullet: {fileID: 0}
+    crosshairTexture: {fileID: 0}
+    fireSound: {fileID: 0}
+    levelRequired: 3
+    ammo: 0
+    weight: 0
+    damagePerHit: 15
+    forceToApply: 1
+    range: 15
+    cdBetweenShots: 0
+    variance: 3
+    varianceDecreaseWhenAim: 2
+    speedDecreaseWhenAim: 2
+    numberToChange: 45
+    raycastSpot: {fileID: 0}
+    nOfBulletsPerShot: 0
+    endSpeed: 10
+    lineStartWidth: 0.05
+    lineEndWidth: 0.05
+  - previousName: AssaultSemi2
+    isCreated: 1
+    name: AssaultSemi2
+    shootingType: 1
+    weaponType: 0
+    changer: 0
+    mesh: {fileID: 4300002, guid: 584761fab006d6d42b4d0d8c56a51241, type: 3}
+    materials: []
+    bullet: {fileID: 0}
+    crosshairTexture: {fileID: 0}
+    fireSound: {fileID: 0}
+    levelRequired: 6
+    ammo: 0
+    weight: 0
+    damagePerHit: 30
+    forceToApply: 1
+    range: 20
+    cdBetweenShots: 0
+    variance: 5
+    varianceDecreaseWhenAim: 2
+    speedDecreaseWhenAim: 2
+    numberToChange: 25
+    raycastSpot: {fileID: 0}
+    nOfBulletsPerShot: 0
+    endSpeed: 10
+    lineStartWidth: 0.05
+    lineEndWidth: 0.05
+  - previousName: RiffleFast2
+    isCreated: 1
+    name: RiffleFast2
+    shootingType: 0
+    weaponType: 0
+    changer: 0
+    mesh: {fileID: 4300000, guid: 97247a95be0d8f14b849964664f93547, type: 3}
+    materials: []
+    bullet: {fileID: 0}
+    crosshairTexture: {fileID: 0}
+    fireSound: {fileID: 0}
+    levelRequired: 6
+    ammo: 0
+    weight: 0
+    damagePerHit: 40
+    forceToApply: 1
+    range: 20
+    cdBetweenShots: 1
+    variance: 8
+    varianceDecreaseWhenAim: 2
+    speedDecreaseWhenAim: 2
+    numberToChange: 10
+    raycastSpot: {fileID: 0}
+    nOfBulletsPerShot: 0
+    endSpeed: 10
+    lineStartWidth: 0.05
+    lineEndWidth: 0.05
+  - previousName: ShotgunPro
+    isCreated: 1
+    name: ShotgunPro
+    shootingType: 1
+    weaponType: 2
+    changer: 1
+    mesh: {fileID: 4300000, guid: 9a812875c504fe54885166292ba580be, type: 3}
+    materials: []
+    bullet: {fileID: 0}
+    crosshairTexture: {fileID: 0}
+    fireSound: {fileID: 0}
+    levelRequired: 6
+    ammo: 0
+    weight: 0
+    damagePerHit: 10
+    forceToApply: 1
+    range: 8
+    cdBetweenShots: 1
+    variance: 6
+    varianceDecreaseWhenAim: 2
+    speedDecreaseWhenAim: 5
+    numberToChange: 45
+    raycastSpot: {fileID: 0}
+    nOfBulletsPerShot: 6
+    endSpeed: 10
+    lineStartWidth: 0.05
+    lineEndWidth: 0.05
+  - previousName: LaserPro
+    isCreated: 1
+    name: LaserPro
+    shootingType: 0
+    weaponType: 0
+    changer: 2
+    mesh: {fileID: 4300012, guid: 6ec4e98e91c69f144b1f8242b1a0e7d3, type: 3}
+    materials: []
+    bullet: {fileID: 0}
+    crosshairTexture: {fileID: 0}
+    fireSound: {fileID: 0}
+    levelRequired: 7
+    ammo: 0
+    weight: 0
+    damagePerHit: 25
+    forceToApply: 1
+    range: 30
+    cdBetweenShots: 0
+    variance: 0
+    varianceDecreaseWhenAim: 1
+    speedDecreaseWhenAim: 1
+    numberToChange: 25
+    raycastSpot: {fileID: 0}
+    nOfBulletsPerShot: 0
+    endSpeed: 10
+    lineStartWidth: 0.05
+    lineEndWidth: 0.05
+  - previousName: PistolLock2
+    isCreated: 1
+    name: PistolLock2
+    shootingType: 0
+    weaponType: 0
+    changer: 1
+    mesh: {fileID: 4300006, guid: d19a3d4883acbe9479fb1517c870cb35, type: 3}
+    materials: []
+    bullet: {fileID: 0}
+    crosshairTexture: {fileID: 0}
+    fireSound: {fileID: 0}
+    levelRequired: 7
+    ammo: 0
+    weight: 0
+    damagePerHit: 100
+    forceToApply: 0
+    range: 6
+    cdBetweenShots: 1
+    variance: 6
+    varianceDecreaseWhenAim: 2
+    speedDecreaseWhenAim: 1
+    numberToChange: 35
+    raycastSpot: {fileID: 0}
+    nOfBulletsPerShot: 0
+    endSpeed: 10
+    lineStartWidth: 0.05
+    lineEndWidth: 0.05
+  - previousName: SubmachineSemi3
+    isCreated: 1
+    name: SubmachineSemi3
+    shootingType: 1
+    weaponType: 0
+    changer: 2
+    mesh: {fileID: 4300004, guid: e16953ee70c66b64aacb5cfc435bfe21, type: 3}
+    materials: []
+    bullet: {fileID: 0}
+    crosshairTexture: {fileID: 0}
+    fireSound: {fileID: 0}
+    levelRequired: 7
+    ammo: 0
+    weight: 0
+    damagePerHit: 20
+    forceToApply: 1
+    range: 8
+    cdBetweenShots: 0
+    variance: 4
+    varianceDecreaseWhenAim: 2
+    speedDecreaseWhenAim: 2
     numberToChange: 20
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 0

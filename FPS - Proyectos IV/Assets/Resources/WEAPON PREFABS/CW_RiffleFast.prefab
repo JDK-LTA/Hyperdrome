@@ -13,18 +13,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _nameOfWeapon: RiffleFast
-  _shootingType: 1
+  _shootingType: 0
   _weaponType: 0
   _changer: 1
   _bullet: {fileID: 0}
   _fireSound: {fileID: 0}
-  _levelRequired: 2
+  _levelRequired: 4
   _ammo: 0
   _weight: 0
   _damagePerHit: 40
   _forceToApply: 3
   _range: 50
-  _cdBetweenShots: 2
+  _cdBetweenShots: 3
   variance: 8
   varianceDecreaseWhenAim: 6
   speedDecreaseWhenAim: 2.5
@@ -32,7 +32,7 @@ MonoBehaviour:
   _raycastSpot: {fileID: 0}
   isAiming: 0
   auxNoToChange: 0
---- !u!114 &6892958066309774053
+--- !u!114 &2927884868151499876
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,7 +41,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 675702684921338381}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e55e46686e388934cb17b28a671dac51, type: 3}
+  m_Script: {fileID: 11500000, guid: 88f760f486aff4942949e1be1e7df038, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &3594079189320099561
@@ -64,12 +64,12 @@ PrefabInstance:
     - target: {fileID: 5176600576134307842, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.048
       objectReference: {fileID: 0}
     - target: {fileID: 5176600576134307842, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.046
       objectReference: {fileID: 0}
     - target: {fileID: 5176600576134307842, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
@@ -111,16 +111,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5819289931294228022, guid: 08628a2f8858779488a3751bac51a99a,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300000, guid: 97247a95be0d8f14b849964664f93547, type: 3}
     - target: {fileID: 3267214807680600860, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a2077239d6dbb4743b890901457cfeac, type: 2}
+    - target: {fileID: 5819289931294228022, guid: 08628a2f8858779488a3751bac51a99a,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300000, guid: 97247a95be0d8f14b849964664f93547, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08628a2f8858779488a3751bac51a99a, type: 3}
 --- !u!1 &675702684921338381 stripped

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!120 &4136076336024014037
+--- !u!120 &6240700141773240056
 LineRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -140,9 +140,9 @@ MonoBehaviour:
   isAiming: 0
   auxNoToChange: 0
   lineMat: {fileID: 0}
-  endSpeed: 10
-  lineStartWidth: 0.05
-  lineEndWidth: 0.05
+  endSpeed: 5
+  lineStartWidth: 0.02
+  lineEndWidth: 0.02
   offset: {x: 0, y: 0, z: 0}
 --- !u!1001 &6888450326437736253
 PrefabInstance:
@@ -164,12 +164,12 @@ PrefabInstance:
     - target: {fileID: 5176600576134307842, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: -0.164
       objectReference: {fileID: 0}
     - target: {fileID: 5176600576134307842, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 0.164
       objectReference: {fileID: 0}
     - target: {fileID: 5176600576134307842, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
@@ -211,16 +211,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5819289931294228022, guid: 08628a2f8858779488a3751bac51a99a,
-        type: 3}
-      propertyPath: m_Mesh
-      value: 
-      objectReference: {fileID: 4300012, guid: 6ec4e98e91c69f144b1f8242b1a0e7d3, type: 3}
     - target: {fileID: 3267214807680600860, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: ed37c099cd886894cbc9d30db20ff2a0, type: 2}
+    - target: {fileID: 5819289931294228022, guid: 08628a2f8858779488a3751bac51a99a,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300012, guid: 6ec4e98e91c69f144b1f8242b1a0e7d3, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 08628a2f8858779488a3751bac51a99a, type: 3}
 --- !u!1 &7428862316339352537 stripped
