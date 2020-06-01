@@ -106,8 +106,10 @@ public class WaveManager : MonoBehaviour
         }
         else
         {
-            Debug.Log("final");
-            Debug.Break();
+            //Debug.Log("final");
+            //Debug.Break();
+            
+            GameManager.Instance.EndGame(true);
         }
         //TODO: AQUI VA EL FINAL DEL JUEGO ///////////////////////////////////////////////////////////////////////////
     }

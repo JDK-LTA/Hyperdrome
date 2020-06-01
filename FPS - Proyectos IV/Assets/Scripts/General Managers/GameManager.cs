@@ -17,6 +17,8 @@ public class GameManager : Singleton<GameManager>
 
     PostProcessVolume ppvPlayer;
 
+    private bool gamePaused = false;
+
     public float PlayerHp { get => playerHp; }
 
     private void Start()
@@ -50,7 +52,7 @@ public class GameManager : Singleton<GameManager>
 
         if (playerHp <= 0)
         {
-            PlayerDeath();
+            EndGame(false);
         }
         else
         {
@@ -68,7 +70,23 @@ public class GameManager : Singleton<GameManager>
     private void PlayerDeath()
     {
         Debug.Log("MUERTA");
+        EndGame(false);
         Time.timeScale = 0;
+    }
+
+    public void EndGame(bool win)
+    {
+        CanvasDDOL.Instance.SetEndPanelActive(true, win);
+
+        Time.timeScale = 0;
+    }
+    public void TogglePauseMenu()
+    {
+        gamePaused = !gamePaused;
+
+        CanvasDDOL.Instance.SetPauseMenuActive(gamePaused);
+
+        Time.timeScale = gamePaused ? 0 : 1;
     }
 
     private void Update()
