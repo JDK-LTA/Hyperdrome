@@ -82,6 +82,11 @@ public class WaveManager : Singleton<WaveManager>
         {
             ShowWeaponChoosingPanel(true);
         }
+        else
+        {
+            Debug.Log("final");
+            Debug.Break();
+        }
         //TODO: AQUI VA EL FINAL DEL JUEGO ///////////////////////////////////////////////////////////////////////////
     }
     private void ShowWeaponChoosingPanel(bool show)

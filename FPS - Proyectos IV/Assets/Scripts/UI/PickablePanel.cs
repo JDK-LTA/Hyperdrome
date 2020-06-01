@@ -9,6 +9,8 @@ public class PickablePanel : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     [SerializeField] private bool currentTrueNewFalse;
     [SerializeField] private GameObject weapon;
     private Image weaponImage;
+    private GameObject tooltipPanel;
+    private Text weaponNameText, weaponTooltipText;
 
     [SerializeField] protected bool showDeactivated;
     private int positionInBuild = -1;
@@ -21,9 +23,83 @@ public class PickablePanel : MonoBehaviour, IPointerClickHandler, IPointerEnterH
     public Image WeaponImage { get => weaponImage; set => weaponImage = value; }
     public bool CurrentTrueNewFalse { get => currentTrueNewFalse; set => currentTrueNewFalse = value; }
 
-    protected void Start()
+    protected void Awake()
     {
-        weaponImage = GetComponentInChildren<Image>();
+        weaponImage = transform.Find("WeaponImage").GetComponent<Image>();
+        tooltipPanel = transform.Find("TooltipPanel").gameObject;
+        weaponNameText = tooltipPanel.transform.Find("TooltipName").GetComponent<Text>();
+        weaponTooltipText = tooltipPanel.transform.Find("TooltipText").GetComponent<Text>();
+    }
+
+    public void UpdateTooltip()
+    {
+        WeaponBase wb = weapon.GetComponent<WeaponBase>();
+
+        string typeT, triggerT, changerT;
+
+        switch (wb.WeaponType)
+        {
+            case WeaponType.NORMAL:
+                typeT = "Bullets";
+                break;
+            case WeaponType.LASER:
+                typeT = "Laser";
+                break;
+            case WeaponType.SHOTGUN:
+                typeT = "Shotgun";
+                break;
+            default:
+                typeT = "xxxxx";
+                break;
+        }
+        switch (wb.ShootingType)
+        {
+            case ShootingType.LOCK:
+                triggerT = "Lock";
+                break;
+            case ShootingType.SEMI_AUTOMATIC:
+                triggerT = "Semi";
+                break;
+            case ShootingType.AUTOMATIC:
+                triggerT = "Auto";
+                break;
+            case ShootingType.HOLD:
+                triggerT = "Hold";
+                break;
+            default:
+                triggerT = "xxxx";
+                break;
+        }
+        switch (wb.Changer)
+        {
+            case Changer.AMMO:
+                changerT = "Ammo";
+                break;
+            case Changer.TIME:
+                changerT = "Time";
+                break;
+            case Changer.HIT:
+                changerT = "Hits";
+                break;
+            default:
+                changerT = "xxxx";
+                break;
+        }
+
+        float accuracy = 100 - 10 * wb.Variance;
+        string dmgT = wb.WeaponType == WeaponType.SHOTGUN ? wb.DamagePerHit.ToString() + "×" + wb.GetComponent<WeaponShotgun>().NOfBulletsPerShot : wb.DamagePerHit.ToString();
+        string freqT = wb.ShootingType == ShootingType.LOCK ? "0.75" : wb.CdBetweenShots.ToString();
+
+        weaponNameText.text = wb.Name + ":";
+
+        weaponTooltipText.text = "Type: " + typeT + "\n"
+            + "Trigger: " + triggerT + "\n"
+            + "Changer: " + changerT + "\n"
+            + changerT + ": " + wb.NumberToChange + "\n"
+            + "Damage: " + dmgT + "\n"
+            + "Range: " + wb.Range + "\n"
+            + "Freq. : " + freqT + "secs" + "\n"
+            + "Accuracy: " + accuracy;
     }
 
     public void OnPointerClick(PointerEventData eventData)
@@ -65,12 +141,14 @@ public class PickablePanel : MonoBehaviour, IPointerClickHandler, IPointerEnterH
         if (!showDeactivated)
         {
             InventoryManager.Instance.PanelHovering = this;
+            tooltipPanel.SetActive(true);
         }
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         InventoryManager.Instance.PanelHovering = null;
+        tooltipPanel.SetActive(false);
     }
 
     protected void ClickBehaviour()
