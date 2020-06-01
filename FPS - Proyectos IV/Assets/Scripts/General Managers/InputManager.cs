@@ -40,16 +40,6 @@ public class InputManager : Singleton<InputManager>
     }
 
     public bool debug = false;
-    private void Start()
-    {
-        if (debug)
-        {
-            GameManager.Instance.Init();
-            Init();
-            WeaponPrefabsLists.Instance.Init();
-            WaveManager.Instance.Init();
-        }
-    }
 
     // Update is called once per frame
     private void Update()
@@ -159,6 +149,16 @@ public class InputManager : Singleton<InputManager>
             if (Input.GetKeyDown(KeyCode.R))
             {
                 OnChangeWeapon();
+            }
+            if (Input.GetKeyDown(KeyCode.K))
+            {
+                if (debug)
+                {
+                    GameManager.Instance.Init();
+                    Init();
+                    WeaponPrefabsLists.Instance.Init();
+                    WaveManager.Instance.Init();
+                }
             }
             #endregion
         }
