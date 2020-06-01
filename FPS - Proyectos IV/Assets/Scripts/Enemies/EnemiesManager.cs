@@ -7,6 +7,7 @@ public class EnemiesManager : MonoBehaviour
     public static EnemiesManager Instance;
     private void Awake()
     {
+        DontDestroyOnLoad(gameObject);
         Instance = this;
     }
 
@@ -17,8 +18,9 @@ public class EnemiesManager : MonoBehaviour
         WeaponManager.Instance.OnHit += EnemyHasBeenHit;
     }
 
-    private void EnemyHasBeenHit(EnemyBase enemy, float damage)
+    private void EnemyHasBeenHit(EnemyBase enemy, float damage, Vector3 hitPoint)
     {
         enemy.TakeHit(damage);
+        enemy.PlayHitParticles(hitPoint);
     }
 }

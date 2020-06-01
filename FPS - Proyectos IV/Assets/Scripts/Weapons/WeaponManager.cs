@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
+using UnityEngine.SceneManagement;
 
 public class WeaponManager : MonoBehaviour
 {
     public static WeaponManager Instance;
 
-    public delegate void WeaponEvents(EnemyBase enemyHit, float damageDealt);
+    public delegate void WeaponEvents(EnemyBase enemyHit, float damageDealt, Vector3 hitPoint);
     public event WeaponEvents OnHit;
     public delegate void WeaponSimpleEvents();
     public event WeaponSimpleEvents OnWeaponsInit;
@@ -24,8 +25,24 @@ public class WeaponManager : MonoBehaviour
         Instance = this;
 
         _player = GetComponent<RbFPSController>();
+        SceneManager.activeSceneChanged += OnSceneSwitch; 
     }
 
+    private void OnSceneSwitch(Scene current, Scene next)
+    {
+        if (next.name == "Nivel2")
+        {
+            transform.position = new Vector3(-45f, -35f, 95f);
+        }
+        else if (next.name == "Nivel3")
+        {
+            transform.position = new Vector3(262f, 189f, 84f);
+        }
+        else if (next.name == "MainMenu")
+        {
+            Destroy(gameObject);
+        }
+    }
 
     public int selectedWeapon = 0;
     public int maxNumberOfWeapons = 2;
@@ -38,6 +55,7 @@ public class WeaponManager : MonoBehaviour
 
     private void Start()
     {
+        transform.position = new Vector3(-15.11f, 0.5f, -16.498f);
 
         UpdateWeapons();
         InputManager.Instance.OnChangeWeapon += NextWeapon;
@@ -133,8 +151,8 @@ public class WeaponManager : MonoBehaviour
         return listWeapons;
     }
 
-    public void EnemyHit(EnemyBase enemy, float damage)
+    public void EnemyHit(EnemyBase enemy, float damage, Vector3 hitPoint)
     {
-        OnHit?.Invoke(enemy, damage);
+        OnHit?.Invoke(enemy, damage, hitPoint);
     }
 }

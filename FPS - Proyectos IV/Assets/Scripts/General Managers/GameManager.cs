@@ -21,8 +21,12 @@ public class GameManager : Singleton<GameManager>
 
     private void Start()
     {
-        ppvPlayer = WeaponManager.Instance._player.GetComponent<PostProcessVolume>();
         playerMaxHp = playerHp;
+    }
+
+    public void Init()
+    {
+        ppvPlayer = WeaponManager.Instance._player.GetComponent<PostProcessVolume>();
     }
 
     public void BringPieces()

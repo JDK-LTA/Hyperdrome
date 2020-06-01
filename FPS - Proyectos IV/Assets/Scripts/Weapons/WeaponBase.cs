@@ -172,8 +172,7 @@ public class WeaponBase : MonoBehaviour
             }
 
             hit.rigidbody?.AddForce(ray.direction * ForceToApply);
-            WeaponManager.Instance.EnemyHit(enemyHit, _damagePerHit);
-
+            WeaponManager.Instance.EnemyHit(enemyHit, _damagePerHit, hit.point);
         }
     }
 

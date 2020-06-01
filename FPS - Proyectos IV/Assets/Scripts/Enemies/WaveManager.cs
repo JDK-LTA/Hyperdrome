@@ -3,9 +3,19 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-public class WaveManager : Singleton<WaveManager>
+public class WaveManager : MonoBehaviour
 {
+    public static WaveManager Instance;
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+
+        Instance = this;
+    }
+
+
     [SerializeField] private int _currentWave = -1;
+    [SerializeField] private int lvl1Waves = 3, lvl2Waves = 3, lvl3Waves = 2;
     private List<WaveInfo> _waves;
 
     private List<EnemyBase> _enemiesThisWave;
@@ -37,13 +47,16 @@ public class WaveManager : Singleton<WaveManager>
     private void Start()
     {
         _waves = Resources.Load<WaveList>("WaveList").waves;
+    }
 
+    public void Init()
+    {
         UIManager.Instance.UpdateRoundText(1, _waves.Count);
         UIManager.Instance.UpdatePiecesText(_waves[0].GoldenEnemiesThisWave.Count);
 
         StartCoroutine(FirstWave());
-        //UpdateWave();
     }
+
 
     IEnumerator FirstWave()
     {
@@ -77,6 +90,15 @@ public class WaveManager : Singleton<WaveManager>
     private void EndWave()
     {
         //END WAVE STUFF
+        if (_currentWave == lvl1Waves - 1)
+        {
+            SceneChangeManager.Instance.LoadLevel(2);
+        }
+        else if (_currentWave == lvl1Waves + lvl2Waves - 1)
+        {
+            SceneChangeManager.Instance.LoadLevel(3);
+        }
+
         WeaponManager.Instance._player.CanMove(false);
         if (_currentWave < _waves.Count)
         {

@@ -982,6 +982,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 931354b381829144185df8554529e6d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hitParticle: {fileID: 4230025150909701311, guid: c8c4a28e39bf4d14c861947fa31c3c43,
+    type: 3}
+  deathParticles: {fileID: 7858691877465789786, guid: ec51ecb47f629c04dab165e15476fa97,
+    type: 3}
   difficulty: 2
   maxHp: 60
   damagePerAttack: 6

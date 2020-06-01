@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class EnemyBall : EnemyBase
 {
+
     private bool readyToExplode = false, isRunning = false;
     [SerializeField] private float distanceToRun = 30f;
     [SerializeField] private float distanceToExplode = 2f;
@@ -98,7 +99,6 @@ public class EnemyBall : EnemyBase
                     ReadyToExplode?.Invoke();
                     Die();
                 }
-                //ANIMACION DE EXPLOTAR
             }
         }
     }

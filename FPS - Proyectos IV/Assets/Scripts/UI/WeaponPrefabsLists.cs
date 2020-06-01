@@ -1,14 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class WeaponPrefabsLists : Singleton<WeaponPrefabsLists>
+public class WeaponPrefabsLists : MonoBehaviour
 {
-    //public static WeaponPrefabsLists Instance;
-    //private void Awake()
-    //{
-    //    Instance = this;
-    //}
+    public static WeaponPrefabsLists Instance;
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+        Instance = this;
+    }
 
     public List<List<GameObject>> weaponPrefabLists;
     public GameObject[] prefabs;
@@ -18,7 +20,6 @@ public class WeaponPrefabsLists : Singleton<WeaponPrefabsLists>
     {
         prefabs = Resources.LoadAll<GameObject>("WEAPON PREFABS");
         weaponPrefabLists = new List<List<GameObject>>();
-        inventory = Resources.FindObjectsOfTypeAll<InventoryManager>()[0].gameObject;
 
         for (int i = 0; i < 30; i++)
         {
@@ -32,5 +33,10 @@ public class WeaponPrefabsLists : Singleton<WeaponPrefabsLists>
         }
 
         weaponPrefabLists.TrimExcess();
+    }
+
+    public void Init()
+    {
+        inventory = Resources.FindObjectsOfTypeAll<InventoryManager>()[0].gameObject;
     }
 }

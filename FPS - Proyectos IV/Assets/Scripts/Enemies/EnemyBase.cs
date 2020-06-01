@@ -5,6 +5,9 @@ using UnityEngine.AI;
 
 public class EnemyBase : MonoBehaviour
 {
+    [SerializeField] GameObject hitParticle;
+    [SerializeField] GameObject deathParticles;
+
     [SerializeField] protected int difficulty = 1;
     public int Difficulty { get => difficulty; }
 
@@ -50,6 +53,14 @@ public class EnemyBase : MonoBehaviour
             Die();
         }
     }
+    public void PlayHitParticles(Vector3 pos)
+    {
+        hitParticle.transform.position = pos;
+
+        hitParticle.transform.LookAt(WeaponManager.Instance._player.gameObject.transform);
+        GameObject ps = Instantiate(hitParticle, pos, new Quaternion(0, 0, 0, 0));
+        ps.transform.LookAt(WeaponManager.Instance._player.gameObject.transform);
+    }
 
     protected virtual void Die()
     {
@@ -58,6 +69,8 @@ public class EnemyBase : MonoBehaviour
             Instantiate(EnemiesManager.Instance.goldenPiece, transform.position, transform.rotation);
         }
         WaveManager.Instance.AddDifficulty(difficulty, golden);
+
+        GameObject ps = Instantiate(deathParticles, transform.position, transform.rotation);
     }
 
     protected virtual void OnReadyToRun()

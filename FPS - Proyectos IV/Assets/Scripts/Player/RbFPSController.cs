@@ -270,6 +270,7 @@ public class RbFPSController : MonoBehaviour
         movementSettings.lockMovement = !canMove;
         mouseLook.lockCamera = !canMove;
         mouseLook.SetCursorLock(canMove);
+        InputManager.Instance.lockInput = !canMove;
         //mouseLook.lockCursor = canMove;
     }
 
