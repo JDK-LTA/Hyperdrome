@@ -22,8 +22,10 @@ public class WeaponManager : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
         Instance = this;
+
+        _player = GetComponent<RbFPSController>();
     }
-    
+
 
     public int selectedWeapon = 0;
     public int maxNumberOfWeapons = 2;
@@ -36,7 +38,6 @@ public class WeaponManager : MonoBehaviour
 
     private void Start()
     {
-        _player = GetComponent<RbFPSController>();
 
         UpdateWeapons();
         InputManager.Instance.OnChangeWeapon += NextWeapon;
@@ -52,13 +53,18 @@ public class WeaponManager : MonoBehaviour
         }
     }
 
+    private void UpdateUIWeaponsTexts()
+    {
+        WeaponBase wb = weapons[selectedWeapon].GetComponent<WeaponBase>();
+
+        UIManager.Instance.UpdateNoToChangeText(wb.auxNoToChange, wb.NumberToChange, wb.Changer);
+        UIManager.Instance.UpdateChangerText(wb.Changer);
+        UIManager.Instance.UpdateSelectedWeaponText(selectedWeapon + 1, weapons.Count);
+    }
+
     private void GetFirstWeapon()
     {
         selectedWeapon = 0;
-        //foreach (var item in weapons)
-        //{
-        //    Debug.Log(item.name);
-        //}
         weapons[selectedWeapon].SetActive(true);
 
         if (weapons.Count > 1)
@@ -68,6 +74,8 @@ public class WeaponManager : MonoBehaviour
                 weapons[i].SetActive(false);
             }
         }
+
+        UpdateUIWeaponsTexts();
     }
     public void NextWeapon()
     {
@@ -86,6 +94,7 @@ public class WeaponManager : MonoBehaviour
                 weapons[i].SetActive(false);
         }
 
+        UpdateUIWeaponsTexts();
     }
 
     public IEnumerator UpdateWeaponsCoroutine()
@@ -126,7 +135,6 @@ public class WeaponManager : MonoBehaviour
 
     public void EnemyHit(EnemyBase enemy, float damage)
     {
-        //Debug.Log(enemy.transform.name);
         OnHit?.Invoke(enemy, damage);
     }
 }

@@ -216,10 +216,17 @@ public class RbFPSController : MonoBehaviour
     private Vector3 _baseInput = Vector3.zero;
     private Vector3 _mouse = Vector3.zero;
 
+    private bool canDash = true;
+    [SerializeField] private float dashCooldown = 1f;
+    private float dashT = 0;
+
     public Vector3 Velocity { get => _rigidbody.velocity; }
     public bool Jumping { get => _jumping; }
     public bool IsGrounded { get => _isGrounded; }
     public bool Running { get => movementSettings.Running; }
+    public float DashT { get => dashT; }
+    public float DashCooldown { get => dashCooldown; }
+    public bool CanDash { get => canDash; }
     #endregion
 
     #region Unity API Methods
@@ -248,6 +255,7 @@ public class RbFPSController : MonoBehaviour
     private void Update()
     {
         RotateView();
+        DashTimer();
     }
 
     private void FixedUpdate()
@@ -263,6 +271,21 @@ public class RbFPSController : MonoBehaviour
         mouseLook.lockCamera = !canMove;
         mouseLook.SetCursorLock(canMove);
         //mouseLook.lockCursor = canMove;
+    }
+
+    private void DashTimer()
+    {
+        if (!canDash)
+        {
+            dashT += Time.deltaTime;
+            if (dashT >= dashCooldown)
+            {
+                dashT = 0;
+
+                UIManager.Instance.SetDashImageActive(false);
+                canDash = true;
+            }
+        }
     }
 
     private void XZDrag()
@@ -430,10 +453,16 @@ public class RbFPSController : MonoBehaviour
     #region Dash
     private void Dash()
     {
-        Vector3 dashVelocity = Vector3.Scale(transform.forward,
-            movementSettings.DashDistance * smoothXZDrag * new Vector3(1, 0, 1));
+        if (canDash)
+        {
+            Vector3 dashVelocity = Vector3.Scale(transform.forward,
+                movementSettings.DashDistance * smoothXZDrag * new Vector3(1, 0, 1));
 
-        _rigidbody.AddForce(dashVelocity, ForceMode.VelocityChange);
+            _rigidbody.AddForce(dashVelocity, ForceMode.VelocityChange);
+
+            canDash = false;
+            UIManager.Instance.SetDashImageActive(true);
+        }
     }
     #endregion
 }

@@ -96,6 +96,7 @@ public class WeaponBase : MonoBehaviour
         if (_changer == Changer.TIME && firstShot)
         {
             auxTimer += Time.deltaTime;
+            UIManager.Instance.UpdateNoToChangeText(_numberToChange - auxTimer, _numberToChange, _changer);
             if (auxTimer >= _numberToChange)
             {
                 auxTimer = 0;
@@ -126,6 +127,7 @@ public class WeaponBase : MonoBehaviour
         if (_changer == Changer.AMMO)
         {
             auxNoToChange--;
+            UIManager.Instance.UpdateNoToChangeText(auxNoToChange, _numberToChange, _changer);
             if (auxNoToChange == 0)
             {
                 ResetWeapon();
@@ -161,6 +163,7 @@ public class WeaponBase : MonoBehaviour
             if (_changer == Changer.HIT)
             {
                 auxNoToChange--;
+                UIManager.Instance.UpdateNoToChangeText(auxNoToChange, _numberToChange, _changer);
                 if (auxNoToChange == 0)
                 {
                     ResetWeapon();

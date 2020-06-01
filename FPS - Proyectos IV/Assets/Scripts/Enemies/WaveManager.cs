@@ -38,6 +38,9 @@ public class WaveManager : Singleton<WaveManager>
     {
         _waves = Resources.Load<WaveList>("WaveList").waves;
 
+        UIManager.Instance.UpdateRoundText(1, _waves.Count);
+        UIManager.Instance.UpdatePiecesText(_waves[0].GoldenEnemiesThisWave.Count);
+
         StartCoroutine(FirstWave());
         //UpdateWave();
     }
@@ -75,7 +78,16 @@ public class WaveManager : Singleton<WaveManager>
     {
         //END WAVE STUFF
         WeaponManager.Instance._player.CanMove(false);
-        ShowWeaponChoosingPanel(true);
+        if (_currentWave < _waves.Count)
+        {
+            ShowWeaponChoosingPanel(true);
+        }
+        else
+        {
+            Debug.Log("final");
+            Debug.Break();
+        }
+        //TODO: AQUI VA EL FINAL DEL JUEGO ///////////////////////////////////////////////////////////////////////////
     }
     private void ShowWeaponChoosingPanel(bool show)
     {
@@ -91,6 +103,9 @@ public class WaveManager : Singleton<WaveManager>
         _currentWave++;
         UpdateWave();
         isSpawning = true;
+
+        UIManager.Instance.UpdateRoundText(_currentWave + 1, _waves.Count);
+        UIManager.Instance.UpdatePiecesText(PiecesToEndWave);
     }
 
     private void Update()
@@ -133,7 +148,10 @@ public class WaveManager : Singleton<WaveManager>
                 EndWave();
             }
         }
-        debugText.text = "Difficulty: " + _currentDifficulty;
+        if (debugText != null)
+        {
+            debugText.text = "Difficulty: " + _currentDifficulty;
+        }
     }
 
     private void SpawnEnemy(List<EnemyBase> enemyList, ref int difficultyToReduce)

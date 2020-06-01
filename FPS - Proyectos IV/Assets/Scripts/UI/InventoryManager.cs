@@ -1,14 +1,29 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class InventoryManager : Singleton<InventoryManager>
+public class InventoryManager : MonoBehaviour
 {
+    public static InventoryManager Instance;
+    private void Awake()
+    {
+        Instance = this;
+
+        wSprites = new Sprite[6] { g28Rifle, gunHeavy, pistol28, pistol30, pistol31, scifiGun };
+        wMeshes = new Mesh[6] { g28RifleM, gunHeavyM, pistol28M, pistol30M, pistol31M, scifiGunM };
+    }
+
     [SerializeField] private GameObject nrwPanelParent;
     [SerializeField] private GameObject buildPanelParent;
     [SerializeField] private int nOfWeaponsToChooseFrom = 3;
     [SerializeField] private GameObject panelTemplatePrefab;
     [SerializeField] private GameObject nextWaveButton;
+
+    [SerializeField] private Sprite g28Rifle, gunHeavy, pistol28, pistol30, pistol31, scifiGun;
+    [SerializeField] private Mesh g28RifleM, gunHeavyM, pistol28M, pistol30M, pistol31M, scifiGunM;
+    private Sprite[] wSprites;
+    private Mesh[] wMeshes;
 
     private List<PickablePanel> newWeaponPanels;
     private List<PickablePanel> buildPanels;
@@ -63,6 +78,10 @@ public class InventoryManager : Singleton<InventoryManager>
             PickablePanel tempPP = go.GetComponent<PickablePanel>();
             tempPP.PositionInBuild = i;
             tempPP.Weapon = WeaponPrefabsLists.Instance.weaponPrefabLists[WaveManager.Instance.CurrentWave + 1][ran];
+
+            MeshToSprite(tempPP);
+            tempPP.UpdateTooltip();
+
             tempPP.CurrentTrueNewFalse = false;
 
             newWeaponPanels.Add(tempPP);
@@ -82,9 +101,26 @@ public class InventoryManager : Singleton<InventoryManager>
         PickablePanel tempPP = go.GetComponent<PickablePanel>();
         tempPP.PositionInBuild = i;
         tempPP.Weapon = WeaponManager.Instance.Weapons[i];
+
+        MeshToSprite(tempPP);
+        tempPP.UpdateTooltip();
+
         tempPP.CurrentTrueNewFalse = true;
 
         buildPanels.Add(tempPP);
+    }
+
+    private void MeshToSprite(PickablePanel tempPP)
+    {
+        Mesh m = tempPP.Weapon.GetComponent<MeshFilter>().sharedMesh;
+        for (int i = 0; i < wMeshes.Length; i++)
+        {
+            if (m == wMeshes[i])
+            {
+                tempPP.WeaponImage.sprite = wSprites[i];
+                break;
+            }
+        }
     }
 
     private void DestroyAllPanels()
