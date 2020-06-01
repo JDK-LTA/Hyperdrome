@@ -44,6 +44,16 @@ public class InputManager : Singleton<InputManager>
     // Update is called once per frame
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            if (debug)
+            {
+                GameManager.Instance.Init();
+                Init();
+                WeaponPrefabsLists.Instance.Init();
+                WaveManager.Instance.Init();
+            }
+        }
         if (initiated)
         {
             #region Continous Input
@@ -150,16 +160,7 @@ public class InputManager : Singleton<InputManager>
             {
                 OnChangeWeapon();
             }
-            if (Input.GetKeyDown(KeyCode.K))
-            {
-                if (debug)
-                {
-                    GameManager.Instance.Init();
-                    Init();
-                    WeaponPrefabsLists.Instance.Init();
-                    WaveManager.Instance.Init();
-                }
-            }
+
             #endregion
         }
     }
