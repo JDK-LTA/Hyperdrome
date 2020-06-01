@@ -50,7 +50,15 @@ public class EnemyShooter : EnemyBase
         }
 
     }
-
+    protected override void InstantiatePiece()
+    {
+        if (golden)
+        {
+            Vector3 pos = transform.position;
+            pos.y -= 5;
+            Instantiate(EnemiesManager.Instance.goldenPiece, pos, transform.rotation);
+        }
+    }
     private void Shoot()
     {
         GameObject go = Instantiate(bulletPrefab, shootingSpot.position, shootingSpot.rotation);

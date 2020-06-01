@@ -64,13 +64,18 @@ public class EnemyBase : MonoBehaviour
 
     protected virtual void Die()
     {
+        InstantiatePiece();
+        WaveManager.Instance.AddDifficulty(difficulty, golden);
+
+        GameObject ps = Instantiate(deathParticles, transform.position, transform.rotation);
+    }
+
+    protected virtual void InstantiatePiece()
+    {
         if (golden)
         {
             Instantiate(EnemiesManager.Instance.goldenPiece, transform.position, transform.rotation);
         }
-        WaveManager.Instance.AddDifficulty(difficulty, golden);
-
-        GameObject ps = Instantiate(deathParticles, transform.position, transform.rotation);
     }
 
     protected virtual void OnReadyToRun()
