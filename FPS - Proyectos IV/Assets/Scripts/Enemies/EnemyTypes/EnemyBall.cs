@@ -106,7 +106,7 @@ public class EnemyBall : EnemyBase
     protected override void Die()
     {
         base.Die();
-        AudioSource.PlayClipAtPoint(GameManager.Instance.explosionClip, transform.position);
+        AudioSource.PlayClipAtPoint(GameManager.Instance.ballDeathClip, transform.position);
         Explode();
     }
 }

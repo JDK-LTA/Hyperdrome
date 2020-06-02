@@ -74,7 +74,7 @@ public class EnemyShooter : EnemyBase
     protected override void Die()
     {
         base.Die();
-
+        AudioSource.PlayClipAtPoint(GameManager.Instance.droneDeathClip, transform.position);
         Destroy(gameObject);
     }
 }

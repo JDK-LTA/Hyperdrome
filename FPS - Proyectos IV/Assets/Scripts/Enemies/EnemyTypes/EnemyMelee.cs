@@ -61,6 +61,7 @@ public class EnemyMelee : EnemyBase
     protected override void Die()
     {
         base.Die();
+        AudioSource.PlayClipAtPoint(GameManager.Instance.spiderDeathClip, transform.position);
         MeleeDie?.Invoke();
     }
 }
