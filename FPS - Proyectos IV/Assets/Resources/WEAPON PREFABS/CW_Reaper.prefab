@@ -40,7 +40,7 @@ MonoBehaviour:
   variance: 6
   varianceDecreaseWhenAim: 2
   speedDecreaseWhenAim: 1
-  _numberToChange: 50
+  _numberToChange: 20
   _raycastSpot: {fileID: 0}
   isAiming: 0
   auxNoToChange: 0

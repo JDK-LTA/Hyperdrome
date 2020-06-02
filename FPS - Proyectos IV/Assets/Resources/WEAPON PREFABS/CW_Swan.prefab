@@ -35,7 +35,7 @@ MonoBehaviour:
   _weight: 0
   _damagePerHit: 100
   _forceToApply: 1
-  _range: 5
+  _range: 10
   _cdBetweenShots: 1
   variance: 10
   varianceDecreaseWhenAim: 10
@@ -54,7 +54,7 @@ PrefabInstance:
     - target: {fileID: 4071306813705813220, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
       propertyPath: m_Name
-      value: CW_PistolLock
+      value: CW_Swan
       objectReference: {fileID: 0}
     - target: {fileID: 3267214807680600860, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}

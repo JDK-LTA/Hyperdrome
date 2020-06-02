@@ -1,6 +1,55 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!120 &8172464192744868237
+--- !u!114 &62634374600071480
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7428862316339352537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f19d693d7cad0f4486a18724fb3d37e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &5348552291474237124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7428862316339352537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a635d78c0ac3c9a4b867717c2ac3c803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nameOfWeapon: Prime
+  _shootingType: 3
+  _weaponType: 1
+  _changer: 1
+  _bullet: {fileID: 0}
+  _fireSound: {fileID: 0}
+  _levelRequired: 2
+  _ammo: 0
+  _weight: 0
+  _damagePerHit: 15
+  _forceToApply: 2
+  _range: 30
+  _cdBetweenShots: 0
+  variance: 0
+  varianceDecreaseWhenAim: 1
+  speedDecreaseWhenAim: 2.5
+  _numberToChange: 20
+  _raycastSpot: {fileID: 0}
+  isAiming: 0
+  auxNoToChange: 0
+  lineMat: {fileID: 0}
+  endSpeed: 5
+  lineStartWidth: 0.2
+  lineEndWidth: 0.2
+  offset: {x: 0, y: 0, z: 0}
+--- !u!120 &1374436653190620752
 LineRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -17,7 +66,7 @@ LineRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e674927e0925fdd428a05ad0c26edccc, type: 2}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -95,55 +144,6 @@ LineRenderer:
     generateLightingData: 0
   m_UseWorldSpace: 1
   m_Loop: 0
---- !u!114 &62634374600071480
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7428862316339352537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3f19d693d7cad0f4486a18724fb3d37e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &5348552291474237124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7428862316339352537}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a635d78c0ac3c9a4b867717c2ac3c803, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _nameOfWeapon: Prime
-  _shootingType: 3
-  _weaponType: 1
-  _changer: 1
-  _bullet: {fileID: 0}
-  _fireSound: {fileID: 0}
-  _levelRequired: 2
-  _ammo: 0
-  _weight: 0
-  _damagePerHit: 20
-  _forceToApply: 2
-  _range: 30
-  _cdBetweenShots: 0
-  variance: 0
-  varianceDecreaseWhenAim: 1
-  speedDecreaseWhenAim: 2.5
-  _numberToChange: 20
-  _raycastSpot: {fileID: 0}
-  isAiming: 0
-  auxNoToChange: 0
-  lineMat: {fileID: 0}
-  endSpeed: 5
-  lineStartWidth: 0.2
-  lineEndWidth: 0.2
-  offset: {x: 0, y: 0, z: 0}
 --- !u!1001 &6888450326437736253
 PrefabInstance:
   m_ObjectHideFlags: 0

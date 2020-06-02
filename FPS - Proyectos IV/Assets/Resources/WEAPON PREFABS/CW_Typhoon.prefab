@@ -23,7 +23,7 @@ MonoBehaviour:
   _weight: 0
   _damagePerHit: 100
   _forceToApply: 0
-  _range: 6
+  _range: 10
   _cdBetweenShots: 1
   variance: 6
   varianceDecreaseWhenAim: 2
@@ -54,7 +54,7 @@ PrefabInstance:
     - target: {fileID: 4071306813705813220, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
       propertyPath: m_Name
-      value: CW_PistolLock2
+      value: CW_Typhoon
       objectReference: {fileID: 0}
     - target: {fileID: 3267214807680600860, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
