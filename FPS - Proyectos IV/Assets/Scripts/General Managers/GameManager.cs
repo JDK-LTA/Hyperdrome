@@ -62,7 +62,12 @@ public class GameManager : Singleton<GameManager>
         UIManager.Instance.UpdatePiecesText(WaveManager.Instance.PiecesToEndWave);
         if (WaveManager.Instance.PiecesToEndWave <= 0)
         {
+            CanvasDDOL.Instance.pressFText.text = "Kill remaining enemies";
             WaveManager.Instance.PrepareToEndWave();
+        }
+        else
+        {
+            CanvasDDOL.Instance.pressFText.text = "Press F to deliver 0 pieces";
         }
         nOfPiecesGot = 0;
     }

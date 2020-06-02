@@ -26,7 +26,7 @@ public class ShotBase : MonoBehaviour
     }
     protected virtual void Update() { }
 
-    protected virtual void IsShooting(bool hold)
+    public virtual void IsShooting(bool hold)
     {
         shooting = hold;
         if (!hold)

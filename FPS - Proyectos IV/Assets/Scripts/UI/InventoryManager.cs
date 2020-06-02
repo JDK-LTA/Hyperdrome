@@ -45,6 +45,11 @@ public class InventoryManager : MonoBehaviour
         buildPanels = new List<PickablePanel>();
         lastRoundPickablePanels = new List<PickablePanel>();
         CreateAllPanels();
+
+        foreach (AudioSource item in FindObjectsOfType<AudioSource>())
+        {
+            item.Stop();
+        }
     }
     private void OnDisable()
     {

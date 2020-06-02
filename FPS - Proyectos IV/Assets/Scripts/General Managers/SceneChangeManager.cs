@@ -16,7 +16,20 @@ public class SceneChangeManager : Singleton<SceneChangeManager>
 
     public void LoadLevel(int i)
     {
-        StartCoroutine(LoadAsync(i));
+        if (i == 1)
+        {
+            StartCoroutine(LoadAsync(i));
+        }
+        else if (i == 2)
+        {
+            StartCoroutine(LoadAsync(i));
+            InitManagers();
+        }
+        else if (i == 3)
+        {
+            SceneManager.LoadScene("Nivel3");
+            InitManagers();
+        }
     }
 
     public void LoadMenu()
@@ -35,7 +48,19 @@ public class SceneChangeManager : Singleton<SceneChangeManager>
 
     IEnumerator LoadAsync(int i)
     {
-        AsyncOperation op = SceneManager.LoadSceneAsync("Nivel" + i);
+        AsyncOperation op;
+        if (i == 1)
+        {
+            op = SceneManager.LoadSceneAsync("Nivel1");
+        }
+        else if (i == 2)
+        {
+            op = SceneManager.LoadSceneAsync("Nivel2");
+        }
+        else
+        {
+            op = SceneManager.LoadSceneAsync("Nivel3");
+        }
 
         SetLoadingPanelActive(true);
 
@@ -52,11 +77,7 @@ public class SceneChangeManager : Singleton<SceneChangeManager>
     {
         if (next.name == "Nivel1")
         {
-            GameManager.Instance.Init();
-            InputManager.Instance.Init();
-            WeaponPrefabsLists.Instance.Init();
-            WaveManager.Instance.Init();
-            WeaponManager.Instance._player.Init();
+            InitManagers();
         }
         else if (next.name == "MainMenu")
         {
@@ -65,6 +86,16 @@ public class SceneChangeManager : Singleton<SceneChangeManager>
 
         SetLoadingPanelActive(false);
     }
+
+    private static void InitManagers()
+    {
+        GameManager.Instance.Init();
+        InputManager.Instance.Init();
+        WeaponPrefabsLists.Instance.Init();
+        WaveManager.Instance.Init();
+        WeaponManager.Instance._player.Init();
+    }
+
     private void OnLoadMenu()
     {
         Destroy(FindObjectOfType<WaveManager>().gameObject);

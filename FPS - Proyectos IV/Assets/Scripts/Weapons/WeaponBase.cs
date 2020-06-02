@@ -66,6 +66,10 @@ public class WeaponBase : MonoBehaviour
     protected virtual void Awake()
     {
         audioSource = GetComponent<AudioSource>();
+        if (_fireSound != null)
+        {
+            audioSource.clip = _fireSound;
+        }
         shotComp = GetComponent<ShotBase>();
     }
     // Start is called before the first frame update
@@ -115,7 +119,7 @@ public class WeaponBase : MonoBehaviour
         }
         ShotsThatAreShot();
 
-        audioSource.PlayOneShot(FireSound);
+        audioSource.Play();
         if (_weaponType != WeaponType.LASER)
         {
             muzzle.Play();
@@ -138,14 +142,17 @@ public class WeaponBase : MonoBehaviour
 
     protected virtual void ShotsThatAreShot()
     {
-        AudioSource.PlayClipAtPoint(GameManager.Instance.shotClip, _raycastSpot.position);
+        if (_weaponType != WeaponType.LASER)
+        {
+            //AudioSource.PlayClipAtPoint(GameManager.Instance.shotClip, _raycastSpot.position, 0.05f);
+            audioSource.Play();
+        }
         ShootingBullet(GetVariedDirection());
     }
     protected virtual void ShootingBullet(Vector3 direction)
     {
         Ray ray = new Ray(Camera.main.transform.position, direction);
         RaycastHit hit;
-        //EnemyBase enemyHit;
 
         if (Physics.Raycast(ray, out hit, Range))
         {

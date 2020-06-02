@@ -250,10 +250,6 @@ public class RbFPSController : MonoBehaviour
     {
         _rigidbody = GetComponent<Rigidbody>();
         _collider = GetComponent<CapsuleCollider>();
-
-        Debug.Log("Initiated");
-        Debug.Log(_rigidbody == null);
-        //Debug.Log(_collider);
     }
 
     // Update is called once per frame

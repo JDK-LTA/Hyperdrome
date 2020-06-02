@@ -17,7 +17,7 @@ MonoBehaviour:
   _weaponType: 2
   _changer: 0
   _bullet: {fileID: 0}
-  _fireSound: {fileID: 0}
+  _fireSound: {fileID: 8300000, guid: 442617e9131bffc47a309ef70779debf, type: 3}
   _levelRequired: 4
   _ammo: 0
   _weight: 0
@@ -57,11 +57,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: CW_Mercy
       objectReference: {fileID: 0}
-    - target: {fileID: 3267214807680600860, guid: 08628a2f8858779488a3751bac51a99a,
-        type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: e307920b5e3642c40a8e9eade3efb601, type: 2}
     - target: {fileID: 5176600576134307842, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -117,6 +112,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3267214807680600860, guid: 08628a2f8858779488a3751bac51a99a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: e307920b5e3642c40a8e9eade3efb601, type: 2}
     - target: {fileID: 5819289931294228022, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
       propertyPath: m_Mesh

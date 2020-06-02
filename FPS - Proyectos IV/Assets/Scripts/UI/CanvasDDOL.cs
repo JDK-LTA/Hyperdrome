@@ -8,7 +8,7 @@ public class CanvasDDOL : MonoBehaviour
     public static CanvasDDOL Instance;
 
     [SerializeField] private GameObject endPanel, pauseMenu;
-    [SerializeField] private Text pressFText;
+    public Text pressFText;
     [SerializeField] private Image endImage;
     [SerializeField] private Sprite youWinSprite, youLoseSprite;
 

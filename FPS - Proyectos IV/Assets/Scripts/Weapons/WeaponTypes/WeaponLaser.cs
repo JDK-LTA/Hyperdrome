@@ -46,6 +46,7 @@ public class WeaponLaser : WeaponBase
         {
             line.enabled = false;
             isLine = false;
+            audioSource.Stop();
         }
     }
 
@@ -70,6 +71,11 @@ public class WeaponLaser : WeaponBase
             isLine = true;
             bezierCtrlPoint = endPoint;
             line.enabled = true;
+
+            if (audioSource != null)
+            {
+                audioSource.Play();
+            }
         }
         DrawQuadBezierCurve();
     }
@@ -97,7 +103,7 @@ public class WeaponLaser : WeaponBase
     }
     private void UpdateBezierPoint()
     {
-        float actualSpeed = Mathf.Clamp((endSpeed + WeaponManager.Instance._player.movementSettings.CurrentTargetSpeed) 
+        float actualSpeed = Mathf.Clamp((endSpeed + WeaponManager.Instance._player.movementSettings.CurrentTargetSpeed)
             * Vector3.Distance(RaycastSpot.position, bezierCtrlPoint), endSpeed, 500);
 
         bezierCtrlPoint = Vector3.MoveTowards(bezierCtrlPoint, endPoint, Time.deltaTime * actualSpeed);

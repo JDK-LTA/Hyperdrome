@@ -37,7 +37,7 @@ public class WaveManager : MonoBehaviour
 
     public UnityEngine.UI.Text debugText;
 
-    bool isSpawning = true, debugSpawn = false, roundsStarted = false;
+    bool isSpawning = true, debugStopSpawn = false, roundsStarted = false;
     float tPerGolden = 0;
     [SerializeField] float cdPerGolden = 8;
     float tPerSpawn = 0;
@@ -87,16 +87,20 @@ public class WaveManager : MonoBehaviour
         tPerSpawn = 0;
         tPerGolden = 0;
     }
+
+    bool isOnLvl2 = false, isOnLvl3 = false;
     private void EndWave()
     {
         //END WAVE STUFF
-        if (_currentWave == lvl1Waves - 1)
+        if (_currentWave == lvl1Waves - 1 && !isOnLvl2)
         {
             SceneChangeManager.Instance.LoadLevel(2);
+            isOnLvl2 = true;
         }
-        else if (_currentWave == lvl1Waves + lvl2Waves - 1)
+        else if (_currentWave == lvl1Waves + lvl2Waves - 1 && !isOnLvl3)
         {
             SceneChangeManager.Instance.LoadLevel(3);
+            isOnLvl3 = true;
         }
 
         WeaponManager.Instance._player.CanMove(false);
@@ -111,6 +115,7 @@ public class WaveManager : MonoBehaviour
     }
     private void ShowWeaponChoosingPanel(bool show)
     {
+        WeaponManager.Instance.Weapons[WeaponManager.Instance.selectedWeapon].GetComponent<ShotBase>().IsShooting(false);
         WeaponPrefabsLists.Instance.inventory.SetActive(show);
     }
     public void BeginNextWave()
@@ -130,9 +135,9 @@ public class WaveManager : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.O) && InputManager.Instance.debug)
         {
-            debugSpawn = !debugSpawn;
+            debugStopSpawn = !debugStopSpawn;
         }
 
         if (roundsStarted)
@@ -140,7 +145,7 @@ public class WaveManager : MonoBehaviour
 
             if (isSpawning)
             {
-                if (debugSpawn)
+                if (!debugStopSpawn)
                 {
 
                     if (_currentDifficulty > 0)

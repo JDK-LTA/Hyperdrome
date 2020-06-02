@@ -8,6 +8,7 @@ public class RespawnCollider : MonoBehaviour
     {
         if (other.tag == "Player")
         {
+            GameManager.Instance.PlayerTakeHit(35);
             WeaponManager.Instance.Respawn();
         }
     }
