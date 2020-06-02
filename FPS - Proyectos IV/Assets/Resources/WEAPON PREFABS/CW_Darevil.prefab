@@ -24,11 +24,11 @@ MonoBehaviour:
   _damagePerHit: 15
   _forceToApply: 1
   _range: 20
-  _cdBetweenShots: 0.45
+  _cdBetweenShots: 0.3
   variance: 3
   varianceDecreaseWhenAim: 2
   speedDecreaseWhenAim: 2
-  _numberToChange: 40
+  _numberToChange: 10
   _raycastSpot: {fileID: 0}
   isAiming: 0
   auxNoToChange: 0

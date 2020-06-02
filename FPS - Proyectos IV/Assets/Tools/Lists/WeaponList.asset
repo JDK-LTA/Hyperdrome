@@ -171,7 +171,7 @@ MonoBehaviour:
     variance: 4
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 1.5
-    numberToChange: 35
+    numberToChange: 20
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 0
     endSpeed: 10
@@ -193,12 +193,12 @@ MonoBehaviour:
     weight: 0
     damagePerHit: 20
     forceToApply: 1
-    range: 10
-    cdBetweenShots: 0.4
+    range: 15
+    cdBetweenShots: 0.35
     variance: 2
     varianceDecreaseWhenAim: 1.5
     speedDecreaseWhenAim: 1.5
-    numberToChange: 20
+    numberToChange: 6
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 0
     endSpeed: 10
@@ -220,12 +220,12 @@ MonoBehaviour:
     weight: 0
     damagePerHit: 30
     forceToApply: 1.5
-    range: 6
+    range: 10
     cdBetweenShots: 0.5
     variance: 2
     varianceDecreaseWhenAim: 1.5
     speedDecreaseWhenAim: 2
-    numberToChange: 30
+    numberToChange: 10
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 0
     endSpeed: 10
@@ -248,11 +248,11 @@ MonoBehaviour:
     damagePerHit: 15
     forceToApply: 1
     range: 20
-    cdBetweenShots: 0.45
+    cdBetweenShots: 0.3
     variance: 3
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 2
-    numberToChange: 40
+    numberToChange: 10
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 0
     endSpeed: 10
@@ -279,7 +279,7 @@ MonoBehaviour:
     variance: 3.5
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 2
-    numberToChange: 25
+    numberToChange: 15
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 0
     endSpeed: 10
@@ -306,7 +306,7 @@ MonoBehaviour:
     variance: 2
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 2.5
-    numberToChange: 40
+    numberToChange: 10
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 0
     endSpeed: 10
@@ -328,12 +328,12 @@ MonoBehaviour:
     weight: 0
     damagePerHit: 6
     forceToApply: 2
-    range: 6
+    range: 10
     cdBetweenShots: 0.3
     variance: 3
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 1.5
-    numberToChange: 60
+    numberToChange: 25
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 5
     endSpeed: 10
@@ -355,12 +355,12 @@ MonoBehaviour:
     weight: 0
     damagePerHit: 10
     forceToApply: 2
-    range: 10
+    range: 14
     cdBetweenShots: 0.35
     variance: 6
     varianceDecreaseWhenAim: 3
     speedDecreaseWhenAim: 2
-    numberToChange: 45
+    numberToChange: 16
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 2
     endSpeed: 10
@@ -382,12 +382,12 @@ MonoBehaviour:
     weight: 0
     damagePerHit: 40
     forceToApply: 3
-    range: 50
-    cdBetweenShots: 3
+    range: 25
+    cdBetweenShots: 1.5
     variance: 8
     varianceDecreaseWhenAim: 6
     speedDecreaseWhenAim: 2.5
-    numberToChange: 30
+    numberToChange: 8
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 0
     endSpeed: 10
@@ -436,7 +436,7 @@ MonoBehaviour:
     weight: 0
     damagePerHit: 8
     forceToApply: 2
-    range: 20
+    range: 40
     cdBetweenShots: 0
     variance: 0
     varianceDecreaseWhenAim: 1
@@ -461,7 +461,7 @@ MonoBehaviour:
     levelRequired: 2
     ammo: 0
     weight: 0
-    damagePerHit: 20
+    damagePerHit: 15
     forceToApply: 2
     range: 30
     cdBetweenShots: 0
@@ -490,7 +490,7 @@ MonoBehaviour:
     weight: 0
     damagePerHit: 100
     forceToApply: 1
-    range: 5
+    range: 10
     cdBetweenShots: 1
     variance: 10
     varianceDecreaseWhenAim: 10
@@ -517,12 +517,12 @@ MonoBehaviour:
     weight: 0
     damagePerHit: 50
     forceToApply: 1
-    range: 15
+    range: 30
     cdBetweenShots: 1
     variance: 10
     varianceDecreaseWhenAim: 10
     speedDecreaseWhenAim: 2
-    numberToChange: 60
+    numberToChange: 14
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 0
     endSpeed: 10
@@ -544,12 +544,12 @@ MonoBehaviour:
     weight: 0
     damagePerHit: 40
     forceToApply: 1
-    range: 8
-    cdBetweenShots: 0.6
+    range: 12
+    cdBetweenShots: 0.25
     variance: 10
     varianceDecreaseWhenAim: 8
     speedDecreaseWhenAim: 1.5
-    numberToChange: 60
+    numberToChange: 10
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 0
     endSpeed: 10
@@ -571,12 +571,12 @@ MonoBehaviour:
     weight: 0
     damagePerHit: 8
     forceToApply: 2
-    range: 5
+    range: 12
     cdBetweenShots: 0.35
     variance: 10
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 2
-    numberToChange: 50
+    numberToChange: 24
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 4
     endSpeed: 10
@@ -598,12 +598,12 @@ MonoBehaviour:
     weight: 0
     damagePerHit: 12
     forceToApply: 1
-    range: 10
+    range: 15
     cdBetweenShots: 0
     variance: 0
     varianceDecreaseWhenAim: 1
     speedDecreaseWhenAim: 1
-    numberToChange: 40
+    numberToChange: 45
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 0
     endSpeed: 10
@@ -630,7 +630,7 @@ MonoBehaviour:
     variance: 6
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 1
-    numberToChange: 50
+    numberToChange: 20
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 0
     endSpeed: 10
@@ -653,11 +653,11 @@ MonoBehaviour:
     damagePerHit: 20
     forceToApply: 1
     range: 10
-    cdBetweenShots: 0.65
+    cdBetweenShots: 0.45
     variance: 4
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 1.5
-    numberToChange: 35
+    numberToChange: 12
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 0
     endSpeed: 10
@@ -680,11 +680,11 @@ MonoBehaviour:
     damagePerHit: 18
     forceToApply: 1
     range: 8
-    cdBetweenShots: 0.5
+    cdBetweenShots: 0.4
     variance: 6
     varianceDecreaseWhenAim: 2.5
     speedDecreaseWhenAim: 1.5
-    numberToChange: 60
+    numberToChange: 14
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 0
     endSpeed: 10
@@ -707,11 +707,11 @@ MonoBehaviour:
     damagePerHit: 15
     forceToApply: 1
     range: 15
-    cdBetweenShots: 0.4
+    cdBetweenShots: 0.15
     variance: 3
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 2
-    numberToChange: 45
+    numberToChange: 10
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 0
     endSpeed: 10
@@ -738,7 +738,7 @@ MonoBehaviour:
     variance: 5
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 2
-    numberToChange: 25
+    numberToChange: 8
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 0
     endSpeed: 10
@@ -765,7 +765,7 @@ MonoBehaviour:
     variance: 8
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 2
-    numberToChange: 10
+    numberToChange: 8
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 0
     endSpeed: 10
@@ -787,12 +787,12 @@ MonoBehaviour:
     weight: 0
     damagePerHit: 10
     forceToApply: 1
-    range: 8
-    cdBetweenShots: 0.6
+    range: 10
+    cdBetweenShots: 0.5
     variance: 6
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 5
-    numberToChange: 45
+    numberToChange: 12
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 6
     endSpeed: 10
@@ -819,7 +819,7 @@ MonoBehaviour:
     variance: 0
     varianceDecreaseWhenAim: 1
     speedDecreaseWhenAim: 1
-    numberToChange: 25
+    numberToChange: 38
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 0
     endSpeed: 10
@@ -841,7 +841,7 @@ MonoBehaviour:
     weight: 0
     damagePerHit: 100
     forceToApply: 0
-    range: 6
+    range: 10
     cdBetweenShots: 1
     variance: 6
     varianceDecreaseWhenAim: 2
@@ -868,12 +868,12 @@ MonoBehaviour:
     weight: 0
     damagePerHit: 20
     forceToApply: 1
-    range: 8
-    cdBetweenShots: 0.5
+    range: 12
+    cdBetweenShots: 0.3
     variance: 4
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 2
-    numberToChange: 20
+    numberToChange: 8
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 0
     endSpeed: 10
@@ -893,14 +893,14 @@ MonoBehaviour:
     levelRequired: 0
     ammo: 0
     weight: 0
-    damagePerHit: 8
+    damagePerHit: 12
     forceToApply: 1
-    range: 8
+    range: 15
     cdBetweenShots: 0.5
     variance: 3
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 1
-    numberToChange: 45
+    numberToChange: 15
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 0
     endSpeed: 10
@@ -920,14 +920,41 @@ MonoBehaviour:
     levelRequired: 0
     ammo: 0
     weight: 0
-    damagePerHit: 6
+    damagePerHit: 8
     forceToApply: 1
     range: 20
-    cdBetweenShots: 0.5
+    cdBetweenShots: 0.2
     variance: 4
     varianceDecreaseWhenAim: 4
     speedDecreaseWhenAim: 1.5
-    numberToChange: 30
+    numberToChange: 15
+    raycastSpot: {fileID: 0}
+    nOfBulletsPerShot: 0
+    endSpeed: 10
+    lineStartWidth: 0.05
+    lineEndWidth: 0.05
+  - previousName: 
+    isCreated: 0
+    name: 
+    shootingType: 0
+    weaponType: 0
+    changer: 0
+    mesh: {fileID: 0}
+    materials: []
+    bullet: {fileID: 0}
+    crosshairTexture: {fileID: 0}
+    fireSound: {fileID: 0}
+    levelRequired: 0
+    ammo: 0
+    weight: 0
+    damagePerHit: 0
+    forceToApply: 0
+    range: 0
+    cdBetweenShots: 0
+    variance: 0
+    varianceDecreaseWhenAim: 0
+    speedDecreaseWhenAim: 0
+    numberToChange: 0
     raycastSpot: {fileID: 0}
     nOfBulletsPerShot: 0
     endSpeed: 10

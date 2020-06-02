@@ -28,7 +28,7 @@ MonoBehaviour:
   variance: 5
   varianceDecreaseWhenAim: 2
   speedDecreaseWhenAim: 2
-  _numberToChange: 25
+  _numberToChange: 8
   _raycastSpot: {fileID: 0}
   isAiming: 0
   auxNoToChange: 0

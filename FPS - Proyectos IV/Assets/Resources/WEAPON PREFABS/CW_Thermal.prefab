@@ -23,12 +23,12 @@ MonoBehaviour:
   _weight: 0
   _damagePerHit: 40
   _forceToApply: 3
-  _range: 50
-  _cdBetweenShots: 3
+  _range: 25
+  _cdBetweenShots: 1.5
   variance: 8
   varianceDecreaseWhenAim: 6
   speedDecreaseWhenAim: 2.5
-  _numberToChange: 30
+  _numberToChange: 8
   _raycastSpot: {fileID: 0}
   isAiming: 0
   auxNoToChange: 0
@@ -54,7 +54,7 @@ PrefabInstance:
     - target: {fileID: 4071306813705813220, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
       propertyPath: m_Name
-      value: CW_RiffleFast
+      value: CW_Thermal
       objectReference: {fileID: 0}
     - target: {fileID: 3267214807680600860, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
