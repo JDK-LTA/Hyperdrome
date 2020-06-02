@@ -99,6 +99,7 @@ public class GameManager : Singleton<GameManager>
 
     public void EndGame(bool win)
     {
+        WeaponManager.Instance._player.CanMove(false);
         CanvasDDOL.Instance.SetEndPanelActive(true, win);
 
         Time.timeScale = 0;
