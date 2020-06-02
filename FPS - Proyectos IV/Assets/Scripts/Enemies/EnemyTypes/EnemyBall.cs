@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyBall : EnemyBase
 {
-
     private bool readyToExplode = false, isRunning = false;
     [SerializeField] private float distanceToRun = 30f;
     [SerializeField] private float distanceToExplode = 2f;
@@ -39,7 +38,6 @@ public class EnemyBall : EnemyBase
             Rigidbody rb = hit.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                //Debug.Log("kaboom");
                 rb.AddExplosionForce(explosionForce, transform.position, explosionRadius, 6f);
 
                 if (rb.gameObject == player.gameObject)
@@ -66,9 +64,7 @@ public class EnemyBall : EnemyBase
             {
                 RaycastHit hit;
                 Physics.Raycast(transform.position, player.transform.position - transform.position, out hit, distanceToRun);
-                //Debug.DrawLine(transform.position, hit.point, Color.magenta, 5f);
-                //Debug.Log(Vector3.Distance(transform.position, player.transform.position));
-                //Debug.Log(hit.collider?.gameObject.name);
+
                 if (hit.transform?.gameObject == player.gameObject && !isRunning)
                 {
                     isRunning = true;
@@ -77,15 +73,6 @@ public class EnemyBall : EnemyBase
                     OnReadyToRun();
                 }
 
-
-                //if (canMove)
-                //{
-                //    agent.isStopped = false;
-                //}
-                //else
-                //{
-                //    agent.isStopped = true;
-                //}
                 agent.isStopped = !canMove;
                 agent.destination = player.transform.position;
             }

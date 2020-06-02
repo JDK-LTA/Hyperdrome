@@ -92,13 +92,6 @@ public class GameManager : Singleton<GameManager>
         ppvPlayer.weight = 1 - y;
     }
 
-    private void PlayerDeath()
-    {
-        Debug.Log("MUERTA");
-        EndGame(false);
-        Time.timeScale = 0;
-    }
-
     public void EndGame(bool win)
     {
         CanvasDDOL.Instance.SetEndPanelActive(true, win);

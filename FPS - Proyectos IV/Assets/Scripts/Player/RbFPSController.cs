@@ -230,10 +230,6 @@ public class RbFPSController : MonoBehaviour
     #endregion
 
     #region Unity API Methods
-    private void Awake()
-    {
-        //Init();
-    }
     // Start is called before the first frame update
     private void Start()
     {
@@ -274,6 +270,7 @@ public class RbFPSController : MonoBehaviour
         XZDrag();
     }
     #endregion
+    #region General methods
     public void CanMove(bool canMove)
     {
         movementSettings.lockMovement = !canMove;
@@ -283,20 +280,6 @@ public class RbFPSController : MonoBehaviour
         //mouseLook.lockCursor = canMove;
     }
 
-    private void DashTimer()
-    {
-        if (!canDash)
-        {
-            dashT += Time.deltaTime;
-            if (dashT >= dashCooldown)
-            {
-                dashT = 0;
-
-                UIManager.Instance.SetDashImageActive(false);
-                canDash = true;
-            }
-        }
-    }
 
     private void XZDrag()
     {
@@ -306,7 +289,7 @@ public class RbFPSController : MonoBehaviour
         xzVelocity.y = velocity.y;
         _rigidbody.velocity = xzVelocity;
     }
-
+    #endregion
     #region Camera and View
     private void UpdateMouseX(float mouseX)
     {
@@ -361,11 +344,6 @@ public class RbFPSController : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, 1f))
         {
-            //Debug.Log(dir);
-            //Debug.Log(hit.normal);
-            //Debug.DrawRay(hit.point, hit.normal, Color.cyan, 5f);
-            //Debug.DrawRay(feet.position, dir, Color.red, 5f);
-            //Debug.Log(Vector3.Angle(hit.point - feet.transform.position, hit.normal));
             if (Vector3.Angle(hit.point - feet.transform.position, hit.normal) < 135)
             {
                 return true;
@@ -381,47 +359,14 @@ public class RbFPSController : MonoBehaviour
         }
     }
     #endregion
-
     #region Jump
     private void UpdateJumpInput()
     {
-        //_jump = true;
         if (_isGrounded)
         {
             _rigidbody.AddForce(Vector3.up * Mathf.Sqrt(movementSettings.JumpForce * -2f * Physics.gravity.y), ForceMode.VelocityChange);
         }
     }
-    /*private void JumpingChecker()
-    {
-        if (_isGrounded)
-        {
-            _rigidbody.drag = 5f;
-
-            if (_jump)
-            {
-                Debug.Log("jump");
-
-                _rigidbody.drag = 0f;
-                _rigidbody.velocity = new Vector3(_rigidbody.velocity.x, 0f, _rigidbody.velocity.z);
-                _rigidbody.AddForce(new Vector3(0f, movementSettings.JumpForce, 0f), ForceMode.Impulse);
-                _jumping = true;
-            }
-
-            if (_jumping && Mathf.Abs(_input.x) < float.Epsilon && Mathf.Abs(_input.y) < float.Epsilon && _rigidbody.velocity.magnitude < 1f)
-            {
-                _rigidbody.Sleep();
-            }
-        }
-        else
-        {
-            _rigidbody.drag = 0f;
-            if (_previouslyGrounded && _jumping)
-            {
-                StickToGroundHelper();
-            }
-        }
-        _jump = false;
-    }*/
 
     private void StickToGroundHelper()
     {
@@ -472,6 +417,20 @@ public class RbFPSController : MonoBehaviour
 
             canDash = false;
             UIManager.Instance.SetDashImageActive(true);
+        }
+    }
+    private void DashTimer()
+    {
+        if (!canDash)
+        {
+            dashT += Time.deltaTime;
+            if (dashT >= dashCooldown)
+            {
+                dashT = 0;
+
+                UIManager.Instance.SetDashImageActive(false);
+                canDash = true;
+            }
         }
     }
     #endregion
