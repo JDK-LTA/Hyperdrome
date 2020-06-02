@@ -24,7 +24,7 @@ MonoBehaviour:
   _damagePerHit: 6
   _forceToApply: 2
   _range: 6
-  _cdBetweenShots: 1
+  _cdBetweenShots: 0.3
   variance: 3
   varianceDecreaseWhenAim: 2
   speedDecreaseWhenAim: 1.5
@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: 4071306813705813220, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
       propertyPath: m_Name
-      value: CW_ShotgunShort
+      value: CW_Hydruler
       objectReference: {fileID: 0}
     - target: {fileID: 3267214807680600860, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}

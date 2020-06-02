@@ -22,6 +22,7 @@ public class ShotBase : MonoBehaviour
     protected virtual void Start()
     {
         InputManager.Instance.OnHoldShoot += IsShooting;
+        cdBetweenShots = weapon.CdBetweenShots;
     }
     protected virtual void Update() { }
 

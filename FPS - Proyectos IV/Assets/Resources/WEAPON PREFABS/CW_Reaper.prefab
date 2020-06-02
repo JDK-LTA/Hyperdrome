@@ -36,7 +36,7 @@ MonoBehaviour:
   _damagePerHit: 18
   _forceToApply: 1
   _range: 10
-  _cdBetweenShots: 0
+  _cdBetweenShots: 0.4
   variance: 6
   varianceDecreaseWhenAim: 2
   speedDecreaseWhenAim: 1
@@ -54,7 +54,7 @@ PrefabInstance:
     - target: {fileID: 4071306813705813220, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
       propertyPath: m_Name
-      value: CW_PistolAuto2
+      value: CW_Reaper
       objectReference: {fileID: 0}
     - target: {fileID: 3267214807680600860, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}

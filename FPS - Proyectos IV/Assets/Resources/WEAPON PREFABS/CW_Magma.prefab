@@ -36,7 +36,7 @@ MonoBehaviour:
   _damagePerHit: 20
   _forceToApply: 1
   _range: 8
-  _cdBetweenShots: 0
+  _cdBetweenShots: 0.5
   variance: 4
   varianceDecreaseWhenAim: 2
   speedDecreaseWhenAim: 2
@@ -54,7 +54,7 @@ PrefabInstance:
     - target: {fileID: 4071306813705813220, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
       propertyPath: m_Name
-      value: CW_SubmachineSemi3
+      value: CW_Magma
       objectReference: {fileID: 0}
     - target: {fileID: 3267214807680600860, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}

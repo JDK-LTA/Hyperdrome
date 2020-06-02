@@ -24,7 +24,7 @@ MonoBehaviour:
   _damagePerHit: 30
   _forceToApply: 1
   _range: 20
-  _cdBetweenShots: 0
+  _cdBetweenShots: 0.65
   variance: 5
   varianceDecreaseWhenAim: 2
   speedDecreaseWhenAim: 2
@@ -54,7 +54,7 @@ PrefabInstance:
     - target: {fileID: 4071306813705813220, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
       propertyPath: m_Name
-      value: CW_AssaultSemi2
+      value: CW_Bloodmoon
       objectReference: {fileID: 0}
     - target: {fileID: 3267214807680600860, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
