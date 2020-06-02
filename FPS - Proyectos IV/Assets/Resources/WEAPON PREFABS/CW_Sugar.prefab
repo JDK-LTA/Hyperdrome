@@ -21,7 +21,7 @@ MonoBehaviour:
   _levelRequired: 5
   _ammo: 0
   _weight: 0
-  _damagePerHit: 0.4
+  _damagePerHit: 0.6
   _forceToApply: 1
   _range: 15
   _cdBetweenShots: 0
@@ -49,7 +49,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f19d693d7cad0f4486a18724fb3d37e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!120 &1146793275072166859
+--- !u!120 &8026517691742286071
 LineRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

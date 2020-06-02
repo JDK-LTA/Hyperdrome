@@ -461,7 +461,7 @@ MonoBehaviour:
     levelRequired: 2
     ammo: 0
     weight: 0
-    damagePerHit: 0.05
+    damagePerHit: 0.6
     forceToApply: 2
     range: 20
     cdBetweenShots: 0
@@ -596,7 +596,7 @@ MonoBehaviour:
     levelRequired: 5
     ammo: 0
     weight: 0
-    damagePerHit: 0.4
+    damagePerHit: 0.6
     forceToApply: 1
     range: 15
     cdBetweenShots: 0
@@ -812,7 +812,7 @@ MonoBehaviour:
     levelRequired: 7
     ammo: 0
     weight: 0
-    damagePerHit: 0.08
+    damagePerHit: 0.8
     forceToApply: 1
     range: 18
     cdBetweenShots: 0
