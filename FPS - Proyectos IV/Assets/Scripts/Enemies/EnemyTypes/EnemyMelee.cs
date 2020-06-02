@@ -43,6 +43,7 @@ public class EnemyMelee : EnemyBase
         }
     }
 
+    //METHODS CALLED IN ANIMATION EVENTS
     private void AttackEnded()
     {
         readyToAttack = false;
@@ -58,6 +59,8 @@ public class EnemyMelee : EnemyBase
     {
         attackTrigger.gameObject.SetActive(true);
     }
+    //
+
     protected override void Die()
     {
         base.Die();

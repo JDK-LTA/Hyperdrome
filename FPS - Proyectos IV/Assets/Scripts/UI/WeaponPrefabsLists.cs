@@ -39,8 +39,4 @@ public class WeaponPrefabsLists : MonoBehaviour
     {
         inventory = Resources.FindObjectsOfTypeAll<InventoryManager>()[0].gameObject;
     }
-    public void ResetInit()
-    {
-        inventory = null;
-    }
 }

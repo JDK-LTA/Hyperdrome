@@ -21,10 +21,6 @@ public class UIManager : MonoBehaviour
             dashCdImage.fillAmount = WeaponManager.Instance._player.DashT / WeaponManager.Instance._player.DashCooldown;
         }
     }
-    public void Change()
-    {
-        SceneChangeManager.Instance.LoadLevel(2);
-    }
 
     public void SetDashImageActive(bool active)
     {

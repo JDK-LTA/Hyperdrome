@@ -18,7 +18,6 @@ public class EnemyAnimBall : EnemyAnimBase
 
     private void TriggerExploding()
     {
-        //cmpAnimator?.SetTrigger("Explode");
         isExploding = true;
     }
 

@@ -41,8 +41,6 @@ public class InventoryManager : MonoBehaviour
 
     private void OnEnable()
     {
-        //WeaponManager.Instance.OnWeaponsInit += CreateAllPanels;
-
         newWeaponPanels = new List<PickablePanel>();
         buildPanels = new List<PickablePanel>();
         lastRoundPickablePanels = new List<PickablePanel>();
@@ -254,7 +252,7 @@ public class InventoryManager : MonoBehaviour
         }
 
         //BETTER UPDATEWEAPONS WHEN CLICKING "DONE" BUTTON, BUT LET'S KEEP THIS FOR DEBUGGING PURPOSES FOR NOW
-        WeaponManager.Instance.UpdateWeapons();
+        StartCoroutine(WeaponManager.Instance.UpdateWeaponsCoroutine());
     }
 
     private void SortChildren(Transform parent)

@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using System.Linq;
 
-//TODO: CLEAR CODE AND PREPARE FOR WAVE-ENDING STUFF
+/// <summary>
+/// DEPRECATED
+/// </summary>
 public class InventorySystem : MonoBehaviour
 {
     [SerializeField] private List<GameObject> weaponSlots;
