@@ -36,7 +36,7 @@ MonoBehaviour:
   _damagePerHit: 15
   _forceToApply: 1
   _range: 15
-  _cdBetweenShots: 0
+  _cdBetweenShots: 0.45
   variance: 4
   varianceDecreaseWhenAim: 2
   speedDecreaseWhenAim: 1.5
@@ -54,7 +54,7 @@ PrefabInstance:
     - target: {fileID: 4071306813705813220, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
       propertyPath: m_Name
-      value: CW_PistolaAuto
+      value: CW_Darkrow
       objectReference: {fileID: 0}
     - target: {fileID: 3267214807680600860, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}

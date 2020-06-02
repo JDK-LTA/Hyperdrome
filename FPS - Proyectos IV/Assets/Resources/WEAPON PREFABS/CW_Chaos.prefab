@@ -24,7 +24,7 @@ MonoBehaviour:
   _damagePerHit: 10
   _forceToApply: 2
   _range: 10
-  _cdBetweenShots: 1.5
+  _cdBetweenShots: 0.35
   variance: 6
   varianceDecreaseWhenAim: 3
   speedDecreaseWhenAim: 2
@@ -55,7 +55,7 @@ PrefabInstance:
     - target: {fileID: 4071306813705813220, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}
       propertyPath: m_Name
-      value: CW_ShotgunLong
+      value: CW_Chaos
       objectReference: {fileID: 0}
     - target: {fileID: 3267214807680600860, guid: 08628a2f8858779488a3751bac51a99a,
         type: 3}

@@ -36,7 +36,7 @@ MonoBehaviour:
   _damagePerHit: 8
   _forceToApply: 1
   _range: 8
-  _cdBetweenShots: 0
+  _cdBetweenShots: 0.5
   variance: 3
   varianceDecreaseWhenAim: 2
   speedDecreaseWhenAim: 1

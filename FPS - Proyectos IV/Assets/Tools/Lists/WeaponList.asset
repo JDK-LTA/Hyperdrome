@@ -167,7 +167,7 @@ MonoBehaviour:
     damagePerHit: 15
     forceToApply: 1
     range: 15
-    cdBetweenShots: 0
+    cdBetweenShots: 0.45
     variance: 4
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 1.5
@@ -194,7 +194,7 @@ MonoBehaviour:
     damagePerHit: 20
     forceToApply: 1
     range: 10
-    cdBetweenShots: 0
+    cdBetweenShots: 0.4
     variance: 2
     varianceDecreaseWhenAim: 1.5
     speedDecreaseWhenAim: 1.5
@@ -221,7 +221,7 @@ MonoBehaviour:
     damagePerHit: 30
     forceToApply: 1.5
     range: 6
-    cdBetweenShots: 0
+    cdBetweenShots: 0.5
     variance: 2
     varianceDecreaseWhenAim: 1.5
     speedDecreaseWhenAim: 2
@@ -248,7 +248,7 @@ MonoBehaviour:
     damagePerHit: 15
     forceToApply: 1
     range: 20
-    cdBetweenShots: 0.5
+    cdBetweenShots: 0.45
     variance: 3
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 2
@@ -275,7 +275,7 @@ MonoBehaviour:
     damagePerHit: 10
     forceToApply: 2
     range: 30
-    cdBetweenShots: 0
+    cdBetweenShots: 0.3
     variance: 3.5
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 2
@@ -329,7 +329,7 @@ MonoBehaviour:
     damagePerHit: 6
     forceToApply: 2
     range: 6
-    cdBetweenShots: 1
+    cdBetweenShots: 0.3
     variance: 3
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 1.5
@@ -356,7 +356,7 @@ MonoBehaviour:
     damagePerHit: 10
     forceToApply: 2
     range: 10
-    cdBetweenShots: 1.5
+    cdBetweenShots: 0.35
     variance: 6
     varianceDecreaseWhenAim: 3
     speedDecreaseWhenAim: 2
@@ -545,7 +545,7 @@ MonoBehaviour:
     damagePerHit: 40
     forceToApply: 1
     range: 8
-    cdBetweenShots: 0
+    cdBetweenShots: 0.6
     variance: 10
     varianceDecreaseWhenAim: 8
     speedDecreaseWhenAim: 1.5
@@ -572,7 +572,7 @@ MonoBehaviour:
     damagePerHit: 8
     forceToApply: 2
     range: 5
-    cdBetweenShots: 1.2
+    cdBetweenShots: 0.35
     variance: 10
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 2
@@ -626,7 +626,7 @@ MonoBehaviour:
     damagePerHit: 18
     forceToApply: 1
     range: 10
-    cdBetweenShots: 0
+    cdBetweenShots: 0.4
     variance: 6
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 1
@@ -653,7 +653,7 @@ MonoBehaviour:
     damagePerHit: 20
     forceToApply: 1
     range: 10
-    cdBetweenShots: 0
+    cdBetweenShots: 0.65
     variance: 4
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 1.5
@@ -680,7 +680,7 @@ MonoBehaviour:
     damagePerHit: 18
     forceToApply: 1
     range: 8
-    cdBetweenShots: 0
+    cdBetweenShots: 0.5
     variance: 6
     varianceDecreaseWhenAim: 2.5
     speedDecreaseWhenAim: 1.5
@@ -707,7 +707,7 @@ MonoBehaviour:
     damagePerHit: 15
     forceToApply: 1
     range: 15
-    cdBetweenShots: 0
+    cdBetweenShots: 0.4
     variance: 3
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 2
@@ -734,7 +734,7 @@ MonoBehaviour:
     damagePerHit: 30
     forceToApply: 1
     range: 20
-    cdBetweenShots: 0
+    cdBetweenShots: 0.65
     variance: 5
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 2
@@ -788,7 +788,7 @@ MonoBehaviour:
     damagePerHit: 10
     forceToApply: 1
     range: 8
-    cdBetweenShots: 1
+    cdBetweenShots: 0.6
     variance: 6
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 5
@@ -869,7 +869,7 @@ MonoBehaviour:
     damagePerHit: 20
     forceToApply: 1
     range: 8
-    cdBetweenShots: 0
+    cdBetweenShots: 0.5
     variance: 4
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 2
@@ -896,7 +896,7 @@ MonoBehaviour:
     damagePerHit: 8
     forceToApply: 1
     range: 8
-    cdBetweenShots: 0
+    cdBetweenShots: 0.5
     variance: 3
     varianceDecreaseWhenAim: 2
     speedDecreaseWhenAim: 1
@@ -923,7 +923,7 @@ MonoBehaviour:
     damagePerHit: 6
     forceToApply: 1
     range: 20
-    cdBetweenShots: 0
+    cdBetweenShots: 0.5
     variance: 4
     varianceDecreaseWhenAim: 4
     speedDecreaseWhenAim: 1.5
