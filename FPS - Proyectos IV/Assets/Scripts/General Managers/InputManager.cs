@@ -58,6 +58,7 @@ public class InputManager : Singleton<InputManager>
                 Init();
                 WeaponPrefabsLists.Instance.Init();
                 WaveManager.Instance.Init();
+                WeaponManager.Instance._player.Init();
             }
         }
         if (initiated)

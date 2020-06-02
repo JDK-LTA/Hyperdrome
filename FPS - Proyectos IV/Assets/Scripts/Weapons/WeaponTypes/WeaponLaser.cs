@@ -26,7 +26,7 @@ public class WeaponLaser : WeaponBase
 
         line = GetComponent<LineRenderer>();
         line.positionCount = numPoints;
-        line.material = lineMat;
+        //line.material = lineMat;
         line.startWidth = lineStartWidth;
         line.endWidth = lineEndWidth;
 
