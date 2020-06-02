@@ -24,6 +24,7 @@ public class InputManager : Singleton<InputManager>
     public event OnInputTrigger OnTriggerAbility;
     public event OnInputTrigger OnTriggerDash;
     public event OnInputTrigger OnTriggerDeliver;
+    public event OnInputTrigger OnTriggerEscape;
 
     public delegate void OnInputRepTrigger();
     public event OnInputRepTrigger OnRepTriggerShoot;
@@ -38,6 +39,10 @@ public class InputManager : Singleton<InputManager>
     public void Init()
     {
         initiated = true;
+    }
+    public void ResetInit()
+    {
+        initiated = false;
     }
 
     public bool debug = false;
@@ -148,6 +153,10 @@ public class InputManager : Singleton<InputManager>
                 if (Input.GetKeyDown(KeyCode.F))
                 {
                     OnTriggerDeliver?.Invoke();
+                }
+                if (Input.GetKeyDown(KeyCode.Escape))
+                {
+                    OnTriggerEscape?.Invoke();
                 }
                 //
 

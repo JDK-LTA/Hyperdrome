@@ -21,17 +21,25 @@ public class GameManager : Singleton<GameManager>
 
     PostProcessVolume ppvPlayer;
 
-    private bool gamePaused = false;
+    private bool gamePaused = false, initiated = false;
 
     public float PlayerHp { get => playerHp; }
 
     private void Start()
     {
         playerMaxHp = playerHp;
+        InputManager.Instance.OnTriggerEscape += TogglePauseMenu;
     }
     public void Init()
     {
         ppvPlayer = WeaponManager.Instance._player.GetComponent<PostProcessVolume>();
+        initiated = true;
+        Time.timeScale = 1;
+    }
+    public void ResetInit()
+    {
+        ppvPlayer = null;
+        initiated = false;
     }
 
     public void CanDeliver(bool value)
@@ -99,11 +107,15 @@ public class GameManager : Singleton<GameManager>
     }
     public void TogglePauseMenu()
     {
-        gamePaused = !gamePaused;
+        if (initiated)
+        {
+            gamePaused = !gamePaused;
 
-        CanvasDDOL.Instance.SetPauseMenuActive(gamePaused);
+            WeaponManager.Instance._player.CanMove(!gamePaused);
+            CanvasDDOL.Instance.SetPauseMenuActive(gamePaused);
 
-        Time.timeScale = gamePaused ? 0 : 1;
+            Time.timeScale = gamePaused ? 0 : 1;
+        }
     }
 
     private void Update()

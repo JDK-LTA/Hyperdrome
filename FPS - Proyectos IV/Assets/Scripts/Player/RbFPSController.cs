@@ -232,14 +232,14 @@ public class RbFPSController : MonoBehaviour
     #region Unity API Methods
     private void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody>();
-        _collider = GetComponent<CapsuleCollider>();
+        //Init();
     }
     // Start is called before the first frame update
     private void Start()
     {
         movementSettings.Init();
         mouseLook.Init(transform, cam.transform);
+        //Init();
 
         InputManager.Instance.OnMoveForward += UpdateInputZ;
         InputManager.Instance.OnMoveRight += UpdateInputX;
@@ -250,6 +250,15 @@ public class RbFPSController : MonoBehaviour
 
     }
 
+    public void Init()
+    {
+        _rigidbody = GetComponent<Rigidbody>();
+        _collider = GetComponent<CapsuleCollider>();
+
+        Debug.Log("Initiated");
+        Debug.Log(_rigidbody == null);
+        //Debug.Log(_collider);
+    }
 
     // Update is called once per frame
     private void Update()
@@ -466,4 +475,14 @@ public class RbFPSController : MonoBehaviour
         }
     }
     #endregion
+
+    public void Unsubscribe()
+    {
+        InputManager.Instance.OnMoveForward -= UpdateInputZ;
+        InputManager.Instance.OnMoveRight -= UpdateInputX;
+        InputManager.Instance.OnTriggerJump -= UpdateJumpInput;
+        InputManager.Instance.OnTriggerDash -= Dash;
+        InputManager.Instance.OnMouseX -= UpdateMouseX;
+        InputManager.Instance.OnMouseY -= UpdateMouseY;
+    }
 }

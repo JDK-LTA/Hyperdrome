@@ -37,7 +37,7 @@ public class WaveManager : MonoBehaviour
 
     public UnityEngine.UI.Text debugText;
 
-    bool isSpawning = true, debugSpawn = false;
+    bool isSpawning = true, debugSpawn = false, roundsStarted = false;
     float tPerGolden = 0;
     [SerializeField] float cdPerGolden = 8;
     float tPerSpawn = 0;
@@ -51,12 +51,20 @@ public class WaveManager : MonoBehaviour
 
     public void Init()
     {
+        roundsStarted = true;
+
         UIManager.Instance.UpdateRoundText(1, _waves.Count);
         UIManager.Instance.UpdatePiecesText(_waves[0].GoldenEnemiesThisWave.Count);
 
         StartCoroutine(FirstWave());
     }
-
+    public void ResetInit()
+    {
+        _currentWave = -1;
+        roundsStarted = false;
+        tPerSpawn = 0;
+        tPerGolden = 0;
+    }
 
     IEnumerator FirstWave()
     {
@@ -108,7 +116,7 @@ public class WaveManager : MonoBehaviour
         {
             //Debug.Log("final");
             //Debug.Break();
-            
+
             GameManager.Instance.EndGame(true);
         }
         //TODO: AQUI VA EL FINAL DEL JUEGO ///////////////////////////////////////////////////////////////////////////
@@ -139,37 +147,41 @@ public class WaveManager : MonoBehaviour
             debugSpawn = !debugSpawn;
         }
 
-        if (isSpawning)
+        if (roundsStarted)
         {
-            if (debugSpawn)
-            {
 
-                if (_currentDifficulty > 0)
+            if (isSpawning)
+            {
+                if (debugSpawn)
                 {
-                    tPerSpawn += Time.deltaTime;
-                    if (tPerSpawn >= cdPerSpawn)
+
+                    if (_currentDifficulty > 0)
                     {
-                        tPerSpawn = 0;
-                        SpawnEnemy(_enemiesThisWave, ref _currentDifficulty);
+                        tPerSpawn += Time.deltaTime;
+                        if (tPerSpawn >= cdPerSpawn)
+                        {
+                            tPerSpawn = 0;
+                            SpawnEnemy(_enemiesThisWave, ref _currentDifficulty);
+                        }
                     }
-                }
-                if (_goldenDifficulty > 0)
-                {
-                    tPerGolden += Time.deltaTime;
-                    if (tPerGolden >= cdPerGolden)
+                    if (_goldenDifficulty > 0)
                     {
-                        tPerGolden = 0;
-                        SpawnEnemy(_goldenThisWave, ref _gCurrentDifficulty);
-                        _goldenThisWave.Remove(lastEnemySpawned);
+                        tPerGolden += Time.deltaTime;
+                        if (tPerGolden >= cdPerGolden)
+                        {
+                            tPerGolden = 0;
+                            SpawnEnemy(_goldenThisWave, ref _gCurrentDifficulty);
+                            _goldenThisWave.Remove(lastEnemySpawned);
+                        }
                     }
                 }
             }
-        }
-        else
-        {
-            if (_currentDifficulty == _waveDifficulty)
+            else
             {
-                EndWave();
+                if (_currentDifficulty == _waveDifficulty)
+                {
+                    EndWave();
+                }
             }
         }
         if (debugText != null)

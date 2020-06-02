@@ -56,6 +56,7 @@ public class SceneChangeManager : Singleton<SceneChangeManager>
             InputManager.Instance.Init();
             WeaponPrefabsLists.Instance.Init();
             WaveManager.Instance.Init();
+            WeaponManager.Instance._player.Init();
         }
         else if (next.name == "MainMenu")
         {
@@ -66,6 +67,15 @@ public class SceneChangeManager : Singleton<SceneChangeManager>
     }
     private void OnLoadMenu()
     {
+        Destroy(FindObjectOfType<WaveManager>().gameObject);
+        Destroy(FindObjectOfType<WeaponPrefabsLists>().gameObject);
+        //Destroy(FindObjectOfType<InputManager>().gameObject);
+        InputManager.Instance.ResetInit();
+        GameManager.Instance.ResetInit();
+
+        WeaponManager.Instance._player.Unsubscribe();
+        //Destroy(FindObjectOfType<GameManager>().gameObject);
+
         Destroy(FindObjectOfType<WeaponManager>().gameObject);
         Destroy(FindObjectOfType<EnemiesManager>().gameObject);
         Destroy(FindObjectOfType<CanvasDDOL>().gameObject);

@@ -64,7 +64,8 @@ public class WeaponManager : MonoBehaviour
     {
         if (!InputManager.Instance.debug)
         {
-            transform.position = new Vector3(-15.11f, 0.5f, -16.498f);
+            respawnPos = new Vector3(-15.11f, 0.5f, -16.498f);
+            Respawn();
         }
 
         UpdateWeapons();
