@@ -138,6 +138,7 @@ public class WeaponBase : MonoBehaviour
 
     protected virtual void ShotsThatAreShot()
     {
+        AudioSource.PlayClipAtPoint(GameManager.Instance.shotClip, _raycastSpot.position);
         ShootingBullet(GetVariedDirection());
     }
     protected virtual void ShootingBullet(Vector3 direction)

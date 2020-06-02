@@ -71,16 +71,6 @@ public class WeaponManager : MonoBehaviour
         InputManager.Instance.OnChangeWeapon += NextWeapon;
     }
 
-    bool init = false;
-    private void Update()
-    {
-        if (!init)
-        {
-            init = true;
-            OnWeaponsInit?.Invoke();
-        }
-    }
-
     private void UpdateUIWeaponsTexts()
     {
         WeaponBase wb = weapons[selectedWeapon].GetComponent<WeaponBase>();

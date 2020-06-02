@@ -17,6 +17,8 @@ public class GameManager : Singleton<GameManager>
     [SerializeField] private float cdAfterHitToRegen = 4;
     private float cdAux = 0;
 
+    public AudioClip pieceObtainedClip, hitClip, explosionClip, droneShootClip, shotgunClip, shotClip;
+
     PostProcessVolume ppvPlayer;
 
     private bool gamePaused = false;

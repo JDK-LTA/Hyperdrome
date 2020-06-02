@@ -66,6 +66,8 @@ public class EnemyShooter : EnemyBase
         eb.Speed = bulletSpeed;
         eb.Dmg = damagePerAttack;
 
+        AudioSource.PlayClipAtPoint(GameManager.Instance.droneShootClip, shootingSpot.position);
+
         OnShoot?.Invoke();
     }
 

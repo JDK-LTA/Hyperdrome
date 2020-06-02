@@ -22,5 +22,6 @@ public class EnemiesManager : MonoBehaviour
     {
         enemy.TakeHit(damage);
         enemy.PlayHitParticles(hitPoint);
+        AudioSource.PlayClipAtPoint(GameManager.Instance.hitClip, hitPoint);
     }
 }

@@ -44,6 +44,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   nOfPiecesGot: 0
+  canDeliverPieces: 0
   playerHp: 100
   regenAmountPerSec: 10
   cdAfterHitToRegen: 4
+  pieceObtainedClip: {fileID: 8300000, guid: 80292761d7000ff43a704f7cd99fc243, type: 3}
+  hitClip: {fileID: 8300000, guid: e9c9b5bc38e72cc40aeca323d220f2dc, type: 3}
+  explosionClip: {fileID: 8300000, guid: e7939fa5b8ad06d4288162c0ea559a55, type: 3}
+  droneShootClip: {fileID: 8300000, guid: 373c1bce328165c4d9ce57c1967910cf, type: 3}
+  shotgunClip: {fileID: 8300000, guid: 04cd00b8efd5f194ca182f915b662c81, type: 3}
+  shotClip: {fileID: 8300000, guid: 38a90e1bd0fa4374980b60e4b9ceb152, type: 3}

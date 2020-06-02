@@ -11,6 +11,7 @@ public class WeaponShotgun : WeaponBase
     
     protected override void ShotsThatAreShot()
     {
+        AudioSource.PlayClipAtPoint(GameManager.Instance.shotgunClip, _raycastSpot.position);
         for (int i = 0; i < nOfBulletsPerShot; i++)
         {            
             ShootingBullet(GetVariedDirection());

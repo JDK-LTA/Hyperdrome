@@ -25,7 +25,7 @@ public class InventorySystem : MonoBehaviour
     void Start()
     {
         //weaponSlots = new List<UIWeapon>();
-        WeaponManager.Instance.OnWeaponsInit += WeaponsInitiated;
+        //WeaponManager.Instance.OnWeaponsInit += WeaponsInitiated;
     }
     private void WeaponsInitiated()
     {

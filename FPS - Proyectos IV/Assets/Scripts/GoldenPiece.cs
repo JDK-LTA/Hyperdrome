@@ -9,6 +9,7 @@ public class GoldenPiece : MonoBehaviour
         if (other.tag == "Player")
         {
             GameManager.Instance.nOfPiecesGot++;
+            AudioSource.PlayClipAtPoint(GameManager.Instance.pieceObtainedClip, transform.position);
             Destroy(gameObject);
         }
     }
