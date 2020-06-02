@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ShotHold : ShotBase
 {
-    private float auxTwo = 0.01f;
+    private float auxTwo = 0.05f;
     protected override void Start()
     {
         base.Start();

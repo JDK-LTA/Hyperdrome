@@ -30,7 +30,7 @@ MonoBehaviour:
     weight: 5
     damagePerHit: 20
     forceToApply: 10
-    range: 5
+    range: 15
     cdBetweenShots: 0.5
     variance: 2
     varianceDecreaseWhenAim: 4
@@ -434,9 +434,9 @@ MonoBehaviour:
     levelRequired: 1
     ammo: 0
     weight: 0
-    damagePerHit: 8
+    damagePerHit: 0.5
     forceToApply: 2
-    range: 40
+    range: 10
     cdBetweenShots: 0
     variance: 0
     varianceDecreaseWhenAim: 1
@@ -461,9 +461,9 @@ MonoBehaviour:
     levelRequired: 2
     ammo: 0
     weight: 0
-    damagePerHit: 15
+    damagePerHit: 0.05
     forceToApply: 2
-    range: 30
+    range: 20
     cdBetweenShots: 0
     variance: 0
     varianceDecreaseWhenAim: 1
@@ -596,7 +596,7 @@ MonoBehaviour:
     levelRequired: 5
     ammo: 0
     weight: 0
-    damagePerHit: 12
+    damagePerHit: 0.4
     forceToApply: 1
     range: 15
     cdBetweenShots: 0
@@ -812,9 +812,9 @@ MonoBehaviour:
     levelRequired: 7
     ammo: 0
     weight: 0
-    damagePerHit: 25
+    damagePerHit: 0.08
     forceToApply: 1
-    range: 30
+    range: 18
     cdBetweenShots: 0
     variance: 0
     varianceDecreaseWhenAim: 1

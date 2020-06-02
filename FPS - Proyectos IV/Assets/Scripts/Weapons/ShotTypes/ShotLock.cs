@@ -7,6 +7,7 @@ public class ShotLock : ShotSemi
     // FALTA EL TEMA DE LA ANIMACIÓN. NO SÉ SI HACER COINCIDIR EL TIEMPO
     //DE ANIMACIÓN A MANO CON EL TIEMPO DE CD O INTENTAR PROGRAMARLO
     //EN CONJUNTO
+    bool canStartShooting = false;
     protected override void Start()
     {
         base.Start();
@@ -15,7 +16,11 @@ public class ShotLock : ShotSemi
 
     protected override void Update()
     {
-        if (canShoot)
+        if (!Input.GetMouseButton(0) && !canStartShooting)
+        {
+            canStartShooting = true;
+        }
+        if (canShoot && canStartShooting)
         {
             if (shooting)
             {

@@ -33,9 +33,9 @@ MonoBehaviour:
   _levelRequired: 2
   _ammo: 0
   _weight: 0
-  _damagePerHit: 15
+  _damagePerHit: 0.05
   _forceToApply: 2
-  _range: 30
+  _range: 20
   _cdBetweenShots: 0
   variance: 0
   varianceDecreaseWhenAim: 1
@@ -49,7 +49,7 @@ MonoBehaviour:
   lineStartWidth: 0.2
   lineEndWidth: 0.2
   offset: {x: 0, y: 0, z: 0}
---- !u!120 &1374436653190620752
+--- !u!120 &621535369174524572
 LineRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
