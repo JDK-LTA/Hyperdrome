@@ -48,7 +48,10 @@ public class InventoryManager : MonoBehaviour
 
         foreach (AudioSource item in FindObjectsOfType<AudioSource>())
         {
-            item.Stop();
+            if (item.gameObject.name != "Music")
+            {
+                item.Stop();
+            }
         }
     }
     private void OnDisable()
