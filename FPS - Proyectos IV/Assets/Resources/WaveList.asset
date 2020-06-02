@@ -17,12 +17,12 @@ MonoBehaviour:
     enemiesThisWave:
     - {fileID: 816783409, guid: 80b7356fdae1b044cb1dab5430c66e74, type: 3}
     - {fileID: 816783409, guid: 4b1d25dfcd089ff45b826d6604949d0d, type: 3}
-    cdBetweenEnemiesSpawn: 3
+    cdBetweenEnemiesSpawn: 6
     goldenEnemiesThisWave:
     - {fileID: 816783409, guid: f70cdf0080e13f04980320ea20cac028, type: 3}
     - {fileID: 816783409, guid: f70cdf0080e13f04980320ea20cac028, type: 3}
-    goldenDifficulty: 3
-    cdBetweenGoldenSpawn: 10
+    goldenDifficulty: 4
+    cdBetweenGoldenSpawn: 8
     positionsToSpawn:
     - {x: -61.2, y: -0.5925795, z: -80.4}
     - {x: -119, y: 0.1, z: 29.3}
@@ -33,9 +33,10 @@ MonoBehaviour:
     - {fileID: 816783409, guid: 80b7356fdae1b044cb1dab5430c66e74, type: 3}
     - {fileID: 816783409, guid: 4b1d25dfcd089ff45b826d6604949d0d, type: 3}
     - {fileID: 3073357397487411516, guid: 8e0f285c21cdcf14e8d5c06c57ba936b, type: 3}
-    cdBetweenEnemiesSpawn: 3
+    cdBetweenEnemiesSpawn: 5
     goldenEnemiesThisWave:
     - {fileID: 816783409, guid: f70cdf0080e13f04980320ea20cac028, type: 3}
+    - {fileID: 3073357397487411516, guid: 61672c40131e4c54e80cb07afbf77e03, type: 3}
     - {fileID: 3073357397487411516, guid: 61672c40131e4c54e80cb07afbf77e03, type: 3}
     goldenDifficulty: 3
     cdBetweenGoldenSpawn: 10
@@ -63,7 +64,7 @@ MonoBehaviour:
     - {x: -119, y: 0.1, z: 29.3}
     - {x: 94.9, y: 0.1, z: 55.7}
     - {x: 55.5, y: 0.1, z: -58.3}
-  - totalDifficulty: 10
+  - totalDifficulty: 15
     enemiesThisWave:
     - {fileID: 3073357397487411516, guid: 8e0f285c21cdcf14e8d5c06c57ba936b, type: 3}
     - {fileID: 816783409, guid: 80b7356fdae1b044cb1dab5430c66e74, type: 3}
@@ -74,7 +75,9 @@ MonoBehaviour:
     - {fileID: 816783409, guid: f70cdf0080e13f04980320ea20cac028, type: 3}
     - {fileID: 3073357397487411516, guid: 61672c40131e4c54e80cb07afbf77e03, type: 3}
     - {fileID: 816783409, guid: f70cdf0080e13f04980320ea20cac028, type: 3}
-    goldenDifficulty: 4
+    - {fileID: 3073357397487411516, guid: 61672c40131e4c54e80cb07afbf77e03, type: 3}
+    - {fileID: 7507957430615445162, guid: e4e2f1d5f7dad06448a3dd7e8bcb2089, type: 3}
+    goldenDifficulty: 3
     cdBetweenGoldenSpawn: 10
     positionsToSpawn:
     - {x: -26.89, y: -37.073, z: 115.71}
@@ -89,13 +92,14 @@ MonoBehaviour:
     - {fileID: 816783409, guid: 80b7356fdae1b044cb1dab5430c66e74, type: 3}
     - {fileID: 816783409, guid: 4b1d25dfcd089ff45b826d6604949d0d, type: 3}
     - {fileID: 7507957430615445162, guid: f32c98699eebc9e47b140cfe32d21e40, type: 3}
-    cdBetweenEnemiesSpawn: 5
+    cdBetweenEnemiesSpawn: 4
     goldenEnemiesThisWave:
     - {fileID: 816783409, guid: f70cdf0080e13f04980320ea20cac028, type: 3}
     - {fileID: 3073357397487411516, guid: 61672c40131e4c54e80cb07afbf77e03, type: 3}
     - {fileID: 816783409, guid: f70cdf0080e13f04980320ea20cac028, type: 3}
     - {fileID: 3073357397487411516, guid: 61672c40131e4c54e80cb07afbf77e03, type: 3}
-    goldenDifficulty: 4
+    - {fileID: 7507957430615445162, guid: e4e2f1d5f7dad06448a3dd7e8bcb2089, type: 3}
+    goldenDifficulty: 3
     cdBetweenGoldenSpawn: 15
     positionsToSpawn:
     - {x: -26.89, y: -37.073, z: 115.71}
@@ -104,7 +108,7 @@ MonoBehaviour:
     - {x: -94.72, y: -34.234, z: 59.44}
     - {x: -109.27, y: -36.453, z: 81.85}
     - {x: -79.66, y: -37.07, z: 114.03}
-  - totalDifficulty: 15
+  - totalDifficulty: 18
     enemiesThisWave:
     - {fileID: 3073357397487411516, guid: 8e0f285c21cdcf14e8d5c06c57ba936b, type: 3}
     - {fileID: 816783409, guid: 80b7356fdae1b044cb1dab5430c66e74, type: 3}
@@ -116,8 +120,9 @@ MonoBehaviour:
     - {fileID: 3073357397487411516, guid: 61672c40131e4c54e80cb07afbf77e03, type: 3}
     - {fileID: 816783409, guid: f70cdf0080e13f04980320ea20cac028, type: 3}
     - {fileID: 3073357397487411516, guid: 61672c40131e4c54e80cb07afbf77e03, type: 3}
-    goldenDifficulty: 4
-    cdBetweenGoldenSpawn: 20
+    - {fileID: 7507957430615445162, guid: e4e2f1d5f7dad06448a3dd7e8bcb2089, type: 3}
+    goldenDifficulty: 3
+    cdBetweenGoldenSpawn: 10
     positionsToSpawn:
     - {x: -26.89, y: -37, z: 115.71}
     - {x: -29.012, y: -37.043, z: 53.77}
@@ -125,21 +130,23 @@ MonoBehaviour:
     - {x: -94.72, y: -34.234, z: 59.44}
     - {x: -109.27, y: -36.453, z: 81.85}
     - {x: -79.66, y: -37.07, z: 114.03}
-  - totalDifficulty: 15
+  - totalDifficulty: 18
     enemiesThisWave:
     - {fileID: 3073357397487411516, guid: 8e0f285c21cdcf14e8d5c06c57ba936b, type: 3}
     - {fileID: 816783409, guid: 80b7356fdae1b044cb1dab5430c66e74, type: 3}
     - {fileID: 816783409, guid: 4b1d25dfcd089ff45b826d6604949d0d, type: 3}
     - {fileID: 7507957430615445162, guid: f32c98699eebc9e47b140cfe32d21e40, type: 3}
     - {fileID: 816783409, guid: c160457c07249854ab0f72a15c606350, type: 3}
-    cdBetweenEnemiesSpawn: 4.5
+    cdBetweenEnemiesSpawn: 3
     goldenEnemiesThisWave:
     - {fileID: 816783409, guid: f70cdf0080e13f04980320ea20cac028, type: 3}
-    - {fileID: 3073357397487411516, guid: 61672c40131e4c54e80cb07afbf77e03, type: 3}
+    - {fileID: 816783409, guid: 23fe1229852fb2e4c9c96d41c16c55a5, type: 3}
     - {fileID: 816783409, guid: f70cdf0080e13f04980320ea20cac028, type: 3}
     - {fileID: 3073357397487411516, guid: 61672c40131e4c54e80cb07afbf77e03, type: 3}
-    goldenDifficulty: 4
-    cdBetweenGoldenSpawn: 20
+    - {fileID: 7507957430615445162, guid: e4e2f1d5f7dad06448a3dd7e8bcb2089, type: 3}
+    - {fileID: 816783409, guid: 23fe1229852fb2e4c9c96d41c16c55a5, type: 3}
+    goldenDifficulty: 2
+    cdBetweenGoldenSpawn: 6
     positionsToSpawn:
     - {x: 235.32, y: 188.7, z: 131.05}
     - {x: 333.84, y: 187.33, z: 86.81}
@@ -153,15 +160,16 @@ MonoBehaviour:
     - {fileID: 816783409, guid: 4b1d25dfcd089ff45b826d6604949d0d, type: 3}
     - {fileID: 7507957430615445162, guid: f32c98699eebc9e47b140cfe32d21e40, type: 3}
     - {fileID: 816783409, guid: c160457c07249854ab0f72a15c606350, type: 3}
-    cdBetweenEnemiesSpawn: 3
+    cdBetweenEnemiesSpawn: 2.5
     goldenEnemiesThisWave:
     - {fileID: 816783409, guid: f70cdf0080e13f04980320ea20cac028, type: 3}
-    - {fileID: 3073357397487411516, guid: 61672c40131e4c54e80cb07afbf77e03, type: 3}
+    - {fileID: 816783409, guid: 23fe1229852fb2e4c9c96d41c16c55a5, type: 3}
     - {fileID: 816783409, guid: f70cdf0080e13f04980320ea20cac028, type: 3}
     - {fileID: 3073357397487411516, guid: 61672c40131e4c54e80cb07afbf77e03, type: 3}
-    - {fileID: 816783409, guid: f70cdf0080e13f04980320ea20cac028, type: 3}
-    goldenDifficulty: 4
-    cdBetweenGoldenSpawn: 15
+    - {fileID: 7507957430615445162, guid: e4e2f1d5f7dad06448a3dd7e8bcb2089, type: 3}
+    - {fileID: 816783409, guid: 23fe1229852fb2e4c9c96d41c16c55a5, type: 3}
+    goldenDifficulty: 2
+    cdBetweenGoldenSpawn: 6
     positionsToSpawn:
     - {x: 235.32, y: 188.7, z: 131.05}
     - {x: 333.84, y: 187.33, z: 86.81}
