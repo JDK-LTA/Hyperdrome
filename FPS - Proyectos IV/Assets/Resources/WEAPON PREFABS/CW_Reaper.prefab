@@ -1,0 +1,131 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &5993866050134731894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850868877679202827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c25a03f19b9653443981d13ac8a4298e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8266307243137895408
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850868877679202827}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e796124dfc9a34ab48875a06312781, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _nameOfWeapon: Reaper
+  _shootingType: 2
+  _weaponType: 0
+  _changer: 2
+  _bullet: {fileID: 0}
+  _fireSound: {fileID: 0}
+  _levelRequired: 3
+  _ammo: 0
+  _weight: 0
+  _damagePerHit: 18
+  _forceToApply: 1
+  _range: 10
+  _cdBetweenShots: 0
+  variance: 6
+  varianceDecreaseWhenAim: 2
+  speedDecreaseWhenAim: 1
+  _numberToChange: 50
+  _raycastSpot: {fileID: 0}
+  isAiming: 0
+  auxNoToChange: 0
+--- !u!1001 &2391328431576641263
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4071306813705813220, guid: 08628a2f8858779488a3751bac51a99a,
+        type: 3}
+      propertyPath: m_Name
+      value: CW_PistolAuto2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3267214807680600860, guid: 08628a2f8858779488a3751bac51a99a,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: bf1464b84bb76b44abb088d5a41acfee, type: 2}
+    - target: {fileID: 5176600576134307842, guid: 08628a2f8858779488a3751bac51a99a,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5176600576134307842, guid: 08628a2f8858779488a3751bac51a99a,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5176600576134307842, guid: 08628a2f8858779488a3751bac51a99a,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5176600576134307842, guid: 08628a2f8858779488a3751bac51a99a,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5176600576134307842, guid: 08628a2f8858779488a3751bac51a99a,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5176600576134307842, guid: 08628a2f8858779488a3751bac51a99a,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5176600576134307842, guid: 08628a2f8858779488a3751bac51a99a,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5176600576134307842, guid: 08628a2f8858779488a3751bac51a99a,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5176600576134307842, guid: 08628a2f8858779488a3751bac51a99a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5176600576134307842, guid: 08628a2f8858779488a3751bac51a99a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5176600576134307842, guid: 08628a2f8858779488a3751bac51a99a,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5819289931294228022, guid: 08628a2f8858779488a3751bac51a99a,
+        type: 3}
+      propertyPath: m_Mesh
+      value: 
+      objectReference: {fileID: 4300006, guid: d19a3d4883acbe9479fb1517c870cb35, type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 08628a2f8858779488a3751bac51a99a, type: 3}
+--- !u!1 &1850868877679202827 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4071306813705813220, guid: 08628a2f8858779488a3751bac51a99a,
+    type: 3}
+  m_PrefabInstance: {fileID: 2391328431576641263}
+  m_PrefabAsset: {fileID: 0}

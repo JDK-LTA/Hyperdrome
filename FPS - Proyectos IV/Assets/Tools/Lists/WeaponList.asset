@@ -150,9 +150,9 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: PistolaAuto
+  - previousName: Darkrow
     isCreated: 1
-    name: PistolaAuto
+    name: Darkrow
     shootingType: 2
     weaponType: 0
     changer: 0
@@ -177,9 +177,9 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: PistolaSemi
+  - previousName: Blastorm
     isCreated: 1
-    name: PistolaSemi
+    name: Blastorm
     shootingType: 1
     weaponType: 0
     changer: 2
@@ -204,9 +204,9 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: SubmachineAuto
+  - previousName: Espeel
     isCreated: 1
-    name: SubmachineAuto
+    name: Espeel
     shootingType: 2
     weaponType: 0
     changer: 1
@@ -231,9 +231,9 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: SubmachineSemi
+  - previousName: Darevil
     isCreated: 1
-    name: SubmachineSemi
+    name: Darevil
     shootingType: 1
     weaponType: 0
     changer: 0
@@ -258,9 +258,9 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: AssaultAuto
+  - previousName: Kingator
     isCreated: 1
-    name: AssaultAuto
+    name: Kingator
     shootingType: 2
     weaponType: 0
     changer: 1
@@ -285,9 +285,9 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: AssaultSemi
+  - previousName: Larvate
     isCreated: 1
-    name: AssaultSemi
+    name: Larvate
     shootingType: 1
     weaponType: 0
     changer: 2
@@ -312,9 +312,9 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: ShotgunShort
+  - previousName: Hydruler
     isCreated: 1
-    name: ShotgunShort
+    name: Hydruler
     shootingType: 1
     weaponType: 2
     changer: 2
@@ -339,9 +339,9 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: ShotgunLong
+  - previousName: Chaos
     isCreated: 1
-    name: ShotgunLong
+    name: Chaos
     shootingType: 1
     weaponType: 2
     changer: 0
@@ -366,9 +366,9 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: RiffleFast
+  - previousName: Thermal
     isCreated: 1
-    name: RiffleFast
+    name: Thermal
     shootingType: 0
     weaponType: 0
     changer: 1
@@ -393,9 +393,9 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: RiffleHeavy
+  - previousName: Majira
     isCreated: 1
-    name: RiffleHeavy
+    name: Majira
     shootingType: 0
     weaponType: 0
     changer: 2
@@ -420,9 +420,9 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: LaserWeak
+  - previousName: Panter
     isCreated: 1
-    name: LaserWeak
+    name: Panter
     shootingType: 3
     weaponType: 1
     changer: 1
@@ -447,9 +447,9 @@ MonoBehaviour:
     endSpeed: 5
     lineStartWidth: 0.02
     lineEndWidth: 0.02
-  - previousName: LaserStrong
+  - previousName: Prime
     isCreated: 1
-    name: LaserStrong
+    name: Prime
     shootingType: 3
     weaponType: 1
     changer: 1
@@ -474,9 +474,9 @@ MonoBehaviour:
     endSpeed: 5
     lineStartWidth: 0.02
     lineEndWidth: 0.02
-  - previousName: PistolLock
+  - previousName: Swan
     isCreated: 1
-    name: PistolLock
+    name: Swan
     shootingType: 0
     weaponType: 0
     changer: 2
@@ -501,9 +501,9 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: AssaultLock
+  - previousName: Cosmos
     isCreated: 1
-    name: AssaultLock
+    name: Cosmos
     shootingType: 0
     weaponType: 0
     changer: 1
@@ -528,9 +528,9 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: SubmachineAuto2
+  - previousName: Phoenix
     isCreated: 1
-    name: SubmachineAuto2
+    name: Phoenix
     shootingType: 2
     weaponType: 0
     changer: 1
@@ -555,9 +555,9 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: ShotgunShort2
+  - previousName: Mercy
     isCreated: 1
-    name: ShotgunShort2
+    name: Mercy
     shootingType: 1
     weaponType: 2
     changer: 0
@@ -582,9 +582,9 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: LaserMiddle
+  - previousName: Sugar
     isCreated: 1
-    name: LaserMiddle
+    name: Sugar
     shootingType: 3
     weaponType: 1
     changer: 2
@@ -609,9 +609,9 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: PistolAuto2
+  - previousName: Reaper
     isCreated: 1
-    name: PistolAuto2
+    name: Reaper
     shootingType: 2
     weaponType: 0
     changer: 2
@@ -636,9 +636,9 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: PistolSemi2
+  - previousName: Daikenki
     isCreated: 1
-    name: PistolSemi2
+    name: Daikenki
     shootingType: 1
     weaponType: 0
     changer: 0
@@ -663,9 +663,9 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: SubmachineSemi2
+  - previousName: Tremor
     isCreated: 1
-    name: SubmachineSemi2
+    name: Tremor
     shootingType: 1
     weaponType: 0
     changer: 1
@@ -690,9 +690,9 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: AssaultAuto2
+  - previousName: Eclipse
     isCreated: 1
-    name: AssaultAuto2
+    name: Eclipse
     shootingType: 2
     weaponType: 0
     changer: 1
@@ -717,9 +717,9 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: AssaultSemi2
+  - previousName: Bloodmoon
     isCreated: 1
-    name: AssaultSemi2
+    name: Bloodmoon
     shootingType: 1
     weaponType: 0
     changer: 0
@@ -744,9 +744,9 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: RiffleFast2
+  - previousName: Nine
     isCreated: 1
-    name: RiffleFast2
+    name: Nine
     shootingType: 0
     weaponType: 0
     changer: 0
@@ -771,9 +771,9 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: ShotgunPro
+  - previousName: Twilight
     isCreated: 1
-    name: ShotgunPro
+    name: Twilight
     shootingType: 1
     weaponType: 2
     changer: 1
@@ -798,11 +798,11 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: LaserPro
+  - previousName: Headhunter
     isCreated: 1
-    name: LaserPro
-    shootingType: 0
-    weaponType: 0
+    name: Headhunter
+    shootingType: 3
+    weaponType: 1
     changer: 2
     mesh: {fileID: 4300012, guid: 6ec4e98e91c69f144b1f8242b1a0e7d3, type: 3}
     materials: []
@@ -825,9 +825,9 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: PistolLock2
+  - previousName: Typhoon
     isCreated: 1
-    name: PistolLock2
+    name: Typhoon
     shootingType: 0
     weaponType: 0
     changer: 1
@@ -852,9 +852,9 @@ MonoBehaviour:
     endSpeed: 10
     lineStartWidth: 0.05
     lineEndWidth: 0.05
-  - previousName: SubmachineSemi3
+  - previousName: Magma
     isCreated: 1
-    name: SubmachineSemi3
+    name: Magma
     shootingType: 1
     weaponType: 0
     changer: 2
